@@ -157,7 +157,7 @@ body {
 .engineering-dashboard .bg-slate-50 { background-color: #0f1a2b !important; }
 .engineering-dashboard .bg-slate-100 { background-color: #1a2940 !important; }
 .engineering-dashboard .border-slate-200,
-.engineering-dashboard .border-slate-200\\/80,
+.engineering-dashboard .[class~="border-slate-200/80"],
 .engineering-dashboard .border-slate-100,
 .engineering-dashboard .border-slate-50 {
   border-color: rgba(148, 163, 184, 0.16) !important;
