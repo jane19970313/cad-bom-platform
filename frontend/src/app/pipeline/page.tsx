@@ -418,7 +418,7 @@ export default function PipelinePage() {
   const jobStatus = progress?.status ?? "Not connected";
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="pipeline-workspace min-h-screen">
       <header className="border-b border-slate-200 bg-white px-5 py-4 md:px-8">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-3">
