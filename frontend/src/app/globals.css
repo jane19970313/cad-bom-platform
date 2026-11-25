@@ -906,3 +906,39 @@ body {
     grid-template-columns:minmax(0,.66fr) minmax(0,1.42fr) minmax(0,.9fr)!important;
   }
 }
+
+
+/* BOM readability: slightly larger text, no rectangular MARK/QTY badge frames. */
+.engineering-dashboard .hud-bom-table{
+  font-size:clamp(8px,.68vw,10px)!important;
+}
+.engineering-dashboard .hud-bom-table th{
+  font-size:clamp(7px,.58vw,8px)!important;
+}
+.engineering-dashboard .hud-bom-table td{
+  font-size:clamp(8px,.68vw,10px)!important;
+}
+.engineering-dashboard .hud-bom-table .bom-mark,
+.engineering-dashboard .hud-bom-table .bom-qty{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  background:transparent!important;
+  padding:3px 2px!important;
+  font-size:inherit!important;
+  font-weight:850!important;
+}
+.engineering-dashboard .hud-bom-table .bom-mark{
+  color:var(--bom-accent)!important;
+}
+.engineering-dashboard .hud-bom-table .bom-qty{
+  color:var(--bom-accent)!important;
+  min-width:0!important;
+}
+@media(max-width:760px){
+  .engineering-dashboard .hud-bom-table,
+  .engineering-dashboard .hud-bom-table td{
+    font-size:8px!important;
+  }
+}
