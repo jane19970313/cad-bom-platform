@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+<defs>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dce5e9"/><stop offset=".3" stop-color="#8296a2"/><stop offset=".6" stop-color="#344b5a"/><stop offset="1" stop-color="#a9b8c0"/></linearGradient>
+<pattern id="grate" width="84" height="84" patternUnits="userSpaceOnUse" patternTransform="skewX(-18) rotate(-8)">
+<rect width="84" height="84" fill="#172b39"/><rect x="7" y="7" width="70" height="70" fill="#091724" stroke="#8297a3" stroke-width="8"/>
+<path d="M7 7H77V15H7Z M7 7V77H15V7Z" fill="#d7e1e6" opacity=".65"/><path d="M15 69H77V77H15Z M69 15H77V77H69Z" fill="#020b13" opacity=".9"/>
+<path d="M17 17H67 M17 17V67" stroke="#b8c7cf" stroke-width="1.5" opacity=".5"/>
+</pattern>
+</defs>
+<rect width="1600" height="900" fill="#102332"/>
+<g transform="translate(-120 30) skewY(-12)"><rect width="1900" height="1050" fill="url(#grate)"/><path d="M0 0H1900 M0 1040H1900" stroke="url(#steel)" stroke-width="20" opacity=".75"/></g>
+</svg>
