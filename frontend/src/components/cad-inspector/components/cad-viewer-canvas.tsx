@@ -42,7 +42,7 @@ export function CadViewerCanvas({
       <div className="relative min-h-0 flex-1 overflow-hidden touch-none overscroll-none select-none">
         <div
           ref={containerRef}
-          className="absolute inset-0 h-full w-full bg-white"
+          className="cad-dxf-viewer-root absolute inset-0 h-full w-full bg-white"
           onContextMenu={(event) => {
             event.preventDefault();
             onClear();
