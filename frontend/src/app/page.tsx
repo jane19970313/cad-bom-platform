@@ -59,9 +59,9 @@ function SidebarLink({
 
 export default function DashboardPage() {
   return (
-    <main className="min-h-screen bg-[#f4f7fb] text-slate-900">
+    <main className="engineering-dashboard min-h-screen bg-[#0b1220] text-slate-100">
       <div className="flex min-h-screen">
-        <aside className="hidden w-[264px] shrink-0 flex-col border-r border-white/5 bg-[#101b2d] px-4 py-6 text-white lg:flex">
+        <aside className="hidden w-[264px] shrink-0 flex-col border-r border-white/[0.06] bg-[#080f1d] px-4 py-6 text-white lg:flex">
           <Link href="/" className="mb-10 flex items-center gap-3 px-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-300/20 bg-blue-400/10 text-blue-300 shadow-[0_0_24px_rgba(59,130,246,0.12)]">
               <Layers3 size={21} />
@@ -115,7 +115,7 @@ export default function DashboardPage() {
         </aside>
 
         <section className="min-w-0 flex-1">
-          <header className="sticky top-0 z-20 flex h-[68px] items-center justify-between border-b border-slate-200/80 bg-white/90 px-5 backdrop-blur-xl md:px-8">
+          <header className="sticky top-0 z-20 flex h-[68px] items-center justify-between border-b border-white/[0.07] bg-[#0d1727]/90 px-5 backdrop-blur-xl md:px-8">
             <div className="flex min-w-0 items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 text-slate-600 lg:hidden">
                 <Layers3 size={18} />
@@ -202,7 +202,7 @@ export default function DashboardPage() {
 
             <DashboardData />
 
-            <footer className="flex flex-col gap-2 border-t border-slate-200/80 pt-5 text-[11px] text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+            <footer className="flex flex-col gap-2 border-t border-white/[0.08] pt-5 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
               <span>CAD2BOM Engineering Workspace</span>
               <span>Drawing intelligence · Geometry analysis · Bill of materials</span>
             </footer>
