@@ -48,7 +48,7 @@ export function Step2EntityExtraction({
         className="cad-inspector-search h-10 w-full rounded-md border px-3 text-sm outline-none focus:ring-2"
       />
 
-      <section className="flex min-h-0 flex-[1] flex-col overflow-hidden rounded-md border">
+      <section className="cad-inspector-result-panel flex min-h-0 flex-[1] flex-col overflow-hidden rounded-md border">
         <div className="shrink-0 border-b px-3 py-2">
           <h4 className="text-xs font-semibold">
             Extracted entities ({filteredEntities.length})
