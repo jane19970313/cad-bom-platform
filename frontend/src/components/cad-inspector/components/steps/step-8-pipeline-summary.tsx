@@ -39,7 +39,7 @@ export function Step8PipelineSummary({
       {/* Existing summary */}
       <div className="grid grid-cols-2 gap-2">
         {Object.entries(analysis.summary).map(([key, value]) => (
-          <div key={key} className="rounded-md bg-muted p-3">
+          <div key={key} className="cad-inspector-result-card rounded-md p-3">
             <p className="text-xl font-semibold">
               {Number(value).toLocaleString()}
             </p>
@@ -87,7 +87,7 @@ export function Step8PipelineSummary({
           {bomElements.length.toLocaleString()} BOM elements generated.
         </p>
 
-        <section className="overflow-hidden rounded-md border">
+        <section className="cad-inspector-result-panel overflow-hidden rounded-md border">
           <div className="border-b px-3 py-2">
             <h5 className="text-xs font-semibold">
               BOM Elements ({bomElements.length})
