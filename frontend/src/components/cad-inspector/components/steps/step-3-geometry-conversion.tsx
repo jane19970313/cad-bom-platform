@@ -71,7 +71,7 @@ export function Step3GeometryConversion({
       />
 
       {/* Geometry list */}
-      <section className="flex min-h-[300px] flex-[1] flex-col overflow-hidden rounded-md border">
+      <section className="cad-inspector-result-panel flex min-h-[300px] flex-[1] flex-col overflow-hidden rounded-md border">
         <div className="shrink-0 border-b px-3 py-2">
           <h4 className="text-xs font-semibold">
             Converted geometries ({filteredElements.length})
@@ -116,7 +116,7 @@ export function Step3GeometryConversion({
           )}
 
           {/* Diagnostics */}
-          <div className="shrink-0 px-3 py-2">
+          <div className="cad-inspector-result-card shrink-0 px-3 py-2">
             <h4 className="text-sm font-semibold">
               Conversion diagnostics
             </h4>
