@@ -492,12 +492,7 @@ export default function PipelinePage() {
             onSubmit={handleSearch}
             className="flex flex-col gap-3 sm:flex-row"
           >
-            <input
-              value={jobInput}
-              onChange={(event) => setJobInput(event.target.value)}
-              placeholder="Enter processing job UUID"
-              className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-            />
+            {manualEntry ? (\n              <input value={jobInput} onChange={(event) => setJobInput(event.target.value)} placeholder="Paste a processing job ID" className="min-w-0 flex-1 rounded-lg border px-3 py-2.5 text-sm"/>\n            ) : (\n              <select value={jobInput} onChange={(event) => { const value = event.target.value; setJobInput(value); if (value) { setError(""); setProgress(null); setSelectedStage("dxf_reading"); setJobId(value); router.replace("/pipeline?jobId=" + encodeURIComponent(value)); } }} className="min-w-0 flex-1 rounded-lg border px-3 py-2.5 text-sm">\n                <option value="">{loadingJobs ? "Loading your processing jobs…" : "Choose a recent processing job"}</option>\n                {recentJobs.map(({job, filename, projectName}) => <option key={job.id} value={job.id}>{filename} · {projectName} · {job.status} · {formatDate(job.created_at)}</option>)}\n              </select>\n            )}\n            <button type="button" onClick={() => setManualEntry(value => !value)} className="pipeline-manual-toggle">{manualEntry ? "Choose from jobs" : "Enter ID manually"}</button>
 
             <button
               type="submit"
