@@ -26,6 +26,7 @@ import type {
 } from "@/types/processing";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type StageDefinition = {
   id: string;
