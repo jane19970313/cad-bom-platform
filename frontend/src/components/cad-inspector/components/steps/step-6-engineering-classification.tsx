@@ -81,7 +81,7 @@ export function Step6EngineeringClassification({
           value={search}
           onChange={(event) => setSearch(event.target.value)}
           placeholder="Search handle, layer, type..."
-          className="h-9 w-full rounded-md border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
+          className="cad-inspector-search h-10 w-full rounded-md border px-3 text-sm outline-none focus:ring-2"
         />
       </div>
 
