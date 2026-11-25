@@ -8,6 +8,7 @@ from app.api.deps import get_current_user
 
 from app.models.user import User
 from app.models.project import Project
+from app.services.storage.factory import get_storage_service
 
 from app.schemas.project import (
     ProjectCreate,
