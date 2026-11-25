@@ -1274,3 +1274,106 @@ main.workspace-page .drawing-dropzone{color:#dff3fc!important;background:radial-
  .inspector-metric p:last-child{font-size:23px!important}
  .inspector-drawing-state{min-height:420px!important}
 }
+
+
+
+/* CAD Inspector — unified viewer, stage navigation and analysis panels */
+.cad-inspector-workspace{
+  --cad-line:rgba(112,174,204,.19);
+  --cad-muted:#86a3b9;
+  --cad-text:#e7f4fc;
+  --cad-cyan:#62d5e9;
+  color:var(--cad-text);
+}
+.cad-inspector-workspace>div:first-child{
+  border:1px solid var(--cad-line);
+  border-radius:14px 14px 0 0;
+  background:linear-gradient(145deg,rgba(10,29,48,.98),rgba(6,18,32,.98));
+}
+.cad-inspector-toolbar{border:1px solid var(--cad-line);border-radius:14px 14px 0 0;background:linear-gradient(145deg,rgba(10,29,48,.98),rgba(6,18,32,.98));box-shadow:0 16px 40px rgba(0,0,0,.17)}
+.cad-inspector-toolbar-heading{min-height:64px;border-bottom:1px solid rgba(112,174,204,.13)}
+.cad-inspector-toolbar-heading h2{color:#eaf7ff!important;font-size:13px!important;font-weight:800!important;letter-spacing:.025em}
+.cad-inspector-toolbar-heading p{color:#7998ae!important;font:700 9px ui-monospace,monospace!important;letter-spacing:.12em;text-transform:uppercase}
+.cad-inspector-toolbar-heading>span{border:1px solid rgba(73,204,228,.28)!important;border-radius:6px!important;background:rgba(18,111,139,.17)!important;color:#79deed!important;font:800 10px ui-monospace,monospace!important;letter-spacing:.08em}
+.cad-inspector-step-navigation{align-items:stretch!important;gap:12px!important;background:rgba(4,15,27,.35)}
+.cad-inspector-step-navigation>div:first-child{gap:7px!important}
+.cad-inspector-step-navigation>div:first-child button{
+  position:relative;min-height:48px;padding:8px 7px!important;
+  border:1px solid rgba(112,174,204,.17)!important;border-radius:8px!important;
+  background:linear-gradient(145deg,rgba(14,36,57,.9),rgba(7,22,38,.9))!important;
+  color:#9bb4c6!important;box-shadow:inset 0 1px rgba(255,255,255,.02);
+}
+.cad-inspector-step-navigation>div:first-child button:hover{border-color:rgba(84,202,226,.4)!important;background:rgba(16,65,85,.7)!important;color:#e8faff!important}
+.cad-inspector-step-navigation>div:first-child button[class*="border-primary"]{
+  border-color:rgba(73,211,233,.72)!important;
+  background:linear-gradient(145deg,rgba(15,111,139,.55),rgba(7,49,70,.82))!important;
+  color:#effcff!important;box-shadow:inset 0 -2px #52d5e9,0 0 18px rgba(39,177,207,.12)!important;
+}
+.cad-inspector-step-navigation>div:first-child button span:first-child{color:#6dc9dd!important;font:800 8px ui-monospace,monospace!important;letter-spacing:.1em}
+.cad-inspector-step-navigation>div:first-child button span:last-child{margin-top:4px;font-size:10px!important;font-weight:750!important}
+.cad-inspector-step-navigation>div:last-child{gap:7px!important}
+.cad-inspector-step-navigation>div:last-child button{
+  min-height:38px;padding:0 11px!important;border:1px solid rgba(112,174,204,.22)!important;border-radius:7px!important;
+  background:rgba(8,27,44,.88)!important;color:#a9c3d4!important;font-size:10px!important;font-weight:750!important;
+}
+.cad-inspector-step-navigation>div:last-child button:hover:not(:disabled){border-color:rgba(75,202,226,.5)!important;background:rgba(17,65,85,.7)!important;color:#e8faff!important}
+.cad-inspector-step-navigation button:disabled{opacity:.38!important}
+.cad-inspector-canvas,.cad-inspector-stage-panel{
+  min-width:0;border:1px solid var(--cad-line)!important;border-radius:0 0 13px 13px!important;
+  background:linear-gradient(145deg,rgba(10,28,46,.98),rgba(5,17,30,.98))!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.025)!important;
+}
+.cad-inspector-canvas{border-radius:0 0 0 13px!important}
+.cad-inspector-canvas>div:first-child{min-height:66px;padding:12px 16px!important;border-bottom:1px solid var(--cad-line)!important;background:rgba(7,22,37,.9)}
+.cad-inspector-canvas h2{color:#eaf7ff!important;font-size:12px!important;font-weight:800!important;letter-spacing:.03em}
+.cad-inspector-canvas p{color:#829fb5!important;font-size:10px!important}
+.cad-inspector-canvas>div:first-child span{border:1px solid rgba(73,204,228,.25)!important;border-radius:5px!important;background:rgba(16,103,128,.18)!important;color:#75dbe9!important;font:800 9px ui-monospace,monospace!important;letter-spacing:.08em}
+.cad-inspector-canvas>div:first-child span.bg-green-100{border-color:rgba(85,207,163,.25)!important;background:rgba(28,126,91,.16)!important;color:#83e3bc!important}
+.cad-inspector-canvas>div:nth-child(2){background:#f5f7f8}
+.cad-inspector-canvas>div:nth-child(2)>div[ref]{outline:none}
+.cad-inspector-canvas>div:nth-child(2)>div:last-child{color:#b9d2e2}
+.cad-inspector-stage-panel{border-radius:0 0 13px 0!important}
+.cad-inspector-stage-content{padding:14px!important;scrollbar-width:thin;scrollbar-color:rgba(83,157,188,.45) rgba(4,17,30,.2)}
+.cad-inspector-stage-content::-webkit-scrollbar{width:7px}
+.cad-inspector-stage-content::-webkit-scrollbar-thumb{border-radius:8px;background:rgba(83,157,188,.42)}
+.cad-inspector-stage-content h1,.cad-inspector-stage-content h2,.cad-inspector-stage-content h3,.cad-inspector-stage-content h4{color:#e8f6ff!important}
+.cad-inspector-stage-content p{color:#9ab1c3}
+.cad-inspector-stage-content .text-slate-900,.cad-inspector-stage-content .text-slate-800,.cad-inspector-stage-content .text-slate-700{color:#dcebf4!important}
+.cad-inspector-stage-content .text-slate-600,.cad-inspector-stage-content .text-slate-500,.cad-inspector-stage-content .text-muted-foreground{color:#8ca7bb!important}
+.cad-inspector-stage-content .text-slate-400{color:#7391a8!important}
+.cad-inspector-stage-content .bg-white,.cad-inspector-stage-content .bg-background,.cad-inspector-stage-content .bg-slate-50,.cad-inspector-stage-content .bg-gray-50{
+  background:linear-gradient(145deg,rgba(12,32,51,.96),rgba(6,20,35,.96))!important;
+}
+.cad-inspector-stage-content .border,.cad-inspector-stage-content [class*="border-slate-"],.cad-inspector-stage-content [class*="border-gray-"]{border-color:rgba(112,174,204,.18)!important}
+.cad-inspector-stage-content .rounded-lg,.cad-inspector-stage-content .rounded-xl{border-radius:9px}
+.cad-inspector-stage-content input,.cad-inspector-stage-content select,.cad-inspector-stage-content textarea{
+  border:1px solid rgba(112,174,204,.25)!important;border-radius:7px!important;background:#071827!important;color:#e5f3fb!important;
+}
+.cad-inspector-stage-content button{transition:background .18s ease,border-color .18s ease,color .18s ease}
+.cad-inspector-stage-content button:not(:disabled){color:#b9d0df}
+.cad-inspector-stage-content button:hover:not(:disabled){border-color:rgba(76,199,225,.42)!important}
+.cad-inspector-stage-content .bg-blue-50,.cad-inspector-stage-content .bg-blue-100{background:rgba(16,105,135,.2)!important}
+.cad-inspector-stage-content .text-blue-700,.cad-inspector-stage-content .text-blue-600,.cad-inspector-stage-content .text-blue-800{color:#70d8eb!important}
+.cad-inspector-stage-content .border-blue-300,.cad-inspector-stage-content .border-blue-500{border-color:rgba(75,202,227,.55)!important}
+.cad-inspector-stage-content .bg-green-50,.cad-inspector-stage-content .bg-emerald-50{background:rgba(24,116,79,.17)!important}
+.cad-inspector-stage-content .text-green-700,.cad-inspector-stage-content .text-emerald-700{color:#80dfb4!important}
+.cad-inspector-stage-content .bg-red-50,.cad-inspector-stage-content .bg-rose-50{background:rgba(127,29,49,.18)!important}
+.cad-inspector-stage-content .text-red-700,.cad-inspector-stage-content .text-rose-700{color:#ff9cab!important}
+.cad-inspector-stage-content .bg-amber-50,.cad-inspector-stage-content .bg-yellow-50{background:rgba(146,92,12,.17)!important}
+.cad-inspector-stage-content .text-amber-700,.cad-inspector-stage-content .text-yellow-700{color:#f3ca7b!important}
+.cad-inspector-stage-content .bg-slate-100,.cad-inspector-stage-content .bg-gray-100{background:rgba(108,139,162,.13)!important}
+.cad-inspector-stage-content svg{max-width:100%}
+@media(min-width:1280px){
+ .cad-inspector-workspace>div.grid{grid-template-columns:minmax(0,1fr) minmax(390px,460px)!important;gap:12px!important}
+}
+@media(max-width:1279px){
+ .cad-inspector-canvas{min-height:62vh!important;border-radius:0 0 10px 10px!important}
+ .cad-inspector-stage-panel{min-height:520px!important;border-radius:10px!important}
+}
+@media(max-width:700px){
+ .cad-inspector-step-navigation{align-items:stretch!important;flex-direction:column}
+ .cad-inspector-step-navigation>div:last-child{width:100%}
+ .cad-inspector-step-navigation>div:last-child button{flex:1}
+ .cad-inspector-toolbar-heading{padding:12px!important}
+ .cad-inspector-stage-content{padding:11px!important}
+}
