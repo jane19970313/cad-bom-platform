@@ -15,3 +15,7 @@ export async function createProject(payload: {
     body: JSON.stringify(payload),
   });
 }
+
+export async function deleteProject(projectId: string): Promise<void> {
+  await apiRequest<void>(`/projects/${encodeURIComponent(projectId)}`, { method: "DELETE" });
+}
