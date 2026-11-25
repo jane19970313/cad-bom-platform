@@ -845,3 +845,64 @@ body {
   }
   .engineering-dashboard .hud-bom-table{font-size:7px!important}
 }
+
+
+/* Final precision pass: headline arrow, BOM panel fit, and clean material labels. */
+.engineering-dashboard .hud-title-equation{
+  display:inline-flex!important;
+  align-items:center!important;
+  vertical-align:middle;
+}
+.engineering-dashboard .hud-title-arrow{
+  display:inline-block!important;
+  position:relative!important;
+  top:-.085em!important;
+  line-height:1!important;
+  vertical-align:middle!important;
+  transform:none!important;
+}
+.engineering-dashboard .hud-visual-stage{
+  grid-template-columns:minmax(0,.72fr) minmax(0,1.5fr) minmax(0,.95fr)!important;
+}
+.engineering-dashboard .hud-bom-preview{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  justify-self:stretch!important;
+}
+.engineering-dashboard .hud-bom-table-wrap{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding-left:5px!important;
+  padding-right:5px!important;
+}
+.engineering-dashboard .hud-bom-table{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  table-layout:fixed!important;
+}
+.engineering-dashboard .hud-bom-table .bom-mark,
+.engineering-dashboard .hud-bom-table .bom-qty,
+.engineering-dashboard .hud-bom-table .bom-total{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  -webkit-text-stroke:0!important;
+}
+.engineering-dashboard .hud-bom-table .bom-mark{
+  background:var(--bom-tint)!important;
+}
+.engineering-dashboard .hud-bom-table .bom-qty{
+  background:var(--bom-tint)!important;
+}
+.engineering-dashboard .hud-bom-table .bom-total{
+  background:rgba(45,212,191,.2)!important;
+}
+@media(max-width:1279px){
+  .engineering-dashboard .hud-visual-stage{
+    grid-template-columns:minmax(0,.66fr) minmax(0,1.42fr) minmax(0,.9fr)!important;
+  }
+}
