@@ -469,7 +469,7 @@ export function CadViewer({
   // --------------------------------------------------
 
   return (
-    <div className="flex w-full flex-col gap-0">
+    <div className="cad-inspector-workspace flex w-full flex-col gap-0">
 
       {/* Header and pipeline navigation */}
       <CadViewerHeader
