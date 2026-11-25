@@ -1201,3 +1201,29 @@ body {
  .pipeline-job-selector,.pipeline-stage-list,.pipeline-stage-aside>div,.pipeline-diagnostics{padding:16px!important}
  .pipeline-heading{align-items:flex-start!important}
 }
+
+
+/* Hard overrides for workspace routes: keep Tailwind utility layers from flattening the HUD theme. */
+main.workspace-page{
+  position:relative!important;isolation:isolate!important;min-height:100vh!important;
+  color:#e5f2fa!important;
+  background-color:#07111f!important;
+  background-image:radial-gradient(ellipse at 82% 0%,rgba(12,112,151,.18),transparent 35%),radial-gradient(ellipse at 12% 70%,rgba(36,81,132,.12),transparent 38%)!important;
+}
+main.workspace-page>.workspace-page-inner{position:relative!important;z-index:1!important;width:100%!important;max-width:1480px!important;margin:0 auto!important}
+main.workspace-page .workspace-panel,
+main.workspace-page .project-hud-card{
+  color:#e5f2fa!important;border:1px solid rgba(105,180,210,.2)!important;
+  background:linear-gradient(145deg,rgba(11,30,49,.97),rgba(6,19,34,.97))!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.025)!important;
+}
+main.workspace-page h1,main.workspace-page h2,main.workspace-page h3{color:#e9f6ff!important}
+main.workspace-page p{color:#91a8bf}
+main.workspace-page input,main.workspace-page select{
+  color:#e4f4fc!important;background:#071827!important;border-color:rgba(111,164,193,.28)!important;
+}
+main.workspace-page .workspace-page-header h1{font-size:clamp(34px,4vw,54px)!important;line-height:1.02!important;font-weight:850!important;letter-spacing:-.055em!important}
+main.workspace-page .workspace-stat-strip{border:1px solid rgba(105,180,210,.2)!important;background:linear-gradient(100deg,rgba(9,30,49,.94),rgba(8,22,39,.88))!important}
+main.workspace-page .workspace-empty{background:rgba(4,17,30,.42)!important;color:#8ca4bb!important}
+main.workspace-page .drawing-hud-row{border-color:rgba(115,164,191,.16)!important}
+main.workspace-page .drawing-dropzone{color:#dff3fc!important;background:radial-gradient(ellipse at 50% 20%,rgba(25,145,175,.13),transparent 65%),rgba(4,17,30,.7)!important}
