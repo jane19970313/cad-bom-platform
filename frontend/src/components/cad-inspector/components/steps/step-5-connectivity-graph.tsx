@@ -43,7 +43,7 @@ export function Step5ConnectivityGraph({
         </h3>
 
         <div className="mt-2 grid grid-cols-2 gap-2">
-          <div className="rounded-md bg-muted p-2">
+          <div className="cad-inspector-result-card rounded-md p-2">
             <p className="text-lg font-semibold">
               {analysis.summary.connectivity_node_count}
             </p>
@@ -66,7 +66,7 @@ export function Step5ConnectivityGraph({
       {/* Nodes and Edges - Two Column Layout */}
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-2">
         {/* Nodes */}
-        <section className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-md border">
+        <section className="cad-inspector-result-panel flex min-h-0 flex-1 flex-col overflow-hidden rounded-md border">
           <div className="shrink-0 border-b px-3 py-2">
             <h4 className="text-sm font-semibold">
               Connectivity nodes
