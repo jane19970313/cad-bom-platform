@@ -132,9 +132,10 @@ function StageProgressRow({
 
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="text-sm font-medium text-slate-800">
-            {formatStageName(stage.name)}
-          </p>
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="text-sm font-medium text-slate-800">{formatStageName(stage.name)}</p>
+            {stage.name === "engineering_classification" && <span className="inline-flex items-center gap-1 rounded-full border border-violet-300/20 bg-violet-300/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-200"><Sparkles size={10}/> AI-assisted</span>}
+          </div>
           <StatusBadge status={stage.status} />
         </div>
 
