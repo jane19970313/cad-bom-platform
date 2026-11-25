@@ -1,341 +1,214 @@
+import Link from "next/link";
 import {
   Activity,
-  ArrowDownRight,
-  ArrowRight,
-  Box,
-  CheckCircle2,
-  ChevronDown,
-  CircleHelp,
-  Clock3,
+  ArrowUpRight,
+  Boxes,
   FileCode2,
-  FileText,
   FolderKanban,
-  Gauge,
-  Layers3,
   LayoutDashboard,
+  Layers3,
   Plus,
-  Settings2,
-  ShieldCheck,
-  TriangleAlert,
-  Upload,
   Workflow,
 } from "lucide-react";
-import type { ElementType } from "react";
+import type { LucideIcon } from "lucide-react";
 import UserMenu from "@/components/dashboard/user-menu";
 import DashboardData from "@/components/dashboard/dashboard-data";
 
-const pipelineStages = [
-  { name: "File validation", detail: "Check DXF file and metadata", status: "Ready" },
-  { name: "Entity extraction", detail: "Read modelspace entities", status: "Ready" },
-  { name: "Geometry conversion", detail: "Convert entities to geometry", status: "Ready" },
-  { name: "Spatial analysis", detail: "Build spatial index", status: "Pending" },
-  { name: "Topology analysis", detail: "Detect geometric relationships", status: "Pending" },
-  { name: "Engineering classification", detail: "Classify structural elements", status: "Pending" },
-  { name: "BOM generation", detail: "Group parts and calculate quantities", status: "Pending" },
+const navigation: {
+  label: string;
+  href: string;
+  icon: LucideIcon;
+}[] = [
+  { label: "Overview", href: "/", icon: LayoutDashboard },
+  { label: "Projects", href: "/projects", icon: FolderKanban },
+  { label: "Drawings", href: "/drawings", icon: FileCode2 },
+  { label: "Processing jobs", href: "/pipeline", icon: Workflow },
 ];
-
-const drawings = [
-  {
-    name: "Steel platform - Level 01.dxf",
-    project: "Steel Platform Project",
-    entities: "689",
-    status: "Completed",
-    date: "Today",
-  },
-  {
-    name: "Main frame assembly.dxf",
-    project: "Factory Extension",
-    entities: "—",
-    status: "Not started",
-    date: "Yesterday",
-  },
-  {
-    name: "Equipment support detail.dxf",
-    project: "Steel Platform Project",
-    entities: "—",
-    status: "Not started",
-    date: "Yesterday",
-  },
-];
-
-function StatusBadge({ status }: { status: string }) {
-  const styles: Record<string, string> = {
-    Completed: "bg-emerald-50 text-emerald-700",
-    Ready: "bg-emerald-50 text-emerald-700",
-    Pending: "bg-slate-100 text-slate-500",
-    "Not started": "bg-slate-100 text-slate-500",
-    Processing: "bg-blue-50 text-blue-700",
-    Failed: "bg-red-50 text-red-700",
-  };
-
-  return (
-    <span
-      className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${
-        styles[status] ?? "bg-slate-100 text-slate-600"
-      }`}
-    >
-      {status}
-    </span>
-  );
-}
 
 function SidebarLink({
   icon: Icon,
   label,
+  href,
   active = false,
-  href = "#",
 }: {
-  icon: ElementType;
+  icon: LucideIcon;
   label: string;
+  href: string;
   active?: boolean;
-  href?: string;
 }) {
   return (
-    <a
+    <Link
       href={href}
-      className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition ${
+      aria-current={active ? "page" : undefined}
+      className={`group flex items-center gap-3 rounded-xl px-3.5 py-3 text-sm transition-all duration-200 ${
         active
-          ? "bg-blue-50 font-semibold text-blue-700"
-          : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+          ? "bg-blue-500/15 text-white ring-1 ring-inset ring-blue-400/20"
+          : "text-slate-400 hover:bg-white/[0.06] hover:text-slate-100"
       }`}
     >
-      <Icon size={18} />
-      {label}
-    </a>
+      <Icon
+        size={18}
+        strokeWidth={active ? 2.2 : 1.8}
+        className={active ? "text-blue-300" : "text-slate-500 group-hover:text-slate-300"}
+      />
+      <span className="flex-1">{label}</span>
+      {active && <span className="h-1.5 w-1.5 rounded-full bg-blue-300 shadow-[0_0_10px_rgba(147,197,253,0.9)]" />}
+    </Link>
   );
 }
 
 export default function DashboardPage() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="min-h-screen bg-[#f4f7fb] text-slate-900">
       <div className="flex min-h-screen">
-        {/* Sidebar */}
-        <aside className="hidden w-64 shrink-0 border-r border-slate-200 bg-white px-4 py-6 md:flex md:flex-col">
-          <div className="mb-9 flex items-center gap-3 px-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white">
-              <Layers3 size={22} />
+        <aside className="hidden w-[264px] shrink-0 flex-col border-r border-white/5 bg-[#101b2d] px-4 py-6 text-white lg:flex">
+          <Link href="/" className="mb-10 flex items-center gap-3 px-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-300/20 bg-blue-400/10 text-blue-300 shadow-[0_0_24px_rgba(59,130,246,0.12)]">
+              <Layers3 size={21} />
             </div>
             <div>
-              <h1 className="text-base font-bold tracking-tight">DXF2BOM</h1>
-              <p className="text-xs text-slate-500">Engineering Workbench</p>
+              <p className="text-[15px] font-bold tracking-[0.08em] text-white">CAD2BOM</p>
+              <p className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">Engineering workspace</p>
             </div>
-          </div>
+          </Link>
 
-          <p className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <div className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">
             Workspace
-          </p>
-          <nav className="space-y-1">
-            <SidebarLink
-              icon={LayoutDashboard}
-              label="Dashboard"
-              active
-              href="/"
-            />
-
-            <SidebarLink
-              icon={FolderKanban}
-              label="Projects"
-              href="/projects"
-            />
-
-            <SidebarLink
-              icon={FileCode2}
-              label="Drawings"
-              href="/drawings"
-            />
-
-            <SidebarLink
-              icon={Workflow}
-              label="Processing Jobs"
-              href="/pipeline"
-            />
+          </div>
+          <nav aria-label="Main navigation" className="space-y-1.5">
+            {navigation.map((item, index) => (
+              <SidebarLink
+                key={item.href}
+                {...item}
+                active={index === 0}
+              />
+            ))}
           </nav>
 
-          <p className="mb-2 mt-8 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
-            Engineering
-          </p>
-          <nav className="space-y-1">
-            <SidebarLink icon={Box} label="Geometry Inspector" />
-            <SidebarLink
-              icon={Activity}
-              label="Pipeline Monitor"
-              href="/pipeline"
-            />
-            <SidebarLink icon={FileText} label="BOM Results" />
-          </nav>
-
-          <div className="mt-auto space-y-1 border-t border-slate-100 pt-5">
-            <SidebarLink icon={Settings2} label="Settings" />
-            <SidebarLink icon={CircleHelp} label="Help & Documentation" />
+          <div className="mt-auto">
+            <div className="mb-4 rounded-2xl border border-white/[0.07] bg-white/[0.035] p-4">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-400/10 text-blue-300">
+                  <Activity size={15} />
+                </span>
+                <span className="text-xs font-semibold text-slate-200">Engineering flow</span>
+              </div>
+              <div className="space-y-2.5">
+                {["DXF intake", "Geometry analysis", "BOM generation"].map((step, index) => (
+                  <div key={step} className="flex items-center gap-2.5">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-md border border-white/10 text-[10px] font-semibold text-slate-400">
+                      0{index + 1}
+                    </span>
+                    <span className="text-xs text-slate-400">{step}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-3 border-t border-white/[0.07] pt-3 text-[10px] leading-4 text-slate-500">
+                From drawing data to structured engineering output.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 px-3 text-[10px] text-slate-600">
+              <Boxes size={13} />
+              <span>CAD2BOM · Engineering tools</span>
+            </div>
           </div>
         </aside>
 
-        {/* Main content */}
         <section className="min-w-0 flex-1">
-          {/* Top bar */}
-          <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-5 md:px-8">
-            <div>
-              <p className="text-sm text-slate-500">Workspace / Overview</p>
+          <header className="sticky top-0 z-20 flex h-[68px] items-center justify-between border-b border-slate-200/80 bg-white/90 px-5 backdrop-blur-xl md:px-8">
+            <div className="flex min-w-0 items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 text-slate-600 lg:hidden">
+                <Layers3 size={18} />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 text-xs text-slate-400">
+                  <span className="hidden sm:inline">CAD2BOM</span>
+                  <span className="hidden sm:inline text-slate-300">/</span>
+                  <span className="font-medium text-slate-600">Workspace</span>
+                </div>
+                <p className="truncate text-sm font-semibold text-slate-800">Engineering overview</p>
+              </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="hidden rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-700 sm:inline-flex">
-                Prototype data
+              <span className="hidden items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-[11px] font-semibold text-emerald-700 md:inline-flex">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                Workspace ready
               </span>
               <UserMenu />
             </div>
           </header>
 
-          <div className="mx-auto max-w-7xl space-y-7 p-5 md:p-8">
-            {/* Page heading */}
-            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="mx-auto max-w-[1480px] space-y-7 p-5 md:p-8">
+            <div className="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
               <div>
-                <h2 className="text-2xl font-bold tracking-tight">Dashboard</h2>
-                <p className="mt-1 text-sm text-slate-500">
-                  Monitor DXF extraction, engineering analysis and BOM generation.
+                <div className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">
+                  <span className="h-px w-6 bg-blue-500" />
+                  Engineering intelligence
+                </div>
+                <h1 className="text-2xl font-bold tracking-tight text-slate-950 md:text-[30px]">
+                  Your workspace at a glance
+                </h1>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+                  Track projects, inspect drawing activity and monitor the path from DXF files to structured BOM data.
                 </p>
               </div>
-              <a
-                href="/drawings"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
-              >
-                <Plus size={17} />
-                New drawing
-              </a>
+              <div className="flex flex-wrap items-center gap-2">
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
+                >
+                  <FolderKanban size={16} />
+                  View projects
+                </Link>
+                <Link
+                  href="/drawings"
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_6px_16px_rgba(37,99,235,0.2)] transition hover:bg-blue-700"
+                >
+                  <Plus size={17} />
+                  Upload drawing
+                  <ArrowUpRight size={14} className="opacity-70" />
+                </Link>
+              </div>
             </div>
 
-            {/* Prototype notice */}
-            {/* <div className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4">
-              <TriangleAlert className="mt-0.5 shrink-0 text-amber-600" size={19} />
-              <div>
-                <p className="text-sm font-semibold text-amber-900">
-                  Frontend prototype — not connected to the backend yet
-                </p>
-                <p className="mt-1 text-sm text-amber-800">
-                  The values and statuses on this screen are illustrative. Live job
-                  status, pipeline stages and analysis results will appear after API
-                  integration.
-                </p>
-              </div>
-            </div> */}
-
-            {/* Summary cards */}
-            <DashboardData />
-
-            {/* Pipeline and drawing list */}
-            {/* <div className="grid gap-6">
-              <div className="rounded-xl border border-slate-200 bg-white p-5">
-                <div className="mb-5 flex items-center justify-between">
-                  <div>
-                    <h3 className="font-semibold">Analysis pipeline</h3>
-                    <p className="mt-1 text-xs text-slate-500">
-                      Planned processing stages
-                    </p>
+            <div className="overflow-hidden rounded-2xl border border-[#1c3557] bg-[#14243a] shadow-[0_12px_32px_rgba(15,35,62,0.10)]">
+              <div className="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-6">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-300/15 bg-blue-400/10 text-blue-200">
+                    <Activity size={17} />
                   </div>
-                  <Workflow className="text-slate-400" size={20} />
+                  <div>
+                    <p className="text-xs font-semibold text-white">Drawing-to-BOM workflow</p>
+                    <p className="mt-0.5 text-[10px] text-slate-400">A connected view of your engineering process</p>
+                  </div>
                 </div>
-
-                <div className="space-y-4">
-                  {pipelineStages.map((stage, index) => (
-                    <div key={stage.name} className="flex gap-3">
-                      <div className="flex flex-col items-center">
-                        <div
-                          className={`flex h-7 w-7 items-center justify-center rounded-full ${
-                            stage.status === "Ready"
-                              ? "bg-emerald-100 text-emerald-700"
-                              : "bg-slate-100 text-slate-400"
-                          }`}
-                        >
-                          {stage.status === "Ready" ? (
-                            <CheckCircle2 size={16} />
-                          ) : (
-                            <span className="text-xs font-semibold">{index + 1}</span>
-                          )}
-                        </div>
-                        {index !== pipelineStages.length - 1 && (
-                          <div className="mt-1 h-5 w-px bg-slate-200" />
-                        )}
-                      </div>
-                      <div className="min-w-0 flex-1 pb-1">
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <p className="text-sm font-medium">{stage.name}</p>
-                          <StatusBadge status={stage.status} />
-                        </div>
-                        <p className="mt-1 text-xs text-slate-500">{stage.detail}</p>
-                      </div>
+                <div className="flex flex-wrap items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em]">
+                  {["DXF upload", "Extraction", "Geometry", "BOM"].map((stage, index) => (
+                    <div key={stage} className="flex items-center gap-2">
+                      <span className={`rounded-lg border px-2.5 py-1.5 ${
+                        index === 0
+                          ? "border-blue-300/30 bg-blue-400/15 text-blue-200"
+                          : "border-white/10 bg-white/[0.04] text-slate-400"
+                      }`}>
+                        {stage}
+                      </span>
+                      {index < 3 && <span className="text-slate-600">›</span>}
                     </div>
                   ))}
                 </div>
-
-                <p className="mt-5 border-t border-slate-100 pt-4 text-xs text-slate-400">
-                  These are workflow definitions, not live execution states.
-                </p>
               </div>
-            </div> */}
-
-            {/* Next implementation targets */}
-            <div className="rounded-xl border border-slate-200 bg-white p-5">
-              <div className="mb-4 flex items-center gap-2">
-                <Gauge className="text-blue-600" size={20} />
-                <h3 className="font-semibold">Engineering inspection modules</h3>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                <ModuleCard icon={FileText} title="Entity extraction" description="Inspect DXF entities, layers and handles." />
-                <ModuleCard icon={Layers3} title="Geometry conversion" description="Inspect converted geometry and warnings." />
-                <ModuleCard icon={Activity} title="Topology analysis" description="Inspect nodes, edges and relationships." />
-                <ModuleCard icon={ShieldCheck} title="Classification & BOM" description="Review engineering types and quantities." />
-              </div>
+              <div className="h-px bg-gradient-to-r from-blue-400/50 via-slate-500/20 to-transparent" />
             </div>
 
-            <footer className="flex flex-col gap-2 border-t border-slate-200 pt-5 text-xs text-slate-400 sm:flex-row sm:justify-between">
-              <span>DXF2BOM Engineering Workbench</span>
-              <span>Frontend prototype · Backend integration pending</span>
+            <DashboardData />
+
+            <footer className="flex flex-col gap-2 border-t border-slate-200/80 pt-5 text-[11px] text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+              <span>CAD2BOM Engineering Workspace</span>
+              <span>Drawing intelligence · Geometry analysis · Bill of materials</span>
             </footer>
           </div>
         </section>
       </div>
     </main>
-  );
-}
-
-function SummaryCard({
-  label,
-  value,
-  description,
-  icon: Icon,
-}: {
-  label: string;
-  value: string;
-  description: string;
-  icon: ElementType;
-}) {
-  return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5">
-      <div className="flex items-center justify-between">
-        <p className="text-sm font-medium text-slate-500">{label}</p>
-        <div className="rounded-lg bg-slate-100 p-2 text-slate-600">
-          <Icon size={18} />
-        </div>
-      </div>
-      <p className="mt-4 text-3xl font-bold tracking-tight">{value}</p>
-      <p className="mt-1 text-xs text-slate-400">{description}</p>
-    </div>
-  );
-}
-
-function ModuleCard({
-  icon: Icon,
-  title,
-  description,
-}: {
-  icon: ElementType;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="rounded-lg border border-slate-200 p-4 transition hover:border-blue-300 hover:bg-blue-50/30">
-      <Icon size={20} className="mb-3 text-blue-600" />
-      <p className="text-sm font-semibold">{title}</p>
-      <p className="mt-1 text-xs leading-5 text-slate-500">{description}</p>
-    </div>
   );
 }

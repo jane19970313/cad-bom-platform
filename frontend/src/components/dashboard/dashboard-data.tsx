@@ -207,7 +207,7 @@ function SummaryCard({
   icon: LucideIcon;
 }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5">
+    <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-slate-500">{label}</p>
         <div className="rounded-lg bg-slate-100 p-2 text-slate-600">
@@ -215,7 +215,7 @@ function SummaryCard({
         </div>
       </div>
 
-      <p className="mt-4 text-3xl font-bold tracking-tight">{value}</p>
+      <p className="mt-4 font-mono text-3xl font-bold tracking-tight text-slate-950">{value}</p>
       <p className="mt-1 text-xs text-slate-500">{description}</p>
     </div>
   );
@@ -707,8 +707,8 @@ export default function DashboardData() {
       </div>
 
       {/* Recent drawings */}
-      <div className="rounded-xl border border-slate-200 bg-white p-5">
-        <div className="mb-5 flex items-center justify-between">
+      <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-semibold">Recent drawings</h3>
             <p className="mt-1 text-xs text-slate-500">
@@ -805,7 +805,7 @@ export default function DashboardData() {
       </div>
 
       {/* Recent processing jobs */}
-      <div className="rounded-xl border border-slate-200 bg-white p-5">
+      <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-semibold">Recent processing activity</h3>
@@ -907,7 +907,7 @@ export default function DashboardData() {
       </div>
 
       {/* Live analysis pipeline */}
-      <div className="rounded-xl border border-slate-200 bg-white p-5">
+      <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-semibold">Analysis pipeline</h3>
