@@ -22,7 +22,7 @@ export function Step1DxfReading({
 
       <div className="space-y-2">
         {Object.entries(metadata).map(([label, value]) => (
-          <div key={label} className="rounded-md border p-3">
+          <div key={label} className="cad-inspector-result-card rounded-md border p-3">
             <p className="text-xs text-muted-foreground">
               {label}
             </p>
