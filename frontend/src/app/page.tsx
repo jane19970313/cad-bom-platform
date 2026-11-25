@@ -205,10 +205,10 @@ export default function DashboardPage() {
                       <polygon points="75,105 276,198 276,225 75,132" fill="url(#steelSide)" stroke="#4b9fc2" strokeOpacity=".55"/>
                       <polygon points="276,198 535,112 535,139 276,225" fill="#12314e" stroke="#4b9fc2" strokeOpacity=".55"/>
                       <g stroke="url(#steelTop)" strokeWidth="7" strokeLinecap="round" filter="url(#steelGlow)">
-                        {#each Array.from({length:13},(_,i)=>i) as i}<line x1={88+i*19.8} y1={110-i*6.2} x2={289+i*19.8} y2={202-i*6.2}/>{/each}
+                        {Array.from({ length: 13 }, (_, i) => (<line key={`bearing-${i}`} x1={88 + i * 19.8} y1={110 - i * 6.2} x2={289 + i * 19.8} y2={202 - i * 6.2} />))}
                       </g>
                       <g stroke="#8be7f4" strokeOpacity=".78" strokeWidth="3.2">
-                        {#each Array.from({length:9},(_,i)=>i) as i}<line x1={85+i*24.8} y1={101+i*11.4} x2={338+i*24.8} y2={22+i*11.4}/>{/each}
+                        {Array.from({ length: 9 }, (_, i) => (<line key={`cross-${i}`} x1={85 + i * 24.8} y1={101 + i * 11.4} x2={338 + i * 24.8} y2={22 + i * 11.4} />))}
                       </g>
                       <g fill="none" stroke="#c4f6ff" strokeOpacity=".55" strokeWidth="1">
                         <polygon points="75,105 330,25 535,112 276,198"/>
