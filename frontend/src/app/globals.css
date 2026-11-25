@@ -141,53 +141,32 @@ body {
 * {
   box-sizing: border-box;
 }
-/* CAD2BOM engineering dashboard: cohesive dark workspace surfaces */
-.engineering-dashboard {
-  background:
-    radial-gradient(ellipse at 78% 0%, rgba(37, 99, 235, 0.13), transparent 34%),
-    radial-gradient(ellipse at 38% 55%, rgba(14, 116, 144, 0.055), transparent 42%),
-    #0b1220;
-  color: #e7eefb;
-}
-.engineering-dashboard header {
-  background-color: rgba(13, 23, 39, 0.92) !important;
-  border-color: rgba(148, 163, 184, 0.13) !important;
-}
-.engineering-dashboard .bg-white { background-color: #121e30 !important; }
-.engineering-dashboard .bg-slate-50 { background-color: #0f1a2b !important; }
-.engineering-dashboard .bg-slate-100 { background-color: #1a2940 !important; }
-.engineering-dashboard .border-slate-200,
-.engineering-dashboard .[class~="border-slate-200/80"],
-.engineering-dashboard .border-slate-100,
-.engineering-dashboard .border-slate-50 {
-  border-color: rgba(148, 163, 184, 0.16) !important;
-}
-.engineering-dashboard .text-slate-950,
-.engineering-dashboard .text-slate-900,
-.engineering-dashboard .text-slate-800 { color: #edf4ff !important; }
-.engineering-dashboard .text-slate-700,
-.engineering-dashboard .text-slate-600 { color: #c1cde0 !important; }
-.engineering-dashboard .text-slate-500 { color: #91a2bb !important; }
-.engineering-dashboard .text-slate-400 { color: #778aa6 !important; }
-.engineering-dashboard .shadow-sm {
-  --tw-shadow-color: rgba(0, 0, 0, 0.24) !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16) !important;
-}
-.engineering-dashboard .grid > div.rounded-2xl {
-  background: linear-gradient(145deg, #17263c 0%, #111d2f 100%) !important;
-  border-color: rgba(125, 155, 196, 0.2) !important;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16) !important;
-}
-.engineering-dashboard .grid > div.rounded-2xl:nth-child(1) { border-top: 2px solid #6388ff !important; }
-.engineering-dashboard .grid > div.rounded-2xl:nth-child(2) { border-top: 2px solid #35b9d4 !important; }
-.engineering-dashboard .grid > div.rounded-2xl:nth-child(3) { border-top: 2px solid #8b7bff !important; }
-.engineering-dashboard .grid > div.rounded-2xl:nth-child(4) { border-top: 2px solid #71839d !important; }
-.engineering-dashboard .space-y-6 > div.rounded-2xl {
-  border-color: rgba(125, 155, 196, 0.18) !important;
-  background: linear-gradient(145deg, rgba(20, 33, 53, 0.98), rgba(16, 28, 46, 0.98)) !important;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.15) !important;
-}
-.engineering-dashboard table thead tr { border-color: rgba(148, 163, 184, 0.2) !important; }
-.engineering-dashboard table tbody tr { border-color: rgba(148, 163, 184, 0.1) !important; }
-.engineering-dashboard .border-dashed { border-color: rgba(148, 163, 184, 0.24) !important; }
-@media (max-width: 1023px) { .engineering-dashboard { background: #0b1220; } }
+
+/* CAD2BOM operational dashboard */
+.engineering-dashboard { min-height:100vh; color:#e6edf8; background:radial-gradient(ellipse at 82% 0%,rgba(42,91,170,.16),transparent 36%),radial-gradient(ellipse at 35% 60%,rgba(18,115,139,.07),transparent 42%),#0b1220; }
+.engineering-dashboard header { background:rgba(11,21,36,.92); border-color:rgba(148,163,184,.14); }
+.engineering-dashboard .dashboard-metric-card { position:relative; overflow:hidden; min-height:142px; border:1px solid rgba(125,155,196,.20); border-radius:18px; background:linear-gradient(145deg,#17263b 0%,#111d2f 100%); box-shadow:0 14px 34px rgba(0,0,0,.18); }
+.engineering-dashboard .dashboard-metric-card::after { position:absolute; inset:0 0 auto; height:2px; content:""; background:var(--metric-accent,#6d8fff); }
+.engineering-dashboard .dashboard-metric-card:nth-child(2) { --metric-accent:#38b8d1; }
+.engineering-dashboard .dashboard-metric-card:nth-child(3) { --metric-accent:#8d7cff; }
+.engineering-dashboard .dashboard-metric-card:nth-child(4) { --metric-accent:#7890ad; }
+.engineering-dashboard .dashboard-panel { border:1px solid rgba(125,155,196,.18); border-radius:18px; background:linear-gradient(145deg,rgba(20,33,52,.98),rgba(15,27,44,.98)); box-shadow:0 16px 38px rgba(0,0,0,.17); }
+.engineering-dashboard .dashboard-panel table thead tr { border-color:rgba(148,163,184,.20); }
+.engineering-dashboard .dashboard-panel table tbody tr { border-color:rgba(148,163,184,.10); }
+.engineering-dashboard .dashboard-status { border:1px solid transparent; border-radius:999px; padding:4px 10px; font-size:11px; font-weight:650; }
+.engineering-dashboard .dashboard-status-success { color:#6ee7b7; background:rgba(16,185,129,.10); border-color:rgba(52,211,153,.18); }
+.engineering-dashboard .dashboard-status-running { color:#8ec5ff; background:rgba(59,130,246,.12); border-color:rgba(96,165,250,.20); }
+.engineering-dashboard .dashboard-status-warning { color:#fcd38d; background:rgba(245,158,11,.10); border-color:rgba(251,191,36,.20); }
+.engineering-dashboard .dashboard-status-danger { color:#fda4af; background:rgba(244,63,94,.10); border-color:rgba(251,113,133,.20); }
+.engineering-dashboard .dashboard-status-neutral { color:#a8b6ca; background:rgba(148,163,184,.09); border-color:rgba(148,163,184,.15); }
+.engineering-dashboard .text-slate-950,.engineering-dashboard .text-slate-900,.engineering-dashboard .text-slate-800 { color:#edf4ff; }
+.engineering-dashboard .text-slate-700,.engineering-dashboard .text-slate-600 { color:#c1cde0; }
+.engineering-dashboard .text-slate-500 { color:#91a2bb; }
+.engineering-dashboard .text-slate-400 { color:#778aa6; }
+.engineering-dashboard .border-slate-200,.engineering-dashboard .border-slate-100,.engineering-dashboard .border-slate-50 { border-color:rgba(148,163,184,.16); }
+.engineering-dashboard .bg-white { background-color:#121e30; }
+.engineering-dashboard .bg-slate-50 { background-color:#0f1a2b; }
+.engineering-dashboard .bg-slate-100 { background-color:#1a2940; }
+.engineering-dashboard .shadow-sm { box-shadow:0 12px 30px rgba(0,0,0,.16); }
+.engineering-dashboard .border-dashed { border-color:rgba(148,163,184,.24); }
+@media (max-width:1023px) { .engineering-dashboard { background:#0b1220; } }
