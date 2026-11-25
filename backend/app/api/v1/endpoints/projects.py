@@ -91,5 +91,16 @@ def delete_project(
             detail="Project not found"
         )
 
+    # Remove uploaded DXF objects before the ORM cascades project drawings and jobs.
+    storage = get_storage_service()
+    for drawing in project.drawings:
+        try:
+            storage.delete(drawing.storage_key)
+        except Exception as exc:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Unable to delete stored drawing {drawing.original_filename}.",
+            ) from exc
+
     db.delete(project)
     db.commit()
