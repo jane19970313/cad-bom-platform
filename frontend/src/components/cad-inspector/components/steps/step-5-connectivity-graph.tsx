@@ -101,7 +101,7 @@ export function Step5ConnectivityGraph({
                     type="button"
                     data-pipeline-handle={normalized}
                     onClick={() => onSelectNode(handle)}
-                    className={`w-full rounded-md border p-2 text-left transition hover:bg-muted/70 ${
+                    className={`cad-inspector-record w-full rounded-md border p-2 text-left transition hover:bg-muted/70 ${
                       isSelected
                         ? "border-primary bg-primary/10"
                         : ""
@@ -150,7 +150,7 @@ export function Step5ConnectivityGraph({
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search handle, layer, type..."
-              className="h-9 w-full rounded-md border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
+              className="cad-inspector-search h-10 w-full rounded-md border px-3 text-sm outline-none focus:ring-2"
             />
           </div>
 
@@ -186,7 +186,7 @@ export function Step5ConnectivityGraph({
                 return (
                   <div
                     key={relationship.id ?? index}
-                    className={`rounded-md border p-2 transition ${
+                    className={`cad-inspector-record rounded-md border p-2 transition ${
                       isConnected
                         ? "border-primary bg-primary/10"
                         : ""
