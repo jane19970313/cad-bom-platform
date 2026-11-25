@@ -48,7 +48,7 @@ export function Step6EngineeringClassification({
         </h3>
 
         <div className="grid grid-cols-3 gap-2 text-center">
-          <div className="rounded-md bg-muted p-2">
+          <div className="cad-inspector-result-card rounded-md p-2">
             <p className="text-lg font-semibold">
               {handleStats.total}
             </p>
@@ -86,7 +86,7 @@ export function Step6EngineeringClassification({
       </div>
 
       {/* Classified elements */}
-      <section className="flex min-h-0 flex-[0.8] flex-col overflow-hidden rounded-md border">
+      <section className="cad-inspector-result-panel flex min-h-0 flex-[0.8] flex-col overflow-hidden rounded-md border">
         <div className="shrink-0 border-b px-3 py-2">
           <h4 className="text-xs font-semibold">
             Classified elements ({filteredElements.length})
@@ -108,7 +108,7 @@ export function Step6EngineeringClassification({
                 type="button"
                 disabled={!viewerReady}
                 onClick={() => onSelectHandle(handle, element)}
-                className={`w-full px-3 py-2 text-left transition hover:bg-muted/70 ${
+                className={`cad-inspector-result-row w-full px-3 py-2 text-left transition hover:bg-muted/70 ${
                   selectedHandle === normalized
                     ? "border-l-2 border-primary bg-primary/10"
                     : ""
@@ -149,7 +149,7 @@ export function Step6EngineeringClassification({
       </section>
 
       {/* Selected element properties */}
-      <section className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-md border">
+      <section className="cad-inspector-result-panel flex min-h-0 flex-1 flex-col overflow-hidden rounded-md border">
         <div className="shrink-0 border-b px-3 py-2">
           <h4 className="text-xs font-semibold">
             Selected element properties
