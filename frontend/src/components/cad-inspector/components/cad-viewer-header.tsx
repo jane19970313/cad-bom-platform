@@ -49,9 +49,9 @@ export function CadViewerHeader({
               onClick={() =>
                 setActiveStep(step.id as PipelineStep)
               }
-              className={`rounded-md border px-2 py-2 text-xs font-medium transition-colors ${
+              className={`cad-step-tab rounded-md border px-2 py-2 text-xs font-medium transition-colors ${
                 activeStep === step.id
-                  ? "border-primary bg-primary text-primary-foreground"
+                  ? "cad-step-tab-active border-primary bg-primary text-primary-foreground"
                   : "bg-background hover:bg-muted"
               }`}
             >
