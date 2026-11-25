@@ -22,7 +22,8 @@ import {
 import { ApiError, drawingsApi, processingApi, projectsApi } from "@/lib/api";
 import type {
   PipelineStageProgress,
-  ProcessingJobProgress,\n  ProcessingJob,
+  ProcessingJobProgress,
+  ProcessingJob,
 } from "@/types/processing";
 
 import { useRouter } from "next/navigation";
@@ -292,7 +293,10 @@ function StageDetails({
 export default function PipelinePage() {
   const router = useRouter();
 
-  const [jobInput, setJobInput] = useState("");\n  const [recentJobs, setRecentJobs] = useState<Array<{ job: ProcessingJob; filename: string; projectName: string }>>([]);\n  const [loadingJobs, setLoadingJobs] = useState(true);\n  const [manualEntry, setManualEntry] = useState(false);
+  const [jobInput, setJobInput] = useState("");
+  const [recentJobs, setRecentJobs] = useState<Array<{ job: ProcessingJob; filename: string; projectName: string }>>([]);
+  const [loadingJobs, setLoadingJobs] = useState(true);
+  const [manualEntry, setManualEntry] = useState(false);
   const [jobId, setJobId] = useState("");
   
   useEffect(() => {
@@ -305,7 +309,27 @@ export default function PipelinePage() {
     }
   }, []);
   
-  useEffect(() => {\n    let cancelled = false;\n    async function loadRecentJobs() {\n      setLoadingJobs(true);\n      try {\n        const projects = await projectsApi.getProjects();\n        const drawingGroups = await Promise.all(projects.map(async (project) => ({ projectName: project.name, drawings: (await drawingsApi.getProjectDrawings(project.id)).items })));\n        const groups = await Promise.all(drawingGroups.flatMap(group => group.drawings.map(async drawing => ({ projectName: group.projectName, filename: drawing.original_filename, jobs: (await processingApi.getDrawingJobs(drawing.id)).items }))));\n        if (cancelled) return;\n        const options = groups.flatMap(group => group.jobs.map(job => ({ job, filename: group.filename, projectName: group.projectName }))).sort((a,b) => new Date(b.job.created_at).getTime() - new Date(a.job.created_at).getTime());\n        setRecentJobs(options);\n        const requested = new URLSearchParams(window.location.search).get("jobId");\n        if (!requested && options.length && !jobId) { setJobInput(options[0].job.id); setJobId(options[0].job.id); }\n      } catch { if (!cancelled) setRecentJobs([]); }\n      finally { if (!cancelled) setLoadingJobs(false); }\n    }\n    void loadRecentJobs();\n    return () => { cancelled = true; };\n  }, []);\n\n  const [progress, setProgress] =
+  useEffect(() => {
+    let cancelled = false;
+    async function loadRecentJobs() {
+      setLoadingJobs(true);
+      try {
+        const projects = await projectsApi.getProjects();
+        const drawingGroups = await Promise.all(projects.map(async (project) => ({ projectName: project.name, drawings: (await drawingsApi.getProjectDrawings(project.id)).items })));
+        const groups = await Promise.all(drawingGroups.flatMap(group => group.drawings.map(async drawing => ({ projectName: group.projectName, filename: drawing.original_filename, jobs: (await processingApi.getDrawingJobs(drawing.id)).items }))));
+        if (cancelled) return;
+        const options = groups.flatMap(group => group.jobs.map(job => ({ job, filename: group.filename, projectName: group.projectName }))).sort((a,b) => new Date(b.job.created_at).getTime() - new Date(a.job.created_at).getTime());
+        setRecentJobs(options);
+        const requested = new URLSearchParams(window.location.search).get("jobId");
+        if (!requested && options.length && !jobId) { setJobInput(options[0].job.id); setJobId(options[0].job.id); }
+      } catch { if (!cancelled) setRecentJobs([]); }
+      finally { if (!cancelled) setLoadingJobs(false); }
+    }
+    void loadRecentJobs();
+    return () => { cancelled = true; };
+  }, []);
+
+  const [progress, setProgress] =
     useState<ProcessingJobProgress | null>(null);
 
   const [selectedStage, setSelectedStage] =
@@ -493,7 +517,15 @@ export default function PipelinePage() {
             onSubmit={handleSearch}
             className="flex flex-col gap-3 sm:flex-row"
           >
-            {manualEntry ? (\n              <input value={jobInput} onChange={(event) => setJobInput(event.target.value)} placeholder="Paste a processing job ID" className="min-w-0 flex-1 rounded-lg border px-3 py-2.5 text-sm"/>\n            ) : (\n              <select value={jobInput} onChange={(event) => { const value = event.target.value; setJobInput(value); if (value) { setError(""); setProgress(null); setSelectedStage("dxf_reading"); setJobId(value); router.replace("/pipeline?jobId=" + encodeURIComponent(value)); } }} className="min-w-0 flex-1 rounded-lg border px-3 py-2.5 text-sm">\n                <option value="">{loadingJobs ? "Loading your processing jobs…" : "Choose a recent processing job"}</option>\n                {recentJobs.map(({job, filename, projectName}) => <option key={job.id} value={job.id}>{filename} · {projectName} · {job.status} · {formatDate(job.created_at)}</option>)}\n              </select>\n            )}\n            <button type="button" onClick={() => setManualEntry(value => !value)} className="pipeline-manual-toggle">{manualEntry ? "Choose from jobs" : "Enter ID manually"}</button>
+            {manualEntry ? (
+              <input value={jobInput} onChange={(event) => setJobInput(event.target.value)} placeholder="Paste a processing job ID" className="min-w-0 flex-1 rounded-lg border px-3 py-2.5 text-sm"/>
+            ) : (
+              <select value={jobInput} onChange={(event) => { const value = event.target.value; setJobInput(value); if (value) { setError(""); setProgress(null); setSelectedStage("dxf_reading"); setJobId(value); router.replace("/pipeline?jobId=" + encodeURIComponent(value)); } }} className="min-w-0 flex-1 rounded-lg border px-3 py-2.5 text-sm">
+                <option value="">{loadingJobs ? "Loading your processing jobs…" : "Choose a recent processing job"}</option>
+                {recentJobs.map(({job, filename, projectName}) => <option key={job.id} value={job.id}>{filename} · {projectName} · {job.status} · {formatDate(job.created_at)}</option>)}
+              </select>
+            )}
+            <button type="button" onClick={() => setManualEntry(value => !value)} className="pipeline-manual-toggle">{manualEntry ? "Choose from jobs" : "Enter ID manually"}</button>
 
             <button
               type="submit"
