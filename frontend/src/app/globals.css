@@ -746,3 +746,102 @@ body {
 @media(max-width:760px){
   .engineering-dashboard{background-attachment:scroll!important}
 }
+
+
+/* Fix: keep the workspace grating texture out of every foreground card. */
+.engineering-dashboard .dashboard-panel,
+.engineering-dashboard .dashboard-metric-card,
+.engineering-dashboard .dashboard-subpanel,
+.engineering-dashboard .dashboard-project-card,
+.engineering-dashboard .grating-intelligence-panel,
+.engineering-dashboard .hud-visual-stage,
+.engineering-dashboard .hud-cad-preview,
+.engineering-dashboard .hud-bom-preview{
+  background-image:none!important;
+}
+.engineering-dashboard .hud-cad-preview,
+.engineering-dashboard .hud-bom-preview{
+  background-color:rgba(5,19,33,.98)!important;
+  background:linear-gradient(145deg,rgba(8,27,44,.99),rgba(4,15,28,.99))!important;
+  overflow:hidden!important;
+  min-width:0!important;
+  max-width:100%!important;
+}
+.engineering-dashboard .hud-bom-preview{
+  box-sizing:border-box!important;
+  width:100%!important;
+}
+.engineering-dashboard .hud-bom-preview *,
+.engineering-dashboard .hud-bom-table-wrap{
+  box-sizing:border-box!important;
+  min-width:0!important;
+}
+.engineering-dashboard .hud-bom-table-wrap{
+  width:100%!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+  padding:6px 5px 8px!important;
+}
+.engineering-dashboard .hud-bom-table{
+  display:table!important;
+  width:100%!important;
+  max-width:100%!important;
+  table-layout:fixed!important;
+  border-collapse:separate!important;
+  border-spacing:0 4px!important;
+  font-size:clamp(6px,.56vw,8px)!important;
+}
+.engineering-dashboard .hud-bom-table th,
+.engineering-dashboard .hud-bom-table td{
+  padding:6px 3px!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+}
+.engineering-dashboard .hud-bom-table th:first-child,
+.engineering-dashboard .hud-bom-table td:first-child{
+  width:32%!important;
+}
+.engineering-dashboard .hud-bom-table th:nth-child(2),
+.engineering-dashboard .hud-bom-table td:nth-child(2){
+  width:46%!important;
+}
+.engineering-dashboard .hud-bom-table th:last-child,
+.engineering-dashboard .hud-bom-table td:last-child{
+  width:22%!important;
+}
+.engineering-dashboard .hud-bom-table tbody tr td:first-child{
+  width:32%!important;
+  border-left-width:3px!important;
+}
+.engineering-dashboard .hud-bom-table .bom-mark{
+  display:inline-flex!important;
+  justify-content:center!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:3px 2px!important;
+  font-size:clamp(6px,.52vw,7px)!important;
+  letter-spacing:0!important;
+}
+.engineering-dashboard .hud-bom-table .bom-qty{
+  display:inline-flex!important;
+  justify-content:center!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:3px 2px!important;
+  font-size:clamp(6px,.52vw,7px)!important;
+}
+@media(max-width:1279px){
+  .engineering-dashboard .hud-visual-stage{
+    grid-template-columns:minmax(0,.66fr) minmax(0,1.42fr) minmax(185px,.96fr)!important;
+    gap:8px!important;
+    padding-left:12px!important;
+    padding-right:12px!important;
+  }
+}
+@media(max-width:760px){
+  .engineering-dashboard .hud-visual-stage{
+    grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)!important;
+  }
+  .engineering-dashboard .hud-bom-table{font-size:7px!important}
+}
