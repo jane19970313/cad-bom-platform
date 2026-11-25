@@ -1458,3 +1458,70 @@ main.workspace-page .drawing-dropzone{color:#dff3fc!important;background:radial-
  .cad-inspector-workspace .cad-step-tab span:last-child{font-size:9px!important}
  .cad-inspector-workspace .cad-json-inspector{font-size:10px!important;padding:10px!important}
 }
+
+
+
+/* Consistent dark surfaces across all eight inspector stages */
+.cad-inspector-workspace .cad-inspector-result-card,
+.cad-inspector-workspace .cad-inspector-result-panel{
+  border:1px solid rgba(105,159,190,.23)!important;border-radius:9px!important;
+  background:linear-gradient(145deg,rgba(15,38,58,.98),rgba(7,23,39,.98))!important;
+  color:#dcebf5!important;box-shadow:inset 0 1px rgba(255,255,255,.025),0 5px 14px rgba(0,0,0,.12)!important;
+}
+.cad-inspector-workspace .cad-inspector-result-panel>div:first-child{
+  border-bottom:1px solid rgba(105,159,190,.2)!important;
+  background:rgba(14,36,55,.88)!important;color:#e4f3fb!important;
+}
+.cad-inspector-workspace .cad-inspector-result-card p,
+.cad-inspector-workspace .cad-inspector-result-panel p{color:#9bb4c7}
+.cad-inspector-workspace .cad-inspector-result-card p.text-xl,
+.cad-inspector-workspace .cad-inspector-result-card p.text-2xl,
+.cad-inspector-workspace .cad-inspector-result-card p.text-lg{color:#79d9e9!important;font-variant-numeric:tabular-nums}
+.cad-inspector-workspace .cad-inspector-result-row{
+  color:#dcebf5!important;border-bottom:1px solid rgba(105,159,190,.14)!important;
+}
+.cad-inspector-workspace .cad-inspector-result-row:hover{background:rgba(19,72,93,.45)!important}
+.cad-inspector-workspace .cad-inspector-result-row .bg-muted{background:rgba(21,63,86,.8)!important;color:#a9d9e8!important}
+.cad-inspector-workspace .cad-inspector-result-panel .divide-y>*{border-color:rgba(105,159,190,.16)!important}
+.cad-inspector-workspace .cad-inspector-result-panel button:not(:disabled){color:#dcebf5}
+.cad-inspector-workspace .cad-inspector-result-panel button:hover:not(:disabled){border-color:rgba(74,202,226,.45)!important}
+.cad-inspector-workspace .cad-inspector-result-panel .bg-muted{background:rgba(17,49,71,.88)!important;color:#c4dce9!important}
+.cad-inspector-workspace .cad-inspector-result-panel .text-muted-foreground{color:#8daabd!important}
+.cad-inspector-workspace .cad-inspector-result-panel .border-b,
+.cad-inspector-workspace .cad-inspector-result-panel .border-t{border-color:rgba(105,159,190,.2)!important}
+.cad-inspector-workspace .cad-inspector-result-card .text-muted-foreground{color:#91aabd!important}
+.cad-inspector-workspace .cad-inspector-geometry-canvas{
+  background-color:#071827!important;
+  background-image:linear-gradient(rgba(76,139,170,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(76,139,170,.075) 1px,transparent 1px),radial-gradient(ellipse at 50% 45%,rgba(14,63,88,.35),transparent 72%)!important;
+  background-size:28px 28px,28px 28px,auto!important;
+}
+.cad-inspector-workspace .cad-inspector-geometry-canvas>svg{background:transparent!important}
+.cad-inspector-workspace .cad-inspector-geometry-canvas>div{border-color:rgba(105,159,190,.25)!important;background:rgba(6,22,36,.92)!important;color:#a9c2d2!important}
+.cad-inspector-workspace .cad-dxf-viewer-root{background:#071827!important;color-scheme:dark}
+.cad-inspector-workspace .cad-dxf-viewer-root button,
+.cad-inspector-workspace .cad-dxf-viewer-root [role="button"],
+.cad-inspector-workspace .cad-dxf-viewer-root [title*="rotate" i],
+.cad-inspector-workspace .cad-dxf-viewer-root [aria-label*="rotate" i],
+.cad-inspector-workspace .cad-dxf-viewer-root [title*="orbit" i],
+.cad-inspector-workspace .cad-dxf-viewer-root [aria-label*="orbit" i]{
+  color:#d7edf7!important;fill:#d7edf7!important;
+}
+.cad-inspector-workspace .cad-dxf-viewer-root button,
+.cad-inspector-workspace .cad-dxf-viewer-root [role="button"]{
+  border-color:rgba(94,166,197,.38)!important;border-radius:6px!important;
+  background:linear-gradient(145deg,#15364e,#0a2135)!important;
+  box-shadow:0 2px 8px rgba(0,0,0,.24)!important;
+}
+.cad-inspector-workspace .cad-dxf-viewer-root button:hover,
+.cad-inspector-workspace .cad-dxf-viewer-root [role="button"]:hover,
+.cad-inspector-workspace .cad-dxf-viewer-root [title*="rotate" i],
+.cad-inspector-workspace .cad-dxf-viewer-root [aria-label*="rotate" i],
+.cad-inspector-workspace .cad-dxf-viewer-root [title*="orbit" i],
+.cad-inspector-workspace .cad-dxf-viewer-root [aria-label*="orbit" i]{
+  border-color:#55cce4!important;background:#14536d!important;color:#f0fcff!important;fill:#f0fcff!important;
+}
+.cad-inspector-workspace .cad-dxf-viewer-root svg{color:inherit}
+.cad-inspector-workspace .cad-dxf-viewer-root svg path,
+.cad-inspector-workspace .cad-dxf-viewer-root svg line,
+.cad-inspector-workspace .cad-dxf-viewer-root svg circle{stroke:currentColor}
+.cad-inspector-workspace .cad-inspector-canvas .bg-white{background:#071827!important}
