@@ -683,7 +683,7 @@ export default function DashboardData() {
         <SummaryCard
           label="BOM items"
           value="—"
-          description="BOM statistics not yet available"
+          description="BOM summary not yet exposed by API"
           icon={Box}
           href="/projects"
         />
@@ -1033,6 +1033,17 @@ export default function DashboardData() {
                   )}
                 </div>
 
+                <div className="mb-5 rounded-xl border border-cyan-300/10 bg-cyan-300/[0.035] p-4">
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                    <span className="text-xs font-semibold text-slate-200">CAD analysis execution</span>
+                    <span className="font-mono text-xs text-cyan-200">
+                      {pipelineProgress.stages.filter((stage) => ["completed", "complete", "success"].includes(normalizeStatus(stage.status))).length} / {pipelineProgress.stages.length} stages
+                    </span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-white/[0.07]">
+                    <div className="h-full rounded-full bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-300 transition-all duration-700" style={{ width: (pipelineProgress.stages.filter((stage) => ["completed", "complete", "success"].includes(normalizeStatus(stage.status))).length / pipelineProgress.stages.length * 100) + "%" }} />
+                  </div>
+                </div>
                 <div>
                   {pipelineProgress.stages.map((stage) => (
                     <StageProgressRow
