@@ -449,7 +449,7 @@ export function GeometryView({
   // --------------------------------------------------
 
   return (
-    <section className="flex min-h-[420px] flex-col overflow-hidden rounded-xl border bg-background">
+    <section className="cad-inspector-result-panel flex min-h-[420px] flex-col overflow-hidden rounded-xl border">
 
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
@@ -524,7 +524,7 @@ export function GeometryView({
       {/* Drawing */}
       <div
         ref={drawingRef}
-        className="relative min-h-[350px] flex-1 overflow-hidden overscroll-none touch-none bg-[#fafafa] dark:bg-[#111827]"
+        className="cad-inspector-geometry-canvas relative min-h-[350px] flex-1 overflow-hidden overscroll-none touch-none"
         style={{
           overscrollBehavior: "none",
           touchAction: "none",
