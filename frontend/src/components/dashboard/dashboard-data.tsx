@@ -190,30 +190,14 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-function SummaryCard({
-  label,
-  value,
-  description,
-  icon: Icon,
-}: {
-  label: string;
-  value: string;
-  description: string;
-  icon: LucideIcon;
-}) {
-  return (
-    <div className="dashboard-metric-card rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
-      <div className="flex items-center justify-between">
-        <p className="text-sm font-medium text-slate-500">{label}</p>
-        <div className="rounded-lg bg-slate-100 p-2 text-slate-600">
-          <Icon size={18} />
-        </div>
-      </div>
-
-      <p className="mt-4 font-mono text-3xl font-bold tracking-tight text-slate-950">{value}</p>
-      <p className="mt-1 text-xs text-slate-500">{description}</p>
+function SummaryCard({ label, value, description, href, icon: Icon }: { label: string; value: string; description: string; href: string; icon: LucideIcon }) {
+  return <Link href={href} className="dashboard-metric-link group block rounded-2xl focus-visible:ring-2 focus-visible:ring-cyan-300">
+    <div className="dashboard-metric-card h-full rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition group-hover:-translate-y-1 group-hover:border-cyan-300/40">
+      <div className="flex items-center justify-between"><p className="text-sm font-medium text-slate-500">{label}</p><div className="rounded-lg bg-slate-100 p-2 text-slate-600"><Icon size={18}/></div></div>
+      <p className="mt-4 font-mono text-3xl font-bold tracking-tight text-slate-950">{value}</p><p className="mt-1 text-xs text-slate-500">{description}</p>
+      <p className="mt-3 text-[10px] font-semibold uppercase tracking-wider text-cyan-300">Open workspace ↗</p>
     </div>
-  );
+  </Link>;
 }
 
 export default function DashboardData() {
@@ -677,6 +661,7 @@ export default function DashboardData() {
           value={String(data.projects.length)}
           description="Projects in your workspace"
           icon={FolderKanban}
+          href="/projects"
         />
 
         <SummaryCard
@@ -684,6 +669,7 @@ export default function DashboardData() {
           value={String(data.drawingTotal)}
           description="Drawings across all projects"
           icon={FileCode2}
+          href="/drawings"
         />
 
         <SummaryCard
@@ -691,6 +677,7 @@ export default function DashboardData() {
           value={String(data.jobTotal)}
           description={`${queued} queued · ${running} running`}
           icon={Workflow}
+          href="/pipeline"
         />
 
         <SummaryCard
@@ -698,6 +685,7 @@ export default function DashboardData() {
           value="—"
           description="BOM statistics not yet available"
           icon={Box}
+          href="/projects"
         />
       </div>
 
