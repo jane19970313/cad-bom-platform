@@ -172,24 +172,18 @@ function StageProgressRow({
 function StatusBadge({ status }: { status: string }) {
   const normalized = normalizeStatus(status);
 
-  let styles = "bg-slate-100 text-slate-600";
-
-  if (["completed", "complete", "success"].includes(normalized)) {
-    styles = "bg-emerald-50 text-emerald-700";
-  } else if (
-    ["processing", "running", "in_progress"].includes(normalized)
-  ) {
-    styles = "bg-blue-50 text-blue-700";
-  } else if (["failed", "error"].includes(normalized)) {
-    styles = "bg-red-50 text-red-700";
-  } else if (["queued", "pending"].includes(normalized)) {
-    styles = "bg-amber-50 text-amber-700";
-  }
+  const statusClass = ["completed", "complete", "success"].includes(normalized)
+    ? "dashboard-status-success"
+    : ["processing", "running", "in_progress"].includes(normalized)
+      ? "dashboard-status-running"
+      : ["failed", "error"].includes(normalized)
+        ? "dashboard-status-danger"
+        : ["queued", "pending"].includes(normalized)
+          ? "dashboard-status-warning"
+          : "dashboard-status-neutral";
 
   return (
-    <span
-      className={`dashboard-status inline-flex items-center ${["completed", "complete", "success"].includes(normalized) ? "dashboard-status-success" : ["processing", "running", "in_progress"].includes(normalized) ? "dashboard-status-running" : ["failed", "error"].includes(normalized) ? "dashboard-status-danger" : ["queued", "pending"].includes(normalized) ? "dashboard-status-warning" : "dashboard-status-neutral"}`}
-    >
+    <span className={`dashboard-status inline-flex items-center ${statusClass}`}>
       {formatStatus(status)}
     </span>
   );
@@ -709,10 +703,10 @@ export default function DashboardData() {
       {/* Operational status at a glance */}
       <section aria-label="Processing status overview" className="grid grid-cols-2 gap-3 xl:grid-cols-4">
         {[
-          { label: "Queued", value: queued, tone: "dashboard-status-warning", marker: "bg-amber-300" },
-          { label: "Running", value: running, tone: "dashboard-status-running", marker: "bg-blue-300" },
-          { label: "Completed", value: completed, tone: "dashboard-status-success", marker: "bg-emerald-300" },
-          { label: "Failed", value: failed, tone: "dashboard-status-danger", marker: "bg-rose-300" },
+          { label: "Queued", value: queued, marker: "bg-amber-300" },
+          { label: "Running", value: running, marker: "bg-blue-300" },
+          { label: "Completed", value: completed, marker: "bg-emerald-300" },
+          { label: "Failed", value: failed, marker: "bg-rose-300" },
         ].map((item) => (
           <div key={item.label} className="dashboard-subpanel flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-2.5">
