@@ -263,7 +263,7 @@ export default function DashboardPage() {
                     </div>
 
                     <div className="hud-bom-preview">
-                      <div className="hud-panel-topline"><Boxes size={11}/> GENERATED BOM <span>XLSX</span></div>
+                      <div className="hud-panel-topline"><Boxes size={11}/> BOM OUTPUT · SAMPLE <span>XLSX</span></div>
                       <div className="hud-bom-table-wrap">
                         <table className="hud-bom-table">
                           <thead><tr><th>MARK</th><th>DESCRIPTION</th><th>QTY</th></tr></thead>
@@ -276,7 +276,7 @@ export default function DashboardPage() {
                           <tfoot><tr><td colSpan={2}>TOTAL ITEMS</td><td>68</td></tr></tfoot>
                         </table>
                       </div>
-                      <div className="hud-panel-foot"><span>STRUCTURED MATERIAL TAKEOFF</span><span>READY</span></div>
+                      <div className="hud-panel-foot"><span>ILLUSTRATIVE MATERIAL TAKEOFF</span><span>PREVIEW</span></div>
                     </div>
 
                     <div className="hud-data-stream hud-data-stream-one"/>
