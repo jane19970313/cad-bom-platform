@@ -12,6 +12,7 @@ import {
   Circle,
   Clock3,
   LoaderCircle,
+  Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
