@@ -2,249 +2,78 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  FolderKanban,
-  Plus,
-  RefreshCw,
-  Upload,
-  FileText,
-} from "lucide-react";
-
+import { ArrowUpRight, FolderKanban, Plus, RefreshCw, Trash2, Upload, Layers3, Search, X } from "lucide-react";
 import { projectsApi } from "@/lib/api";
-
-import { Project } from "@/types/project";
+import type { Project } from "@/types/project";
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [creating, setCreating] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [projects,setProjects]=useState<Project[]>([]);
+  const [name,setName]=useState("");
+  const [description,setDescription]=useState("");
+  const [query,setQuery]=useState("");
+  const [loading,setLoading]=useState(true);
+  const [creating,setCreating]=useState(false);
+  const [deleting,setDeleting]=useState<string|null>(null);
+  const [confirmDelete,setConfirmDelete]=useState<Project|null>(null);
+  const [error,setError]=useState("");
+  const [success,setSuccess]=useState("");
 
-  const loadProjects = useCallback(async () => {
-    setLoading(true);
-    setError("");
+  const loadProjects=useCallback(async()=>{
+    setLoading(true);setError("");
+    try{setProjects(await projectsApi.getProjects());}
+    catch(e){setError(e instanceof Error?e.message:"Unable to load projects.");}
+    finally{setLoading(false);}
+  },[]);
+  useEffect(()=>{void loadProjects();},[loadProjects]);
 
-    try {
-      const result = await projectsApi.getProjects();
-      setProjects(result);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Could not load projects.",
-      );
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    void loadProjects();
-  }, [loadProjects]);
-
-  async function handleCreateProject(
-    event: React.FormEvent<HTMLFormElement>,
-  ) {
-    event.preventDefault();
-
-    if (!name.trim()) {
-      setError("Enter a project name.");
-      return;
-    }
-
-    setCreating(true);
-    setError("");
-    setSuccess("");
-
-    try {
-      const project = await projectsApi.createProject({
-        name: name.trim(),
-        description: description.trim() || null,
-      });
-
-      setProjects((current) => [project, ...current]);
-      setName("");
-      setDescription("");
-      setSuccess(`Project "${project.name}" created successfully.`);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Could not create project.",
-      );
-    } finally {
-      setCreating(false);
-    }
+  async function createProject(event:React.FormEvent<HTMLFormElement>){
+    event.preventDefault();if(!name.trim())return;
+    setCreating(true);setError("");setSuccess("");
+    try{const item=await projectsApi.createProject({name:name.trim(),description:description.trim()||null});setProjects(v=>[item,...v]);setName("");setDescription("");setSuccess("Project created.");}
+    catch(e){setError(e instanceof Error?e.message:"Unable to create project.");}
+    finally{setCreating(false);}
   }
+  async function deleteProject(project:Project){
+    setDeleting(project.id);setError("");setSuccess("");
+    try{await projectsApi.deleteProject(project.id);setProjects(v=>v.filter(p=>p.id!==project.id));setConfirmDelete(null);setSuccess(`“${project.name}” and its drawings were deleted.`);}
+    catch(e){setError(e instanceof Error?e.message:"Unable to delete project.");}
+    finally{setDeleting(null);}
+  }
+  const filtered=projects.filter(p=>`${p.name} ${p.description??""}`.toLowerCase().includes(query.toLowerCase()));
 
-  return (
-    <main className="min-h-screen space-y-8 p-6 md:p-8">
-      <div>
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to dashboard
-        </Link>
-
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <FolderKanban className="h-4 w-4" />
-              Workspace
-            </div>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight">
-              Projects
-            </h1>
-            <p className="mt-2 text-muted-foreground">
-              Manage structural steel projects and their DXF drawings.
-            </p>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => void loadProjects()}
-            disabled={loading}
-            className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted disabled:opacity-50"
-          >
-            <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
-            Refresh
-          </button>
-        </div>
+  return <main className="workspace-page min-h-screen">
+    <div className="workspace-page-inner">
+      <div className="workspace-breadcrumb"><Link href="/">CAD2BOM</Link><span>/</span><span>Projects</span></div>
+      <header className="workspace-page-header">
+        <div><div className="workspace-eyebrow"><FolderKanban size={14}/> ENGINEERING WORKSPACE</div><h1>Projects</h1><p>Organize structural steel projects and manage their drawing sets.</p></div>
+        <button className="hud-button hud-button-secondary" onClick={()=>void loadProjects()} disabled={loading}><RefreshCw size={15} className={loading?"animate-spin":""}/> Refresh</button>
+      </header>
+      <div className="workspace-stat-strip">
+        <div><span>PROJECTS</span><strong>{projects.length}</strong></div><div><span>WORKSPACE</span><strong>ACTIVE</strong></div><div><span>DRAWING FORMAT</span><strong>DXF</strong></div>
       </div>
-
-      {error && (
-        <div className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800">
-          {error}
-        </div>
-      )}
-
-      {success && (
-        <div className="rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800">
-          {success}
-        </div>
-      )}
-
-      <section className="rounded-xl border bg-card p-6">
-        <div className="mb-5 flex items-center gap-2">
-          <Plus className="h-5 w-5" />
-          <h2 className="text-lg font-semibold">Create a project</h2>
-        </div>
-
-        <form onSubmit={handleCreateProject} className="grid gap-4 md:grid-cols-2">
-          <div className="space-y-2">
-            <label htmlFor="project-name" className="text-sm font-medium">
-              Project name *
-            </label>
-            <input
-              id="project-name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              placeholder="e.g. Industrial Steel Platform"
-              required
-              maxLength={200}
-              className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label
-              htmlFor="project-description"
-              className="text-sm font-medium"
-            >
-              Description
-            </label>
-            <input
-              id="project-description"
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
-              placeholder="Optional project description"
-              className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
-            />
-          </div>
-
-          <div className="md:col-span-2">
-            <button
-              type="submit"
-              disabled={creating || !name.trim()}
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <Plus className="h-4 w-4" />
-              {creating ? "Creating..." : "Create project"}
-            </button>
-          </div>
+      {error&&<div className="workspace-alert workspace-alert-error">{error}</div>}
+      {success&&<div className="workspace-alert workspace-alert-success">{success}</div>}
+      <section className="workspace-panel project-create-panel">
+        <div className="workspace-section-heading"><div><span className="workspace-kicker">NEW WORKSPACE</span><h2>Create project</h2><p>Start a project before uploading engineering drawings.</p></div><span className="workspace-icon-tile"><Plus size={19}/></span></div>
+        <form onSubmit={createProject} className="project-create-form">
+          <label>Project name<input value={name} onChange={e=>setName(e.target.value)} placeholder="e.g. Industrial Steel Platform" maxLength={200} required/></label>
+          <label>Description <span className="workspace-optional">OPTIONAL</span><input value={description} onChange={e=>setDescription(e.target.value)} placeholder="Project scope, site or drawing package"/></label>
+          <button className="hud-button hud-button-primary" type="submit" disabled={creating||!name.trim()}><Plus size={16}/>{creating?"Creating…":"Create project"}</button>
         </form>
       </section>
-
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Your projects</h2>
-          <span className="text-sm text-muted-foreground">
-            {projects.length} project{projects.length === 1 ? "" : "s"}
-          </span>
+      <section className="workspace-section">
+        <div className="workspace-section-heading"><div><span className="workspace-kicker">PROJECT LIBRARY</span><h2>Your projects <span className="workspace-count">{projects.length}</span></h2><p>Open a project to upload, process and inspect its DXF drawings.</p></div>
+          <div className="workspace-search"><Search size={15}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Find a project…"/></div>
         </div>
-
-        {loading ? (
-          <div className="rounded-xl border p-8 text-center text-muted-foreground">
-            Loading projects...
-          </div>
-        ) : projects.length === 0 ? (
-          <div className="rounded-xl border border-dashed p-10 text-center">
-            <FolderKanban className="mx-auto h-10 w-10 text-muted-foreground" />
-            <h3 className="mt-4 font-semibold">No projects yet</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Create your first project above to start uploading DXF drawings.
-            </p>
-          </div>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {projects.map((project) => (
-              <article
-                key={project.id}
-                className="rounded-xl border bg-card p-5 transition hover:border-primary/50"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="rounded-lg bg-primary/10 p-3">
-                    <FolderKanban className="h-5 w-5 text-primary" />
-                  </div>
-                  <span className="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground">
-                    Project
-                  </span>
-                </div>
-
-                <h3 className="mt-4 truncate text-lg font-semibold">
-                  {project.name}
-                </h3>
-
-                <p className="mt-2 min-h-10 text-sm text-muted-foreground">
-                  {project.description || "No description provided."}
-                </p>
-
-                <p className="mt-3 text-xs text-muted-foreground">
-                  Created{" "}
-                  {new Date(project.created_at).toLocaleDateString()}
-                </p>
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  <Link
-                    href={`/drawings?projectId=${encodeURIComponent(project.id)}`}
-                    className="inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
-                  >
-                    <Upload className="h-4 w-4" />
-                    Open drawings
-                  </Link>
-
-                  <span className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs text-muted-foreground">
-                    <FileText className="h-4 w-4" />
-                    {project.id.slice(0, 8)}
-                  </span>
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
+        {loading?<div className="workspace-empty">Loading project library…</div>:filtered.length===0?<div className="workspace-empty"><Layers3 size={30}/><h3>{projects.length?"No matching projects":"Your workspace is ready"}</h3><p>{projects.length?"Try another project name.":"Create your first project above to begin organizing drawings."}</p></div>:
+          <div className="project-card-grid">{filtered.map((p,index)=><article className="project-hud-card" key={p.id}>
+            <div className="project-card-top"><span className="project-card-index">{String(index+1).padStart(2,"0")}</span><span className="project-status"><i/> PROJECT</span><button className="workspace-icon-button danger" title="Delete project" onClick={()=>setConfirmDelete(p)}><Trash2 size={16}/></button></div>
+            <div className="project-card-mark"><FolderKanban size={22}/></div><h3>{p.name}</h3><p className="project-card-description">{p.description||"No project description has been added."}</p>
+            <div className="project-card-meta"><span>CREATED</span><strong>{new Date(p.created_at).toLocaleDateString()}</strong><span>ID</span><strong>{p.id.slice(0,8).toUpperCase()}</strong></div>
+            <Link href={`/drawings?projectId=${encodeURIComponent(p.id)}`} className="project-open-link">Open drawings <ArrowUpRight size={16}/></Link>
+          </article>)}</div>}
       </section>
-    </main>
-  );
+    </div>
+    {confirmDelete&&<div className="workspace-modal-backdrop" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)setConfirmDelete(null);}}><div className="workspace-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="delete-project-title"><span className="workspace-danger-icon"><Trash2 size={20}/></span><h2 id="delete-project-title">Delete project?</h2><p>“{confirmDelete.name}” and all drawings in this project will be permanently deleted. This action cannot be undone.</p><div><button className="hud-button hud-button-secondary" onClick={()=>setConfirmDelete(null)} disabled={!!deleting}><X size={15}/> Cancel</button><button className="hud-button hud-button-danger" onClick={()=>void deleteProject(confirmDelete)} disabled={!!deleting}><Trash2 size={15}/>{deleting?"Deleting…":"Delete project"}</button></div></div></div>}
+  </main>;
 }
