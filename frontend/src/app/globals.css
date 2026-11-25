@@ -768,3 +768,43 @@ body {
 .hud-title-equation{display:inline-flex!important;align-items:center!important;gap:.22em!important;line-height:1!important;vertical-align:middle}
 .hud-title-arrow{display:inline-flex;align-items:center;justify-content:center;align-self:center;position:relative;top:-.035em;font-size:.88em;font-style:normal;font-weight:650;line-height:1;color:#65d9f2;text-shadow:0 0 18px rgba(55,205,239,.48)}
 @media(prefers-reduced-motion:reduce){.hud-title-arrow{text-shadow:none}}
+
+
+/* Fine typography alignment for the CAD → BOM hero headline. */
+.hud-hero-title{
+  font-size:clamp(1.62rem,2.75vw,2.78rem)!important;
+  line-height:1.04!important;
+  letter-spacing:-.048em!important;
+}
+.hud-title-equation{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:.24em!important;
+  min-height:1em;
+  line-height:1!important;
+  vertical-align:middle!important;
+}
+.hud-title-equation>span{
+  display:inline-block;
+  line-height:1!important;
+}
+.hud-title-arrow{
+  position:static!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  align-self:center!important;
+  flex:0 0 auto;
+  height:1em;
+  margin:0 .015em;
+  font-size:.76em!important;
+  line-height:1!important;
+  font-style:normal!important;
+  font-weight:650!important;
+  vertical-align:middle!important;
+  transform:translateY(-.015em);
+}
+@media(max-width:640px){
+ .hud-hero-title{font-size:clamp(1.55rem,7vw,2.15rem)!important}
+}
