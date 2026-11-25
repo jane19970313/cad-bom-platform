@@ -180,3 +180,26 @@ body {
 @keyframes ai-orbit{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
 @keyframes ai-brain-glow{0%,100%{filter:drop-shadow(0 0 2px rgba(103,232,249,.2));transform:scale(1)}50%{filter:drop-shadow(0 0 9px rgba(103,232,249,.7));transform:scale(1.06)}}
 @media(prefers-reduced-motion:reduce){.ai-scan-line,.ai-orbit,.ai-brain-pulse{animation:none!important}}
+
+/* Animated CAD blueprint atmosphere and cohesive profile surface */
+.engineering-dashboard{isolation:isolate;position:relative;overflow:hidden}
+.engineering-dashboard:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.2;background-image:linear-gradient(rgba(102,155,211,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(102,155,211,.07) 1px,transparent 1px),radial-gradient(circle at 72% 22%,rgba(34,211,238,.12),transparent 25%),radial-gradient(circle at 25% 75%,rgba(59,130,246,.09),transparent 30%);background-size:48px 48px,48px 48px,100% 100%,100% 100%;animation:cad-grid-drift 34s linear infinite}
+.engineering-dashboard:after{content:"";position:fixed;z-index:-1;pointer-events:none;width:42vw;height:42vw;min-width:350px;min-height:350px;right:-12vw;top:14vh;border:1px solid rgba(91,174,220,.07);border-radius:50%;box-shadow:0 0 0 34px rgba(91,174,220,.018),0 0 0 72px rgba(91,174,220,.014);animation:cad-blueprint-float 18s ease-in-out infinite alternate}
+.engineering-dashboard>.flex{position:relative;z-index:1}
+.ai-intelligence-panel{background:radial-gradient(ellipse at 76% 45%,rgba(20,184,210,.10),transparent 34%),linear-gradient(125deg,#101c30,#12253b 58%,#111b31);box-shadow:0 18px 55px rgba(0,0,0,.22)}
+.ai-intelligence-panel:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(125,211,252,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(125,211,252,.13) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(90deg,transparent,black 65%)}
+.ai-scan-line{position:absolute;top:0;bottom:0;left:-25%;width:18%;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(103,232,249,.16),transparent);animation:ai-scan 9s ease-in-out infinite}
+.ai-orbit{animation:ai-orbit 18s linear infinite}.ai-orbit-delayed{animation-duration:26s;animation-direction:reverse}.ai-brain-pulse{animation:ai-brain-glow 3.2s ease-in-out infinite}
+.user-menu-trigger{color:#e6edf8;background:rgba(18,31,49,.82);border-color:rgba(148,163,184,.20);box-shadow:0 8px 22px rgba(0,0,0,.14)}
+.user-menu-avatar{color:#b9e8ff;background:linear-gradient(145deg,rgba(34,211,238,.24),rgba(59,130,246,.22));border:1px solid rgba(103,232,249,.22);box-shadow:0 0 18px rgba(34,211,238,.10)}
+.user-menu-popover{color:#e6edf8;background:#111e30;border-color:rgba(148,163,184,.20);box-shadow:0 20px 50px rgba(0,0,0,.42)}
+.user-menu-popover .text-muted-foreground{color:#91a2bb}
+.dashboard-metric-link,.dashboard-project-card{text-decoration:none}
+.workflow-banner{box-shadow:0 16px 42px rgba(0,0,0,.20)}
+@keyframes cad-grid-drift{from{background-position:0 0,0 0,0 0,0 0}to{background-position:48px 48px,-48px 48px,0 0,0 0}}
+@keyframes cad-blueprint-float{from{transform:translate3d(0,-12px,0) rotate(-8deg)}to{transform:translate3d(-22px,18px,0) rotate(8deg)}}
+@keyframes ai-scan{0%,12%{left:-25%;opacity:0}25%{opacity:.38}72%{opacity:.22}100%{left:115%;opacity:0}}
+@keyframes ai-orbit{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes ai-brain-glow{0%,100%{filter:drop-shadow(0 0 2px rgba(103,232,249,.2));transform:scale(1)}50%{filter:drop-shadow(0 0 9px rgba(103,232,249,.7));transform:scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.engineering-dashboard:before,.engineering-dashboard:after,.ai-scan-line,.ai-orbit,.ai-brain-pulse{animation:none!important}}
+@media(max-width:640px){.engineering-dashboard:after{right:-42vw;opacity:.45}}
