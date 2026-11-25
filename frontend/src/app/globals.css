@@ -171,3 +171,12 @@ body {
 .engineering-dashboard .shadow-sm { box-shadow:0 12px 30px rgba(0,0,0,.16); }
 .engineering-dashboard .border-dashed { border-color:rgba(148,163,184,.24); }
 @media (max-width:1023px) { .engineering-dashboard { background:#0b1220; } }
+
+/* AI CAD HUD animation */
+.ai-intelligence-panel{background:radial-gradient(ellipse at 76% 45%,rgba(20,184,210,.10),transparent 34%),linear-gradient(125deg,#101c30,#12253b 58%,#111b31)}
+.ai-scan-line{position:absolute;top:0;bottom:0;left:-25%;width:18%;background:linear-gradient(90deg,transparent,rgba(103,232,249,.16),transparent);animation:ai-scan 9s ease-in-out infinite;pointer-events:none}
+.ai-orbit{animation:ai-orbit 18s linear infinite}.ai-orbit-delayed{animation-duration:26s;animation-direction:reverse}.ai-brain-pulse{animation:ai-brain-glow 3.2s ease-in-out infinite}
+@keyframes ai-scan{0%,12%{left:-25%;opacity:0}25%{opacity:.38}72%{opacity:.22}100%{left:115%;opacity:0}}
+@keyframes ai-orbit{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes ai-brain-glow{0%,100%{filter:drop-shadow(0 0 2px rgba(103,232,249,.2));transform:scale(1)}50%{filter:drop-shadow(0 0 9px rgba(103,232,249,.7));transform:scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.ai-scan-line,.ai-orbit,.ai-brain-pulse{animation:none!important}}
