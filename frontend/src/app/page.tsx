@@ -65,20 +65,6 @@ function SidebarLink({
 export default function DashboardPage() {
   return (
     <main className="engineering-dashboard min-h-screen bg-[#0b1220] text-slate-100">
-      <div className="workspace-steel-backdrop" aria-hidden="true">
-        <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
-          <g fill="none" stroke="currentColor" strokeWidth="3">
-            <path d="M80 820V300L390 190L700 300V820 M80 430H700 M80 560H700 M80 690H700 M185 263V820 M285 226V820 M495 226V820 M595 263V820"/>
-            <path d="M900 880V250L1190 140L1500 250V880 M900 400H1500 M900 550H1500 M900 700H1500 M1010 208V880 M1110 170V880 M1300 170V880 M1400 208V880"/>
-            <path d="M80 430L185 560L285 430L390 560L495 430L595 560L700 430 M900 400L1010 550L1110 400L1190 550L1300 400L1400 550L1500 400"/>
-            <path d="M80 560L185 690L285 560L390 690L495 560L595 690L700 560 M900 550L1010 700L1110 550L1190 700L1300 550L1400 700L1500 550"/>
-          </g>
-          <g fill="none" stroke="#7dd3fc" strokeWidth="1.2">
-            <path d="M80 300L390 190L700 300 M900 250L1190 140L1500 250"/>
-            <path d="M80 820H700 M900 880H1500"/>
-          </g>
-        </svg>
-      </div>
       <div className="flex min-h-screen">
         <aside className="hidden w-[264px] shrink-0 flex-col border-r border-white/[0.06] bg-[#080f1d] px-4 py-6 text-white lg:flex">
           <Link href="/" className="mb-10 flex items-center gap-3 px-2">
@@ -268,12 +254,12 @@ export default function DashboardPage() {
                         <table className="hud-bom-table">
                           <thead><tr><th>MARK</th><th>DESCRIPTION</th><th>QTY</th></tr></thead>
                           <tbody>
-                            <tr><td>GB-01</td><td>Grating panel</td><td>08</td></tr>
-                            <tr><td>FB-04</td><td>Flat bar 40×5</td><td>24</td></tr>
-                            <tr><td>HB-02</td><td>H-beam 200</td><td>04</td></tr>
-                            <tr><td>CL-08</td><td>Clip / fastener</td><td>32</td></tr>
+                            <tr className="bom-row bom-row-cyan"><td><span className="bom-mark">GB-01</span></td><td>Grating panel</td><td><span className="bom-qty">08</span></td></tr>
+                            <tr className="bom-row bom-row-amber"><td><span className="bom-mark">FB-04</span></td><td>Flat bar 40×5</td><td><span className="bom-qty">24</span></td></tr>
+                            <tr className="bom-row bom-row-violet"><td><span className="bom-mark">HB-02</span></td><td>H-beam 200</td><td><span className="bom-qty">04</span></td></tr>
+                            <tr className="bom-row bom-row-emerald"><td><span className="bom-mark">CL-08</span></td><td>Clip / fastener</td><td><span className="bom-qty">32</span></td></tr>
                           </tbody>
-                          <tfoot><tr><td colSpan={2}>TOTAL ITEMS</td><td>68</td></tr></tfoot>
+                          <tfoot><tr><td colSpan={2}>TOTAL ITEMS</td><td><span className="bom-total">68</span></td></tr></tfoot>
                         </table>
                       </div>
                       <div className="hud-panel-foot"><span>ILLUSTRATIVE MATERIAL TAKEOFF</span><span>PREVIEW</span></div>
