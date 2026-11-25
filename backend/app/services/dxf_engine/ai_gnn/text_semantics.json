@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "description": "User-editable CAD/OCR normalization, text categories, tokenization, and geometry compatibility rules.",
+  "replacements": [
+    {
+      "pattern": "%%C",
+      "replacement": "Ø",
+      "ignore_case": true,
+      "enabled": true,
+      "comment": "AutoCAD diameter symbol."
+    },
+    {
+      "pattern": "%%D",
+      "replacement": "°",
+      "ignore_case": true,
+      "enabled": true,
+      "comment": "AutoCAD degree symbol."
+    },
+    {
+      "pattern": "%%P",
+      "replacement": "±",
+      "ignore_case": true,
+      "enabled": true,
+      "comment": "AutoCAD plus/minus symbol."
+    },
+    {
+      "pattern": "^\\?([0-9]+(?:\\.[0-9]+)?)$",
+      "replacement": "I$1",
+      "ignore_case": true,
+      "enabled": false,
+      "comment": "Example only: enable only if ?10 really means I10 in your drawing convention."
+    },
+    {
+      "pattern": "^\\?\\?Ø",
+      "replacement": "%%C",
+      "ignore_case": true,
+      "enabled": false,
+      "comment": "Example OCR cleanup for two corrupted characters before a diameter sign; validate before enabling."
+    }
+  ],
+  "chinese_tokenization": {
+    "use_jieba": true,
+    "minimum_word_length": 1
+  },
+  "candidate_ranking": {
+    "bbox_distance_weight": 0.40,
+    "text_center_to_geometry_weight": 0.35,
+    "text_center_to_geometry_center_weight": 0.25,
+    "spatial_rank_weight": 0.65,
+    "semantic_rank_weight": 0.35,
+    "maximum_spatial_rank": 1.25
+  },
+  "category_patterns": {
+    "ANNOTATION": [
+      "(?:kN\\s*/\\s*m|kN/m|MPa|\\bNOTE\\b|\\bNOTES\\b|\\bINSTALL(?:ATION)?\\b|\\bWELDING\\b|\\bMANUFACTURING\\b|\\bDO NOT\\b|\\bMUST\\b|\\bSURFACE TREATMENT\\b|\\bHOT DIP GALVANIZED\\b|\\bUNIFORM LOAD\\b|施工|安装|焊接|注意|说明|备注|不得|必须|按图|均布荷载|荷载|承载力|载荷|制造要求|加工要求|表面处理|热镀锌|喷漆)"
+    ],
+    "TOLERANCE_GDT": [
+      "(?:±|\\+/-|\\bPOSITION\\b|\\bFLATNESS\\b|\\bPERPENDICULARITY\\b|\\bPARALLELISM\\b|\\bRUNOUT\\b|\\bPROFILE\\b|\\bCONCENTRICITY\\b|\\bSYMMETRY\\b|\\bGD\\s*&\\s*T\\b)"
+    ],
+    "DIMENSION_VALUE": [
+      "(?:%%C|[Ø⌀Φφ])\\s*[0-9]+(?:\\.[0-9]+)?",
+      "(?<![A-Z0-9])R\\s*[0-9]+(?:\\.[0-9]+)?",
+      "(?:±|\\+/-)\\s*[0-9]+(?:\\.[0-9]+)?",
+      "(?:^|[\\s,;])\\d+(?:\\.\\d+)?\\s*(?:mm|cm|m)?(?=$|[\\s,;])"
+    ],
+    "PART_LABEL": [
+      "\\b(?:Q[0-9]{3,4}|SS[0-9]{3}|SUS[0-9]{3}|A36|S235|S355)\\b",
+      "\\b(?:PL|PLATE|BEAM|COLUMN|BOLT|WELD|STEEL|BRACKET|H[0-9]{2,4}\\s*[X×]\\s*[0-9]{2,4}|I[0-9]{1,4})\\b",
+      "\\bH[0-9]{2,4}[X×][0-9]{2,4}\\b",
+      "\\b[A-Z]{1,6}[-_][A-Z0-9?_-]+\\b",
+      "\\bSJ-R-[0-9]{3,8}\\b",
+      "(?:^|[\\s,;])[0-9]+#[A-Z0-9?_-]*(?=$|[\\s,;])",
+      "(?:^|[\\s,;])\\?[0-9]+(?:$|[\\s,;])"
+    ],
+    "GEOMETRY_DESCRIPTION": [
+      "(?:孔|后装|梯|圆孔|长圆孔|槽|倒角|圆角|中心线|切口|开口|孔径|直径|半径|厚度|宽度|高度|长度|沉头孔|螺栓孔|焊缝|弧形|圆弧|圆周)"
+    ]
+  },
+  "diameter_pattern": "(?:%%C|[Ø⌀Φφ])\\s*([0-9]+(?:\\.[0-9]+)?)",
+  "radius_pattern": "(?<![A-Z0-9])R\\s*([0-9]+(?:\\.[0-9]+)?)",
+  "semantic_compatibility": {
+    "DIMENSION_VALUE": [
+      "CIRCLE",
+      "ARC",
+      "ELLIPSE",
+      "LWPOLYLINE",
+      "POLYLINE"
+    ],
+    "PART_LABEL": [
+      "INSERT",
+      "LWPOLYLINE",
+      "POLYLINE",
+      "HATCH",
+      "SOLID",
+      "CIRCLE",
+      "ARC"
+    ],
+    "GEOMETRY_DESCRIPTION": [
+      "CIRCLE",
+      "ARC",
+      "LINE",
+      "LWPOLYLINE",
+      "POLYLINE",
+      "ELLIPSE"
+    ],
+    "TOLERANCE_GDT": [
+      "CIRCLE",
+      "ARC",
+      "LINE",
+      "LWPOLYLINE",
+      "POLYLINE",
+      "ELLIPSE"
+    ]
+  },
+  "semantic_compatibility_geometry_types": {
+    "DIMENSION_VALUE": [
+      "CLOSED_PROFILE",
+      "LINEAR_GEOMETRY",
+      "POLYGON",
+      "LINESTRING",
+      "MULTILINESTRING"
+    ],
+    "PART_LABEL": [
+      "CLOSED_PROFILE",
+      "POLYGON",
+      "MULTILINESTRING",
+      "OTHER"
+    ],
+    "GEOMETRY_DESCRIPTION": [
+      "CLOSED_PROFILE",
+      "LINEAR_GEOMETRY",
+      "POLYGON",
+      "LINESTRING",
+      "MULTILINESTRING"
+    ],
+    "TOLERANCE_GDT": [
+      "CLOSED_PROFILE",
+      "LINEAR_GEOMETRY",
+      "POLYGON",
+      "LINESTRING",
+      "MULTILINESTRING"
+    ]
+  }
+}

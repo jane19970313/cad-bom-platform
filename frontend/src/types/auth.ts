@@ -1,0 +1,15 @@
+export interface TokenResponse {
+  access_token: string;
+  token_type: string;
+}
+
+export interface RegisterRequest {
+  email: string;
+  password: string;
+}
+
+export interface UserResponse {
+  id: string;
+  email: string;
+  created_at: string;
+}

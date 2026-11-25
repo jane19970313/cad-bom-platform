@@ -1,0 +1,14 @@
+services:
+  redis:
+    # image: redis:7-alpine
+    image: docker.io/library/redis:7-alpine
+    container_name: dxf-bom-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+
+volumes:
+  redis_data:

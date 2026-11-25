@@ -1,2 +1,3 @@
-# cad-bom-platform
-This is a platform to generate bom from cad drawing
+# cad-bom-generator
+
+This is a website to generate bom from cad files.
