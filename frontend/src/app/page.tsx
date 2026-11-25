@@ -164,7 +164,7 @@ export default function DashboardPage() {
                   <div className="max-w-xl">
                     <p className="mb-3 text-[10px] font-bold uppercase tracking-[.28em] text-cyan-300">FROM 2D DRAWING TO INTELLIGENT BOM</p>
                     <h2 className="hud-hero-title text-[clamp(1.8rem,3.15vw,3.15rem)] font-black leading-[1.02] tracking-[-.05em] text-white">
-                      AI-Powered<br/><span>CAD <i>→</i> BOM</span>
+                      AI-Powered<br/><span className="hud-title-equation"><span>CAD</span><i className="hud-title-arrow">→</i><span>BOM</span></span>
                     </h2>
                     <p className="mt-4 max-w-md text-sm leading-6 text-slate-300/80 md:text-[15px]">
                       AI understands every line, profile and connection in your 2D steel drawings — then transforms them into a structured bill of materials.
