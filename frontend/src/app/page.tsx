@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   ArrowUpRight,
   Boxes,
+  CheckCircle2,
   FileCode2,
   FolderKanban,
   LayoutDashboard,
@@ -176,49 +177,68 @@ export default function DashboardPage() {
               </div>
             </div>
 
-<section className="grating-intelligence-panel relative overflow-hidden rounded-2xl border p-5 md:p-6" aria-label="Steel grating drawing to bill of materials">
+<section className="grating-intelligence-panel relative overflow-hidden rounded-2xl border p-5 md:p-6" aria-label="AI steel grating 3D analysis and BOM generation">
               <div className="grating-panel-glow" />
-              <div className="relative z-10 grid gap-6 xl:grid-cols-[.78fr_1.22fr] xl:items-center">
-                <div>
+              <div className="relative z-10 grid gap-5 xl:grid-cols-[.65fr_1.35fr] xl:items-center">
+                <div className="relative z-10">
                   <div className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.2em] text-cyan-300">
-                    <span className="h-px w-6 bg-cyan-300" /> CAD intelligence
+                    <span className="h-px w-6 bg-cyan-300" /> AI · CAD · BOM
                   </div>
-                  <h2 className="text-xl font-semibold tracking-tight text-white md:text-2xl">Steel grating · Drawing to BOM</h2>
-                  <p className="mt-2 max-w-md text-sm leading-6 text-slate-400">Geometric recognition, member extraction and structured quantity takeoff.</p>
+                  <h2 className="text-xl font-semibold tracking-tight text-white md:text-2xl">3D Geometry Intelligence</h2>
+                  <p className="mt-2 max-w-xs text-sm leading-6 text-slate-400">Steel grating recognition and automated bill of materials.</p>
                   <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="technical-chip"><ScanLine size={12}/> DXF geometry</span>
-                    <span className="technical-chip"><BrainCircuit size={12}/> AI classification</span>
-                    <span className="technical-chip"><Boxes size={12}/> BOM structure</span>
+                    <span className="technical-chip"><BrainCircuit size={12}/> AI ANALYSIS</span>
+                    <span className="technical-chip"><Boxes size={12}/> BOM OUTPUT</span>
                   </div>
                 </div>
-                <div className="grating-conversion-visual">
-                  <div className="grating-drawing">
-                    <div className="visual-label"><span>01 / GEOMETRY</span><span>DXF · TOP VIEW</span></div>
-                    <svg viewBox="0 0 520 230" role="img" aria-label="Steel grating panel with bearing bars and cross bars">
-                      <defs>
-                        <linearGradient id="gratingSteel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#8edcf0" stopOpacity=".9"/><stop offset="1" stopColor="#3d86b7" stopOpacity=".42"/></linearGradient>
-                        <pattern id="gratingGrid" width="28" height="22" patternUnits="userSpaceOnUse"><path d="M0 0V22 M0 0H28" stroke="#7dd3fc" strokeOpacity=".13" strokeWidth="1"/></pattern>
-                      </defs>
-                      <rect x="26" y="20" width="468" height="188" rx="5" fill="url(#gratingGrid)" stroke="#6abbd8" strokeOpacity=".42"/>
-                      {Array.from({length:13},(_,i)=><line key={"b"+i} x1={42+i*36} y1="31" x2={42+i*36} y2="197" stroke="url(#gratingSteel)" strokeWidth="5"/>)}
-                      {Array.from({length:8},(_,i)=><line key={"c"+i} x1="34" y1={42+i*22} x2="486" y2={42+i*22} stroke="#8be2ef" strokeOpacity=".58" strokeWidth="2.2"/>)}
-                      <path d="M26 14V7H494V14 M18 20H11V208H18 M502 20H509V208H502" fill="none" stroke="#67e8f9" strokeOpacity=".65"/>
-                      <path d="M42 218H478 M42 214V222 M478 214V222" stroke="#8baecb" strokeOpacity=".65"/>
-                      <text x="260" y="229" fill="#9ab8d1" fontSize="9" textAnchor="middle">BEARING BAR PITCH / CROSS BAR SPACING</text>
-                      <circle cx="186" cy="86" r="17" fill="none" stroke="#fbbf24" strokeWidth="1.5" strokeDasharray="3 3"/>
-                      <path d="M201 75L235 48H280" stroke="#fbbf24" strokeWidth="1" fill="none"/>
-                      <text x="285" y="51" fill="#fcd34d" fontSize="10">BAR INTERSECTION</text>
-                    </svg>
-                  </div>
-                  <div className="conversion-link"><span/><ArrowUpRight size={15}/><span/></div>
-                  <div className="grating-bom">
-                    <div className="visual-label"><span>02 / BOM</span><span>STRUCTURED OUTPUT</span></div>
-                    <div className="bom-mini-head"><span>MEMBER</span><span>SPEC.</span><span>QTY</span></div>
-                    <div className="bom-mini-row"><span><i className="bom-dot cyan"/>Bearing bar</span><span>FB 30×3</span><b>24</b></div>
-                    <div className="bom-mini-row"><span><i className="bom-dot blue"/>Cross bar</span><span>Ø 6</span><b>18</b></div>
-                    <div className="bom-mini-row"><span><i className="bom-dot violet"/>End band</span><span>FB 30×5</span><b>2</b></div>
-                    <div className="bom-mini-foot"><CheckCircle2 size={12}/> Geometry-linked structure</div>
-                  </div>
+                <div className="grating-3d-scene">
+                  <div className="scene-caption scene-caption-left">3D STRUCTURAL MODEL <span>DXF</span></div>
+                  <svg className="grating-3d-model" viewBox="0 0 620 300" role="img" aria-label="Isometric three-dimensional steel grating structure being analyzed by AI and converted to a bill of materials">
+                    <defs>
+                      <linearGradient id="steelTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#a5f3fc" stopOpacity=".88"/><stop offset=".55" stopColor="#38bdf8" stopOpacity=".62"/><stop offset="1" stopColor="#2563a6" stopOpacity=".45"/></linearGradient>
+                      <linearGradient id="steelSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#3287b4" stopOpacity=".65"/><stop offset="1" stopColor="#102b48" stopOpacity=".95"/></linearGradient>
+                      <radialGradient id="aiCore"><stop offset="0" stopColor="#67e8f9" stopOpacity=".34"/><stop offset="1" stopColor="#67e8f9" stopOpacity="0"/></radialGradient>
+                      <filter id="steelGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <ellipse cx="300" cy="245" rx="238" ry="30" fill="#020817" opacity=".45"/>
+                    <g className="grating-model-float">
+                      <polygon points="75,105 330,25 535,112 276,198" fill="#143a59" fillOpacity=".55" stroke="#75dff2" strokeOpacity=".7" strokeWidth="1.5"/>
+                      <polygon points="75,105 276,198 276,225 75,132" fill="url(#steelSide)" stroke="#4b9fc2" strokeOpacity=".55"/>
+                      <polygon points="276,198 535,112 535,139 276,225" fill="#12314e" stroke="#4b9fc2" strokeOpacity=".55"/>
+                      <g stroke="url(#steelTop)" strokeWidth="7" strokeLinecap="round" filter="url(#steelGlow)">
+                        {#each Array.from({length:13},(_,i)=>i) as i}<line x1={88+i*19.8} y1={110-i*6.2} x2={289+i*19.8} y2={202-i*6.2}/>{/each}
+                      </g>
+                      <g stroke="#8be7f4" strokeOpacity=".78" strokeWidth="3.2">
+                        {#each Array.from({length:9},(_,i)=>i) as i}<line x1={85+i*24.8} y1={101+i*11.4} x2={338+i*24.8} y2={22+i*11.4}/>{/each}
+                      </g>
+                      <g fill="none" stroke="#c4f6ff" strokeOpacity=".55" strokeWidth="1">
+                        <polygon points="75,105 330,25 535,112 276,198"/>
+                        <path d="M75 105L75 132L276 225L535 139L535 112"/>
+                      </g>
+                    </g>
+                    <g className="ai-analysis-orbit" transform="translate(307 128)">
+                      <circle r="67" fill="url(#aiCore)"/>
+                      <circle r="43" fill="none" stroke="#67e8f9" strokeOpacity=".32" strokeDasharray="3 6"/>
+                      <circle r="29" fill="#0d263b" fillOpacity=".86" stroke="#67e8f9" strokeOpacity=".72"/>
+                      <path d="M-15 -5L0 -18L15 -5L0 9Z M-15 -5V10L0 23L15 10V-5 M0 9V23" fill="none" stroke="#a5f3fc" strokeWidth="1.6"/>
+                      <circle r="3" fill="#d9fbff" filter="url(#steelGlow)"/>
+                    </g>
+                    <path d="M353 128H438" stroke="#67e8f9" strokeOpacity=".55" strokeWidth="1.5" strokeDasharray="4 5"/>
+                    <path d="M431 122L440 128L431 134" fill="none" stroke="#67e8f9" strokeWidth="1.5"/>
+                    <g transform="translate(452 72)">
+                      <rect x="0" y="0" width="130" height="126" rx="10" fill="#0b1b2d" fillOpacity=".94" stroke="#68c9dc" strokeOpacity=".4"/>
+                      <text x="13" y="19" fill="#7dd3fc" fontSize="9" letterSpacing="1.5">BOM OUTPUT</text>
+                      <g transform="translate(13 32)">
+                        <path d="M0 0H103 M0 25H103 M0 50H103 M0 75H103" stroke="#42627d" strokeOpacity=".55"/>
+                        <path d="M0 0H8V8H0Z M0 25H8V33H0Z M0 50H8V58H0Z M0 75H8V83H0Z" fill="#67e8f9" fillOpacity=".8"/>
+                        <path d="M16 4H72 M16 29H88 M16 54H65 M16 79H80" stroke="#b7d1e3" strokeOpacity=".75" strokeWidth="3" strokeLinecap="round"/>
+                        <path d="M91 4H103 M91 29H103 M91 54H103 M91 79H103" stroke="#38bdf8" strokeWidth="3" strokeLinecap="round"/>
+                      </g>
+                    </g>
+                    <text x="77" y="270" fill="#7f9db8" fontSize="9" letterSpacing="1.4">STRUCTURAL GEOMETRY</text>
+                    <text x="452" y="216" fill="#67e8f9" fontSize="9" letterSpacing="1.3">INTELLIGENT TAKEOFF</text>
+                  </svg>
+                  <div className="scene-caption scene-caption-bottom"><span>GEOMETRY</span><i/><span>AI INFERENCE</span><i/><span>BOM</span></div>
                 </div>
               </div>
             </section>
