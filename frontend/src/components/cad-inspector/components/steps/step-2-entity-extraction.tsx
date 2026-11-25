@@ -45,7 +45,7 @@ export function Step2EntityExtraction({
         value={search}
         onChange={(event) => setSearch(event.target.value)}
         placeholder="Search handle, layer, type..."
-        className="h-9 w-full rounded-md border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
+        className="cad-inspector-search h-10 w-full rounded-md border px-3 text-sm outline-none focus:ring-2"
       />
 
       <section className="flex min-h-0 flex-[1] flex-col overflow-hidden rounded-md border">
@@ -65,7 +65,7 @@ export function Step2EntityExtraction({
               <details
                 key={handle ?? index}
                 data-pipeline-handle={normalized}
-                className={`rounded-md border p-3 ${
+                className={`cad-inspector-record rounded-md border p-3 ${
                   selectedHandle === normalized
                     ? "border-primary bg-primary/10"
                     : ""
