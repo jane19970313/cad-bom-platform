@@ -3,7 +3,7 @@
 import { useCallback,useEffect,useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowUpRight,CheckCircle2,FileCode2,FileUp,FolderKanban,Loader2,Play,RefreshCw,Trash2,UploadCloud,X } from "lucide-react";
+import { ArrowUpRight,CheckCircle2,FileCode2,FileUp,FolderKanban,Loader2,Play,RefreshCw,Trash2,UploadCloud } from "lucide-react";
 import { drawingsApi,processingApi,projectsApi } from "@/lib/api";
 import type { Project } from "@/types/project";
 import type { Drawing } from "@/types/drawing";
