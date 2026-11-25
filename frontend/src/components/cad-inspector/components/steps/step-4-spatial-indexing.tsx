@@ -21,7 +21,7 @@ export function Step4SpatialIndexing({
         4. Spatial Indexing
       </h3>
 
-      <div className="rounded-md bg-muted p-3">
+      <div className="cad-inspector-result-card rounded-md p-3">
         <p className="text-2xl font-semibold">
           {indexedCount}
         </p>
@@ -61,7 +61,7 @@ export function Step4SpatialIndexing({
             type="button"
             data-pipeline-handle={normalized}
             onClick={() => onSelectHandle(handle)}
-            className={`w-full rounded-md border p-3 text-left hover:bg-muted/70 ${
+            className={`cad-inspector-result-card w-full rounded-md border p-3 text-left hover:bg-muted/70 ${
               selectedHandle === normalized
                 ? "border-primary bg-primary/10"
                 : ""
