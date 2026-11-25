@@ -712,7 +712,7 @@ export default function DashboardData() {
         <div className="mb-5 flex items-end justify-between gap-3"><div><p className="mb-1 text-[10px] font-bold uppercase tracking-[.16em] text-cyan-300">Project operations</p><h3 className="font-semibold text-slate-100">Project progress</h3><p className="mt-1 text-xs text-slate-400">Calculated from completed processing jobs reported for each project.</p></div><Link href="/projects" className="text-xs font-semibold text-cyan-300">All projects ↗</Link></div>
         <div className="grid gap-3 xl:grid-cols-2">
           {data.projects.map((project) => {
-            const projectJobs = data.jobs.filter((job) => job.project_id === project.id);
+            const projectJobs = data.jobs.filter((job) => data.allDrawings.some((drawing) => drawing.id === job.drawing_id && drawing.project_id === project.id));
             const done = projectJobs.filter((job) => ["completed", "complete", "success"].includes(normalizeStatus(job.status))).length;
             const activeJobs = projectJobs.filter((job) => isActiveJob(job.status)).length;
             const failedJobs = projectJobs.filter((job) => ["failed", "error"].includes(normalizeStatus(job.status))).length;
@@ -804,7 +804,7 @@ export default function DashboardData() {
                     className="border-b border-slate-50 last:border-0"
                   >
                     <td className="py-4 pr-4">
-                      <div className="flex items-center gap-3">
+                      <Link href={"/drawings?projectId=" + encodeURIComponent(drawing.project_id)} className="flex items-center gap-3">
                         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
                           <FileCode2 size={18} />
                         </div>
@@ -816,10 +816,10 @@ export default function DashboardData() {
                             {(drawing.file_size / (1024 * 1024)).toFixed(2)} MB
                           </p>
                         </div>
-                      </div>
+                      </Link>
                     </td>
                     <td className="py-4 pr-4 text-slate-600">
-                      {drawing.project_name}
+                      <Link href="/projects">{drawing.project_name}</Link>
                     </td>
                     <td className="py-4 pr-4">
                       <StatusBadge status={drawing.status} />
@@ -913,15 +913,15 @@ export default function DashboardData() {
                     className="border-b border-slate-50 last:border-0"
                   >
                     <td className="py-4 pr-4">
-                      <p className="font-medium text-slate-800">
+                      <Link href={"/pipeline?jobId=" + encodeURIComponent(job.id)} className="block"><p className="font-medium text-slate-800 hover:text-cyan-300">
                         {job.drawing_name}
                       </p>
                       <p className="mt-1 text-xs text-slate-400">
                         Attempt count: {job.attempt_count}
-                      </p>
+                      </p></Link>
                     </td>
                     <td className="py-4 pr-4 text-slate-600">
-                      {job.project_name}
+                      <Link href="/projects">{job.project_name}</Link>
                     </td>
                     <td className="py-4 pr-4">
                       <StatusBadge status={job.status} />
