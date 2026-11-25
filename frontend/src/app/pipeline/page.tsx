@@ -19,10 +19,10 @@ import {
   XCircle,
 } from "lucide-react";
 
-import { ApiError, processingApi } from "@/lib/api";
+import { ApiError, drawingsApi, processingApi, projectsApi } from "@/lib/api";
 import type {
   PipelineStageProgress,
-  ProcessingJobProgress,
+  ProcessingJobProgress,\n  ProcessingJob,
 } from "@/types/processing";
 
 import { useRouter } from "next/navigation";
@@ -291,7 +291,7 @@ function StageDetails({
 export default function PipelinePage() {
   const router = useRouter();
 
-  const [jobInput, setJobInput] = useState("");
+  const [jobInput, setJobInput] = useState("");\n  const [recentJobs, setRecentJobs] = useState<Array<{ job: ProcessingJob; filename: string; projectName: string }>>([]);\n  const [loadingJobs, setLoadingJobs] = useState(true);\n  const [manualEntry, setManualEntry] = useState(false);
   const [jobId, setJobId] = useState("");
   
   useEffect(() => {
@@ -304,7 +304,7 @@ export default function PipelinePage() {
     }
   }, []);
   
-  const [progress, setProgress] =
+  useEffect(() => {\n    let cancelled = false;\n    async function loadRecentJobs() {\n      setLoadingJobs(true);\n      try {\n        const projects = await projectsApi.getProjects();\n        const drawingGroups = await Promise.all(projects.map(async (project) => ({ projectName: project.name, drawings: (await drawingsApi.getProjectDrawings(project.id)).items })));\n        const groups = await Promise.all(drawingGroups.flatMap(group => group.drawings.map(async drawing => ({ projectName: group.projectName, filename: drawing.original_filename, jobs: (await processingApi.getDrawingJobs(drawing.id)).items }))));\n        if (cancelled) return;\n        const options = groups.flatMap(group => group.jobs.map(job => ({ job, filename: group.filename, projectName: group.projectName }))).sort((a,b) => new Date(b.job.created_at).getTime() - new Date(a.job.created_at).getTime());\n        setRecentJobs(options);\n        const requested = new URLSearchParams(window.location.search).get("jobId");\n        if (!requested && options.length && !jobId) { setJobInput(options[0].job.id); setJobId(options[0].job.id); }\n      } catch { if (!cancelled) setRecentJobs([]); }\n      finally { if (!cancelled) setLoadingJobs(false); }\n    }\n    void loadRecentJobs();\n    return () => { cancelled = true; };\n  }, []);\n\n  const [progress, setProgress] =
     useState<ProcessingJobProgress | null>(null);
 
   const [selectedStage, setSelectedStage] =
