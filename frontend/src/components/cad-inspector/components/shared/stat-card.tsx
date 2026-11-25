@@ -12,7 +12,7 @@ export function StatCard({
   className = "",
 }: StatCardProps) {
   return (
-    <div className={`rounded-md bg-muted p-3 ${className}`}>
+    <div className={`cad-inspector-result-card rounded-md p-3 ${className}`}>
       <p className="text-xl font-semibold">{value}</p>
 
       <p className="mt-1 text-xs text-muted-foreground">
