@@ -67,7 +67,7 @@ export function Step3GeometryConversion({
         value={search}
         onChange={(event) => setSearch(event.target.value)}
         placeholder="Search handle, layer, type..."
-        className="h-9 w-full shrink-0 rounded-md border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
+        className="cad-inspector-search h-10 w-full shrink-0 rounded-md border px-3 text-sm outline-none focus:ring-2"
       />
 
       {/* Geometry list */}
@@ -87,7 +87,7 @@ export function Step3GeometryConversion({
               <details
                 key={element.element_id ?? index}
                 data-pipeline-handle={normalized}
-                className={`rounded-md border p-3 ${
+                className={`cad-inspector-record rounded-md border p-3 ${
                   normalizeHandle(selectedHandle) === normalized
                     ? "border-primary bg-primary/10"
                     : ""
