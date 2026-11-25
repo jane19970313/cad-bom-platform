@@ -76,7 +76,7 @@ export function Step8PipelineSummary({
             type="button"
             onClick={handleExportExcel}
             disabled={bomElements.length === 0}
-            className="inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-xs font-medium transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+            className="cad-inspector-action inline-flex items-center gap-2 rounded-md border px-3 py-2 text-xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Download className="h-4 w-4" />
             Export Excel
@@ -98,7 +98,7 @@ export function Step8PipelineSummary({
             {bomElements.map((element, index) => (
               <details
                 key={`${element.caption}-${index}`}
-                className="rounded-md border p-3"
+                className="cad-inspector-record rounded-md border p-3"
               >
                 <summary className="cursor-pointer text-sm font-medium">
                   <span>{element.caption}</span>
