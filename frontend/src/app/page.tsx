@@ -176,68 +176,130 @@ export default function DashboardPage() {
               </div>
             </div>
 
-<section className="grating-intelligence-panel relative overflow-hidden rounded-2xl border p-5 md:p-6" aria-label="AI steel grating 3D analysis and BOM generation">
+<section className="grating-intelligence-panel relative overflow-hidden rounded-2xl border p-5 md:p-6" aria-label="AI-powered 2D CAD drawing analysis and steel grating bill of materials generation">
               <div className="grating-panel-glow" />
-              <div className="relative z-10 grid gap-5 xl:grid-cols-[.65fr_1.35fr] xl:items-center">
+              <div className="relative z-10 grid gap-4 xl:grid-cols-[.62fr_1.38fr] xl:items-center">
                 <div className="relative z-10">
                   <div className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.2em] text-cyan-300">
-                    <span className="h-px w-6 bg-cyan-300" /> AI · CAD · BOM
+                    <span className="h-px w-6 bg-cyan-300" /> AI-POWERED ENGINEERING
                   </div>
-                  <h2 className="text-xl font-semibold tracking-tight text-white md:text-2xl">3D Geometry Intelligence</h2>
-                  <p className="mt-2 max-w-xs text-sm leading-6 text-slate-400">Steel grating recognition and automated bill of materials.</p>
+                  <h2 className="text-xl font-semibold tracking-tight text-white md:text-[27px]">AI-Powered CAD to BOM</h2>
+                  <p className="mt-2 max-w-xs text-sm leading-6 text-slate-400">Upload 2D steel-grating drawings. AI reads the geometry and builds your bill of materials.</p>
                   <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="technical-chip"><BrainCircuit size={12}/> AI ANALYSIS</span>
-                    <span className="technical-chip"><Boxes size={12}/> BOM OUTPUT</span>
+                    <span className="technical-chip"><BrainCircuit size={12}/> AI GEOMETRY RECOGNITION</span>
+                    <span className="technical-chip"><Boxes size={12}/> AUTOMATED BOM</span>
+                  </div>
+                  <div className="mt-5 flex items-center gap-2 text-[10px] font-semibold tracking-[.12em] text-slate-500">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_9px_rgba(103,232,249,.8)]" />
+                    2D DRAWING <span className="text-cyan-400/70">→</span> AI ANALYSIS <span className="text-cyan-400/70">→</span> BOM
                   </div>
                 </div>
                 <div className="grating-3d-scene">
-                  <div className="scene-caption scene-caption-left">3D STRUCTURAL MODEL <span>DXF</span></div>
-                  <svg className="grating-3d-model" viewBox="0 0 620 300" role="img" aria-label="Isometric three-dimensional steel grating structure being analyzed by AI and converted to a bill of materials">
+                  <div className="scene-caption"><span>DRAWING-TO-BOM WORKFLOW</span><span className="scene-live"><i/> AI ENGINE ACTIVE</span></div>
+                  <svg className="grating-3d-model" viewBox="0 0 900 360" role="img" aria-label="A 2D steel grating CAD drawing is interpreted by an AI engine, rendered as a realistic three-dimensional steel grating panel, and converted into a structured bill of materials preview">
                     <defs>
-                      <linearGradient id="steelTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#a5f3fc" stopOpacity=".88"/><stop offset=".55" stopColor="#38bdf8" stopOpacity=".62"/><stop offset="1" stopColor="#2563a6" stopOpacity=".45"/></linearGradient>
-                      <linearGradient id="steelSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#3287b4" stopOpacity=".65"/><stop offset="1" stopColor="#102b48" stopOpacity=".95"/></linearGradient>
-                      <radialGradient id="aiCore"><stop offset="0" stopColor="#67e8f9" stopOpacity=".34"/><stop offset="1" stopColor="#67e8f9" stopOpacity="0"/></radialGradient>
-                      <filter id="steelGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                      <linearGradient id="steelTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#e0f7ff"/><stop offset=".28" stopColor="#7dd3e8"/><stop offset=".7" stopColor="#3986ad"/><stop offset="1" stopColor="#1c4568"/></linearGradient>
+                      <linearGradient id="steelSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#397b9e"/><stop offset=".35" stopColor="#17405e"/><stop offset="1" stopColor="#091a2c"/></linearGradient>
+                      <linearGradient id="crossSteel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#d8f7ff"/><stop offset=".45" stopColor="#63b9d5"/><stop offset="1" stopColor="#1d5275"/></linearGradient>
+                      <linearGradient id="bomSurface" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#122b42"/><stop offset="1" stopColor="#091827"/></linearGradient>
+                      <radialGradient id="aiCore"><stop offset="0" stopColor="#67e8f9" stopOpacity=".42"/><stop offset="1" stopColor="#67e8f9" stopOpacity="0"/></radialGradient>
+                      <filter id="steelShadow" x="-30%" y="-30%" width="160%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="5"/><feOffset dy="8"/><feComponentTransfer><feFuncA type="linear" slope=".42"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                      <filter id="cyanGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
                     </defs>
-                    <ellipse cx="300" cy="245" rx="238" ry="30" fill="#020817" opacity=".45"/>
-                    <g className="grating-model-float">
-                      <polygon points="75,105 330,25 535,112 276,198" fill="#143a59" fillOpacity=".55" stroke="#75dff2" strokeOpacity=".7" strokeWidth="1.5"/>
-                      <polygon points="75,105 276,198 276,225 75,132" fill="url(#steelSide)" stroke="#4b9fc2" strokeOpacity=".55"/>
-                      <polygon points="276,198 535,112 535,139 276,225" fill="#12314e" stroke="#4b9fc2" strokeOpacity=".55"/>
-                      <g stroke="url(#steelTop)" strokeWidth="7" strokeLinecap="round" filter="url(#steelGlow)">
-                        {Array.from({ length: 13 }, (_, i) => (<line key={`bearing-${i}`} x1={88 + i * 19.8} y1={110 - i * 6.2} x2={289 + i * 19.8} y2={202 - i * 6.2} />))}
+
+                    <ellipse cx="370" cy="286" rx="205" ry="24" fill="#020817" opacity=".52"/>
+
+                    <g className="cad-input-card">
+                      <rect x="8" y="112" width="128" height="120" rx="9" fill="#0a1a2b" stroke="#47728f" strokeOpacity=".65"/>
+                      <path d="M20 130H124 M20 213H124" stroke="#42627d" strokeOpacity=".45"/>
+                      <text x="20" y="126" fill="#8ca9c3" fontSize="8" letterSpacing="1.2">2D DXF INPUT</text>
+                      <g transform="translate(27 148)" fill="none" stroke="#70d9ed" strokeWidth="1.1" opacity=".92">
+                        <path d="M0 20L40 5L78 20L38 35Z M0 20V49L38 65L78 49V20"/>
+                        <path d="M8 23L46 8 M16 27L54 12 M24 31L62 16 M32 34L70 19"/>
+                        <path d="M10 14L10 43 M22 10L22 48 M34 7L34 54 M46 10L46 57 M58 14L58 53 M70 17L70 50"/>
                       </g>
-                      <g stroke="#8be7f4" strokeOpacity=".78" strokeWidth="3.2">
-                        {Array.from({ length: 9 }, (_, i) => (<line key={`cross-${i}`} x1={85 + i * 24.8} y1={101 + i * 11.4} x2={338 + i * 24.8} y2={22 + i * 11.4} />))}
-                      </g>
-                      <g fill="none" stroke="#c4f6ff" strokeOpacity=".55" strokeWidth="1">
-                        <polygon points="75,105 330,25 535,112 276,198"/>
-                        <path d="M75 105L75 132L276 225L535 139L535 112"/>
-                      </g>
+                      <text x="20" y="224" fill="#6f91ad" fontSize="7" letterSpacing="1">PLAN / SECTION</text>
                     </g>
-                    <g className="ai-analysis-orbit" transform="translate(307 128)">
-                      <circle r="67" fill="url(#aiCore)"/>
-                      <circle r="43" fill="none" stroke="#67e8f9" strokeOpacity=".32" strokeDasharray="3 6"/>
-                      <circle r="29" fill="#0d263b" fillOpacity=".86" stroke="#67e8f9" strokeOpacity=".72"/>
-                      <path d="M-15 -5L0 -18L15 -5L0 9Z M-15 -5V10L0 23L15 10V-5 M0 9V23" fill="none" stroke="#a5f3fc" strokeWidth="1.6"/>
-                      <circle r="3" fill="#d9fbff" filter="url(#steelGlow)"/>
+
+                    <path d="M142 172H166" stroke="#67e8f9" strokeOpacity=".65" strokeWidth="1.5" strokeDasharray="3 4"/>
+                    <path d="M160 167L167 172L160 177" fill="none" stroke="#67e8f9" strokeWidth="1.4"/>
+
+                    <g className="grating-model-float" filter="url(#steelShadow)">
+                      <polygon points="178,157 384,82 565,154 356,235" fill="#153c59" stroke="#80d9ed" strokeOpacity=".65" strokeWidth="1.2"/>
+                      <polygon points="178,157 356,235 356,266 178,188" fill="url(#steelSide)" stroke="#4c9bbd" strokeOpacity=".65"/>
+                      <polygon points="356,235 565,154 565,185 356,266" fill="#102d47" stroke="#4c9bbd" strokeOpacity=".65"/>
+
+                      {Array.from({length:12},(_,i)=>(
+                        <g key={`bearing-${i}`}>
+                          <path d={`M${190+i*15.6} ${160-i*5.7} L${368+i*15.6} ${238-i*5.7} L${368+i*15.6} ${249-i*5.7} L${190+i*15.6} ${171-i*5.7} Z`} fill="url(#steelSide)" stroke="#6bb4d0" strokeOpacity=".65" strokeWidth=".65"/>
+                          <path d={`M${190+i*15.6} ${160-i*5.7} L${368+i*15.6} ${238-i*5.7}`} stroke="url(#steelTop)" strokeWidth="5.5" strokeLinecap="butt"/>
+                          <path d={`M${191+i*15.6} ${158-i*5.7} L${367+i*15.6} ${235-i*5.7}`} stroke="#e0f7ff" strokeOpacity=".36" strokeWidth=".8"/>
+                        </g>
+                      ))}
+
+                      {Array.from({length:9},(_,i)=>(
+                        <g key={`crossbar-${i}`}>
+                          <path d={`M${187+i*22.5} ${153+i*9.1} L${394+i*19.1} ${78+i*8.5}`} stroke="#0a2034" strokeWidth="5" strokeLinecap="round"/>
+                          <path d={`M${187+i*22.5} ${150+i*9.1} L${394+i*19.1} ${75+i*8.5}`} stroke="url(#crossSteel)" strokeWidth="3.2" strokeLinecap="round"/>
+                          <path d={`M${187+i*22.5} ${149+i*9.1} L${394+i*19.1} ${74+i*8.5}`} stroke="#f0fdff" strokeOpacity=".45" strokeWidth=".7"/>
+                        </g>
+                      ))}
+                      <path d="M178 157L384 82L565 154L356 235Z" fill="none" stroke="#b5f2ff" strokeOpacity=".62" strokeWidth="1.2"/>
+                      <path d="M178 157L178 188L356 266L565 185L565 154" fill="none" stroke="#6bbbd8" strokeOpacity=".6" strokeWidth="1"/>
+                      <path d="M178 157L356 235L565 154" fill="none" stroke="#d8f7ff" strokeOpacity=".25" strokeWidth="1"/>
                     </g>
-                    <path d="M353 128H438" stroke="#67e8f9" strokeOpacity=".55" strokeWidth="1.5" strokeDasharray="4 5"/>
-                    <path d="M431 122L440 128L431 134" fill="none" stroke="#67e8f9" strokeWidth="1.5"/>
-                    <g transform="translate(452 72)">
-                      <rect x="0" y="0" width="130" height="126" rx="10" fill="#0b1b2d" fillOpacity=".94" stroke="#68c9dc" strokeOpacity=".4"/>
-                      <text x="13" y="19" fill="#7dd3fc" fontSize="9" letterSpacing="1.5">BOM OUTPUT</text>
-                      <g transform="translate(13 32)">
-                        <path d="M0 0H103 M0 25H103 M0 50H103 M0 75H103" stroke="#42627d" strokeOpacity=".55"/>
-                        <path d="M0 0H8V8H0Z M0 25H8V33H0Z M0 50H8V58H0Z M0 75H8V83H0Z" fill="#67e8f9" fillOpacity=".8"/>
-                        <path d="M16 4H72 M16 29H88 M16 54H65 M16 79H80" stroke="#b7d1e3" strokeOpacity=".75" strokeWidth="3" strokeLinecap="round"/>
-                        <path d="M91 4H103 M91 29H103 M91 54H103 M91 79H103" stroke="#38bdf8" strokeWidth="3" strokeLinecap="round"/>
-                      </g>
+
+                    <g className="ai-scan-beam">
+                      <path d="M185 145L392 68L573 140L366 221Z" fill="url(#aiCore)" opacity=".18"/>
+                      <path d="M190 148L396 73" stroke="#a5f3fc" strokeWidth="2" strokeOpacity=".75" filter="url(#cyanGlow)"/>
                     </g>
-                    <text x="77" y="270" fill="#7f9db8" fontSize="9" letterSpacing="1.4">STRUCTURAL GEOMETRY</text>
-                    <text x="452" y="216" fill="#67e8f9" fontSize="9" letterSpacing="1.3">INTELLIGENT TAKEOFF</text>
+                    <g className="ai-analysis-orbit" transform="translate(474 158)">
+                      <circle r="57" fill="url(#aiCore)"/>
+                      <circle r="39" fill="none" stroke="#67e8f9" strokeOpacity=".5" strokeDasharray="3 6"/>
+                      <circle r="27" fill="#0b2438" stroke="#67e8f9" strokeOpacity=".9" strokeWidth="1.4"/>
+                      <path d="M-14 -5L0 -17L14 -5L0 7Z M-14 -5V9L0 21L14 9V-5 M0 7V21" fill="none" stroke="#b6f4ff" strokeWidth="1.7"/>
+                      <circle r="3" fill="#efffff" filter="url(#cyanGlow)"/>
+                    </g>
+                    <text x="445" y="226" fill="#83ddec" fontSize="8" letterSpacing="1.1">AI RECOGNITION</text>
+                    <path d="M529 158H565" stroke="#67e8f9" strokeOpacity=".8" strokeWidth="1.5" strokeDasharray="3 4"/>
+                    <path d="M559 153L566 158L559 163" fill="none" stroke="#67e8f9" strokeWidth="1.4"/>
+
+                    <g className="bom-output-card">
+                      <rect x="574" y="45" width="315" height="270" rx="11" fill="url(#bomSurface)" stroke="#5b9bb6" strokeOpacity=".7"/>
+                      <path d="M574 84H889" stroke="#5b9bb6" strokeOpacity=".45"/>
+                      <text x="590" y="65" fill="#bceefa" fontSize="10" fontWeight="700" letterSpacing="1.5">GENERATED BILL OF MATERIALS</text>
+                      <rect x="815" y="53" width="59" height="17" rx="4" fill="#164b5a" stroke="#48bfd0" strokeOpacity=".45"/>
+                      <text x="844.5" y="64.5" fill="#9af0f4" fontSize="7" textAnchor="middle" letterSpacing=".8">PREVIEW</text>
+                      <text x="590" y="78" fill="#718da7" fontSize="7.5" letterSpacing=".8">STEEL GRATING · STRUCTURED TAKEOFF</text>
+
+                      <rect x="588" y="94" width="287" height="20" rx="3" fill="#1a3851"/>
+                      <text x="596" y="107" fill="#8eacc4" fontSize="7" fontWeight="700">ITEM / SPECIFICATION</text>
+                      <text x="816" y="107" fill="#8eacc4" fontSize="7" fontWeight="700" textAnchor="middle">QTY</text>
+                      <text x="858" y="107" fill="#8eacc4" fontSize="7" fontWeight="700" textAnchor="middle">UNIT</text>
+
+                      {[
+                        ["Bearing bar","FB 30 × 3","24","m"],
+                        ["Cross bar","Twisted Ø6","18","m"],
+                        ["End band","FB 30 × 5","4","m"],
+                        ["Support angle","L 40 × 40 × 4","6","m"],
+                        ["Grating panel","G-01 / 1000×600","2","EA"]
+                      ].map((row,i)=>(
+                        <g key={row[0]}>
+                          <rect x="588" y={118+i*31} width="287" height="30" fill={i%2===0?"#10263a":"#0c2032"} fillOpacity=".88"/>
+                          <rect x="596" y={128+i*31} width="5" height="10" rx="1.5" fill={["#67e8f9","#60a5fa","#a78bfa","#5eead4","#93c5fd"][i]}/>
+                          <text x="608" y={130+i*31} fill="#d6e8f5" fontSize="8.5" fontWeight="600">{row[0]}</text>
+                          <text x="608" y={140+i*31} fill="#7895ae" fontSize="7.3">{row[1]}</text>
+                          <text x="816" y={137+i*31} fill="#d5e9f7" fontSize="9" textAnchor="middle">{row[2]}</text>
+                          <text x="858" y={137+i*31} fill="#8ba8c0" fontSize="8" textAnchor="middle">{row[3]}</text>
+                          <path d={`M588 ${148+i*31}H875`} stroke="#47647c" strokeOpacity=".22"/>
+                        </g>
+                      ))}
+                      <path d="M588 279H875" stroke="#5b9bb6" strokeOpacity=".4"/>
+                      <circle cx="596" cy="294" r="3" fill="#5eead4"/>
+                      <text x="606" y="297" fill="#82c9b7" fontSize="7.5" letterSpacing=".7">ITEMIZED OUTPUT · READY FOR REVIEW</text>
+                    </g>
                   </svg>
-                  <div className="scene-caption scene-caption-bottom"><span>GEOMETRY</span><i/><span>AI INFERENCE</span><i/><span>BOM</span></div>
+                  <div className="scene-caption scene-caption-bottom"><span>2D DXF</span><i/><span>3D STEEL STRUCTURE</span><i/><span>AI TAKEOFF</span><i/><span>BOM TABLE</span></div>
                 </div>
               </div>
             </section>
