@@ -28,10 +28,10 @@ export function CadViewerSidebar({
   ...stageProps
 }: CadViewerSidebarProps) {
   return (
-    <aside className="flex min-w-0 flex-col overflow-hidden rounded-xl border bg-background min-h-[420px] xl:min-h-0">
+    <aside className="cad-inspector-stage-panel flex min-w-0 flex-col overflow-hidden rounded-xl border min-h-[420px] xl:min-h-0">
       <div
         ref={pipelineContentRef}
-        className={`min-h-0 flex-1 p-3 ${
+        className={`cad-inspector-stage-content min-h-0 flex-1 p-4 ${
           activeStep === 5 || activeStep === 6
             ? "overflow-hidden"
             : "overflow-y-auto"
