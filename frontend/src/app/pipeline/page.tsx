@@ -459,12 +459,7 @@ export default function PipelinePage() {
             </div>
           </div>
 
-          <a
-            href="/"
-            className="text-sm font-medium text-blue-600 hover:text-blue-700"
-          >
-            Back to dashboard
-          </a>
+          <Link href="/" className="pipeline-back-link">Back to dashboard <ArrowRight size={14}/></Link>
         </div>
       </header>
 
