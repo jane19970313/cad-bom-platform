@@ -23,8 +23,8 @@ export function CadViewerHeader({
   onToggleMonochrome,
 }: CadViewerHeaderProps) {
   return (
-    <>
-      <div className="flex items-center justify-between border-b px-4 py-3">
+    <div className="cad-inspector-toolbar">
+      <div className="cad-inspector-toolbar-heading flex items-center justify-between px-4 py-3">
         <div>
           <h2 className="text-sm font-semibold">
             DXF Pipeline Inspector
@@ -40,7 +40,7 @@ export function CadViewerHeader({
         </span>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 py-3">
+      <div className="cad-inspector-step-navigation flex flex-wrap items-center gap-3 px-4 py-3">
         <div className="grid min-w-0 flex-1 grid-cols-4 gap-2 sm:grid-cols-8">
           {PIPELINE_STEPS.map((step) => (
             <button
@@ -86,6 +86,6 @@ export function CadViewerHeader({
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
