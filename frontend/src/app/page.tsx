@@ -65,6 +65,20 @@ function SidebarLink({
 export default function DashboardPage() {
   return (
     <main className="engineering-dashboard min-h-screen bg-[#0b1220] text-slate-100">
+      <div className="workspace-steel-backdrop" aria-hidden="true">
+        <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+          <g fill="none" stroke="currentColor" strokeWidth="3">
+            <path d="M80 820V300L390 190L700 300V820 M80 430H700 M80 560H700 M80 690H700 M185 263V820 M285 226V820 M495 226V820 M595 263V820"/>
+            <path d="M900 880V250L1190 140L1500 250V880 M900 400H1500 M900 550H1500 M900 700H1500 M1010 208V880 M1110 170V880 M1300 170V880 M1400 208V880"/>
+            <path d="M80 430L185 560L285 430L390 560L495 430L595 560L700 430 M900 400L1010 550L1110 400L1190 550L1300 400L1400 550L1500 400"/>
+            <path d="M80 560L185 690L285 560L390 690L495 560L595 690L700 560 M900 550L1010 700L1110 550L1190 700L1300 550L1400 700L1500 550"/>
+          </g>
+          <g fill="none" stroke="#7dd3fc" strokeWidth="1.2">
+            <path d="M80 300L390 190L700 300 M900 250L1190 140L1500 250"/>
+            <path d="M80 820H700 M900 880H1500"/>
+          </g>
+        </svg>
+      </div>
       <div className="flex min-h-screen">
         <aside className="hidden w-[264px] shrink-0 flex-col border-r border-white/[0.06] bg-[#080f1d] px-4 py-6 text-white lg:flex">
           <Link href="/" className="mb-10 flex items-center gap-3 px-2">
@@ -141,14 +155,7 @@ export default function DashboardPage() {
                   <FolderKanban size={16} />
                   Projects
                 </Link>
-                <Link
-                  href="/drawings"
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_6px_16px_rgba(37,99,235,0.2)] transition hover:bg-blue-700"
-                >
-                  <Plus size={17} />
-                  Import DXF
-                  <ArrowUpRight size={14} className="opacity-70" />
-                </Link>
+
               </div>
             </div>
 
@@ -170,7 +177,7 @@ export default function DashboardPage() {
                 <div className="grid gap-5 pt-6 xl:grid-cols-[.72fr_1.28fr] xl:items-end">
                   <div className="max-w-xl">
                     <p className="mb-3 text-[10px] font-bold uppercase tracking-[.28em] text-cyan-300">FROM 2D DRAWING TO INTELLIGENT BOM</p>
-                    <h2 className="hud-hero-title text-[clamp(2.15rem,4.3vw,4.2rem)] font-black leading-[.98] tracking-[-.055em] text-white">
+                    <h2 className="hud-hero-title text-[clamp(1.8rem,3.15vw,3.15rem)] font-black leading-[1.02] tracking-[-.05em] text-white">
                       AI-Powered<br/><span>CAD <i>→</i> BOM</span>
                     </h2>
                     <p className="mt-4 max-w-md text-sm leading-6 text-slate-300/80 md:text-[15px]">
@@ -221,17 +228,55 @@ export default function DashboardPage() {
                       <span className="hud-ai-core-caption">AI CORE</span>
                     </div>
 
-                    <div className="hud-steel-model">
-                      <img src="https://i.postimg.cc/PL4x71s1/steel-grating-platform.png" alt="Three-dimensional steel grating platform" className="hud-grating-image" />
-                      <img src="https://i.postimg.cc/McDTL12X/steel-h-beam.png" alt="Steel H-beam structural profile" className="hud-hbeam-image" />
+                    <div className="hud-steel-model" role="img" aria-label="High-detail isometric steel grating platform supported by structural H-beams">
+                      <svg className="hud-grating-vector" viewBox="0 0 560 360" aria-hidden="true">
+                        <defs>
+                          <linearGradient id="steelTop" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#dce8ef"/><stop offset=".34" stopColor="#7893a8"/><stop offset=".7" stopColor="#405c72"/><stop offset="1" stopColor="#b9cbd5"/></linearGradient>
+                          <linearGradient id="steelSide" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#8ca7b8"/><stop offset="1" stopColor="#263c50"/></linearGradient>
+                          <linearGradient id="beamMetal" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#d4e1e8"/><stop offset=".45" stopColor="#637f94"/><stop offset="1" stopColor="#263e52"/></linearGradient>
+                          <filter id="steelShadow" x="-30%" y="-30%" width="160%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+                        </defs>
+                        <ellipse cx="286" cy="293" rx="222" ry="25" fill="#000" opacity=".45" filter="url(#steelShadow)"/>
+                        <g opacity=".98">
+                          <path d="M67 139L283 55L504 137L286 229Z" fill="url(#steelTop)" stroke="#d5e8f1" strokeWidth="1.4"/>
+                          <path d="M67 139L286 229V251L67 160Z" fill="url(#steelSide)" stroke="#7898ac"/>
+                          <path d="M286 229L504 137V159L286 251Z" fill="#314b60" stroke="#7898ac"/>
+                          {Array.from({length:19},(_,i)=><path key={`bar-long-${i}`} d={`M${79+i*11.2} ${143-i*4.3}L${297+i*11.2} ${235-i*4.3}`} stroke={i%2===0?"#dbe8ee":"#526f84"} strokeWidth="3.5" opacity=".95"/>)}
+                          {Array.from({length:13},(_,i)=><path key={`bar-cross-${i}`} d={`M${82+i*16.7} ${133-i*6.45}L${299+i*16.7} ${223-i*6.45}`} stroke="#d2e1e9" strokeWidth="2.4" opacity=".8" transform="rotate(-21 286 150)"/>)}
+                          <path d="M67 139L283 55L504 137L286 229Z" fill="none" stroke="#e5f3fa" strokeWidth="2.5" opacity=".9"/>
+                        </g>
+                        <g transform="translate(0 5)">
+                          <path d="M91 164L111 172L111 260L91 252Z M91 164L111 172L133 163L113 155Z" fill="url(#beamMetal)" stroke="#b5c9d4"/>
+                          <path d="M111 172L133 163L133 250L111 260Z" fill="#314b60" stroke="#8da9ba"/>
+                          <path d="M410 155L431 147L431 235L410 244Z M410 155L431 147L454 156L433 165Z" fill="url(#beamMetal)" stroke="#b5c9d4"/>
+                          <path d="M431 147L454 156L454 244L431 235Z" fill="#314b60" stroke="#8da9ba"/>
+                          <path d="M74 250L285 337L493 250L472 242L285 319L95 242Z" fill="url(#beamMetal)" stroke="#9bb4c2" strokeWidth="1.5"/>
+                        </g>
+                        <g transform="translate(384 270) scale(.72)">
+                          <path d="M0 0H120V17H70V95H50V17H0Z" fill="url(#beamMetal)" stroke="#d6e6ed" strokeWidth="2"/>
+                          <path d="M50 17H70V95H50Z" fill="#2a4358"/>
+                          <path d="M0 0H120V7H0Z" fill="#e4eef3" opacity=".7"/>
+                        </g>
+                      </svg>
                       <div className="hud-model-scanline"/>
-                      <div className="hud-model-tag"><span className="hud-live-dot"/> 3D STRUCTURAL MODEL</div>
+                      <div className="hud-model-tag"><span className="hud-live-dot"/> 3D STEEL GRATING ASSEMBLY</div>
                     </div>
 
                     <div className="hud-bom-preview">
-                      <div className="hud-panel-topline"><Boxes size={11}/> GENERATED BOM <span>TABLE</span></div>
-                      <img src="https://i.postimg.cc/VS1v4DTY/bom-output-panel.png" alt="Bill of materials output panel" className="hud-bom-image"/>
-                      <div className="hud-panel-foot"><span>ITEMIZED MATERIAL TAKEOFF</span><span>PREVIEW</span></div>
+                      <div className="hud-panel-topline"><Boxes size={11}/> GENERATED BOM <span>XLSX</span></div>
+                      <div className="hud-bom-table-wrap">
+                        <table className="hud-bom-table">
+                          <thead><tr><th>MARK</th><th>DESCRIPTION</th><th>QTY</th></tr></thead>
+                          <tbody>
+                            <tr><td>GB-01</td><td>Grating panel</td><td>08</td></tr>
+                            <tr><td>FB-04</td><td>Flat bar 40×5</td><td>24</td></tr>
+                            <tr><td>HB-02</td><td>H-beam 200</td><td>04</td></tr>
+                            <tr><td>CL-08</td><td>Clip / fastener</td><td>32</td></tr>
+                          </tbody>
+                          <tfoot><tr><td colSpan={2}>TOTAL ITEMS</td><td>68</td></tr></tfoot>
+                        </table>
+                      </div>
+                      <div className="hud-panel-foot"><span>STRUCTURED MATERIAL TAKEOFF</span><span>READY</span></div>
                     </div>
 
                     <div className="hud-data-stream hud-data-stream-one"/>
