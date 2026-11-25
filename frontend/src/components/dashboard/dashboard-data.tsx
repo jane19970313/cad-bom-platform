@@ -706,6 +706,24 @@ export default function DashboardData() {
         />
       </div>
 
+      {/* Operational status at a glance */}
+      <section aria-label="Processing status overview" className="grid grid-cols-2 gap-3 xl:grid-cols-4">
+        {[
+          { label: "Queued", value: queued, tone: "dashboard-status-warning", marker: "bg-amber-300" },
+          { label: "Running", value: running, tone: "dashboard-status-running", marker: "bg-blue-300" },
+          { label: "Completed", value: completed, tone: "dashboard-status-success", marker: "bg-emerald-300" },
+          { label: "Failed", value: failed, tone: "dashboard-status-danger", marker: "bg-rose-300" },
+        ].map((item) => (
+          <div key={item.label} className="dashboard-subpanel flex items-center justify-between px-4 py-3">
+            <div className="flex items-center gap-2.5">
+              <span className={`h-2 w-2 rounded-full ${item.marker}`} />
+              <span className="text-xs font-medium text-slate-400">{item.label}</span>
+            </div>
+            <span className="font-mono text-lg font-semibold text-slate-100">{item.value}</span>
+          </div>
+        ))}
+      </section>
+
       {/* Recent drawings */}
       <div className="dashboard-panel rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
