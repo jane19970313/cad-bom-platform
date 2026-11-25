@@ -646,3 +646,103 @@ body {
  .hud-bom-table{font-size:7px!important}
  .hud-bom-table td{padding:6px 4px!important}
 }
+
+
+/* Steel-grating product identity: a real galvanized grating surface sits beneath the whole workspace. */
+.engineering-dashboard{
+  position:relative;
+  isolation:isolate;
+  background-color:#07111f!important;
+  background-image:
+    linear-gradient(90deg,rgba(5,12,24,.91) 0%,rgba(5,13,26,.83) 48%,rgba(5,12,24,.91) 100%),
+    linear-gradient(0deg,rgba(5,12,24,.48),rgba(5,12,24,.38)),
+    url("https://assets.website-files.com/633b38f98f08a914be2d55ef/63b2be385808d358f85e6911_DSC05198.webp")!important;
+  background-repeat:no-repeat!important;
+  background-size:cover!important;
+  background-position:center center!important;
+  background-attachment:fixed!important;
+}
+/* The old factory photograph / pseudo-element overlay is deliberately disabled. */
+.engineering-dashboard:before{display:none!important;content:none!important}
+.engineering-dashboard:after{pointer-events:none}
+.engineering-dashboard aside,
+.engineering-dashboard header{backdrop-filter:blur(12px)}
+.engineering-dashboard aside{background:rgba(5,12,24,.82)!important}
+.engineering-dashboard header{background:rgba(7,17,31,.78)!important}
+.engineering-dashboard .grating-intelligence-panel{
+  background:linear-gradient(125deg,rgba(7,18,33,.91),rgba(9,28,46,.88) 55%,rgba(7,18,32,.92))!important;
+}
+
+/* Strong, unmistakable material coding across the entire BOM row. */
+.hud-bom-preview{
+  border:1px solid rgba(99,213,239,.55)!important;
+  background:linear-gradient(150deg,rgba(7,27,45,.99),rgba(4,15,29,.99))!important;
+}
+.hud-bom-preview .hud-panel-topline{
+  color:#d5f7ff!important;
+  background:linear-gradient(90deg,rgba(8,115,148,.48),rgba(15,49,77,.72))!important;
+  border-bottom:1px solid rgba(93,220,244,.42)!important;
+}
+.hud-bom-table{
+  border-collapse:separate!important;
+  border-spacing:0 5px!important;
+}
+.hud-bom-table th{
+  color:#a5eaff!important;
+  background:rgba(24,79,108,.76)!important;
+  border:0!important;
+  border-bottom:1px solid rgba(111,220,245,.48)!important;
+}
+.hud-bom-table td{
+  color:#e6f2f8!important;
+  background:rgba(17,39,59,.96)!important;
+  border-top:1px solid rgba(151,190,210,.12)!important;
+  border-bottom:1px solid rgba(151,190,210,.12)!important;
+}
+.hud-bom-table tbody tr td:first-child{
+  width:66px;
+  border-left:4px solid var(--bom-accent)!important;
+  border-radius:6px 0 0 6px!important;
+  background:linear-gradient(90deg,var(--bom-tint),rgba(17,39,59,.96) 88%)!important;
+}
+.hud-bom-table tbody tr td:nth-child(2){
+  background:linear-gradient(90deg,var(--bom-tint),rgba(17,39,59,.96) 72%)!important;
+  color:var(--bom-text)!important;
+  font-weight:750;
+}
+.hud-bom-table tbody tr td:last-child{
+  border-right:1px solid color-mix(in srgb,var(--bom-accent) 45%,transparent)!important;
+  border-radius:0 6px 6px 0!important;
+  background:linear-gradient(90deg,rgba(17,39,59,.96),var(--bom-tint))!important;
+}
+.bom-row-cyan{--bom-accent:#35d8f2;--bom-tint:rgba(18,190,222,.25);--bom-text:#a8f4ff}
+.bom-row-amber{--bom-accent:#ffbd4a;--bom-tint:rgba(226,151,29,.25);--bom-text:#ffe0a0}
+.bom-row-violet{--bom-accent:#b69aff;--bom-tint:rgba(139,92,246,.27);--bom-text:#d9caff}
+.bom-row-emerald{--bom-accent:#4de5aa;--bom-tint:rgba(16,185,129,.25);--bom-text:#a5f5d2}
+.hud-bom-table .bom-mark{
+  min-width:51px;justify-content:center;
+  color:var(--bom-accent)!important;
+  background:var(--bom-tint)!important;
+  border:1px solid color-mix(in srgb,var(--bom-accent) 75%,transparent)!important;
+  box-shadow:0 0 12px color-mix(in srgb,var(--bom-accent) 22%,transparent);
+}
+.hud-bom-table .bom-qty{
+  min-width:31px;
+  color:var(--bom-accent)!important;
+  background:var(--bom-tint)!important;
+  border:1px solid color-mix(in srgb,var(--bom-accent) 65%,transparent)!important;
+  box-shadow:0 0 10px color-mix(in srgb,var(--bom-accent) 16%,transparent);
+}
+.hud-bom-table tfoot td{
+  background:rgba(12,63,67,.62)!important;
+  border-top:1px solid rgba(65,225,192,.4)!important;
+  color:#a8f5df!important;
+}
+.hud-bom-table .bom-total{
+  color:#72f0d2!important;
+  background:rgba(45,212,191,.2)!important;
+  border:1px solid rgba(45,212,191,.48)!important;
+}
+@media(max-width:760px){
+  .engineering-dashboard{background-attachment:scroll!important}
+}
