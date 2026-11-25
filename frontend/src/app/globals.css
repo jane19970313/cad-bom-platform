@@ -511,3 +511,64 @@ body {
 @media(prefers-reduced-motion:reduce){
   .grating-intelligence-panel:after,.hud-scan-sweep,.hud-hero-title span,.hud-live-dot,.hud-ai-ring,.hud-ai-core-center,.hud-steel-model,.hud-grating-image,.hud-hbeam-image,.hud-model-scanline,.hud-data-stream,.hud-cad-preview,.hud-bom-preview{animation:none!important}
 }
+
+
+/* Refinement: native vector steelwork and legible BOM, no low-resolution image assets */
+.engineering-dashboard:before{
+  opacity:.055!important;
+  background-image:
+    linear-gradient(rgba(102,155,211,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(102,155,211,.055) 1px,transparent 1px),
+    radial-gradient(ellipse at 50% 20%,rgba(34,211,238,.09),transparent 42%)!important;
+  background-size:42px 42px,42px 42px,100% 100%!important;
+}
+.workspace-steel-backdrop{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  color:rgba(116,165,198,.2);opacity:.23;
+  mask-image:linear-gradient(90deg,#000,transparent 42%,transparent 58%,#000);
+}
+.workspace-steel-backdrop svg{width:100%;height:100%;filter:drop-shadow(0 0 12px rgba(48,154,194,.12))}
+.engineering-dashboard>.flex{position:relative;z-index:1}
+.hud-background-structure{display:none!important}
+.hud-hero-title{font-size:clamp(1.8rem,3.15vw,3.15rem)!important;line-height:1.03!important}
+.hud-hero-title span{letter-spacing:-.045em}
+.hud-visual-stage{
+  grid-template-columns:minmax(118px,.72fr) minmax(230px,1.6fr) minmax(175px,1fr);
+  min-height:390px;gap:12px;padding-left:18px;padding-right:18px;
+}
+.hud-steel-model{min-height:275px;overflow:visible}
+.hud-grating-vector{
+  display:block;width:124%;max-width:none;height:auto;max-height:330px;overflow:visible;
+  filter:drop-shadow(0 24px 20px rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(87,198,225,.17));
+  animation:hud-vector-float 7s ease-in-out infinite;
+}
+.hud-model-scanline{z-index:2;left:4%;right:4%;top:8%}
+.hud-bom-preview{min-width:0;animation-delay:-2s}
+.hud-bom-table-wrap{padding:4px 7px 7px}
+.hud-bom-table{width:100%;border-collapse:collapse;color:#c9e2ed;font:600 8px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.01em}
+.hud-bom-table th{padding:7px 4px;color:#63cde4;text-align:left;font-size:7px;letter-spacing:.1em;border-bottom:1px solid rgba(95,184,210,.3)}
+.hud-bom-table td{padding:8px 4px;border-bottom:1px solid rgba(95,184,210,.12);white-space:nowrap}
+.hud-bom-table td:first-child{color:#8de9f5}
+.hud-bom-table td:last-child,.hud-bom-table th:last-child{text-align:right}
+.hud-bom-table tbody tr:nth-child(odd){background:rgba(72,153,183,.055)}
+.hud-bom-table tfoot td{padding-top:9px;border:0;color:#8ff0d9;font-weight:800}
+.hud-bom-table tfoot td:first-child{text-align:right;letter-spacing:.08em;font-size:7px}
+@keyframes hud-vector-float{0%,100%{transform:translateY(3px) rotate(-.25deg)}50%{transform:translateY(-7px) rotate(.25deg)}}
+@media(max-width:1279px){
+ .hud-visual-stage{grid-template-columns:minmax(105px,.7fr) minmax(195px,1.5fr) minmax(155px,.95fr);gap:8px}
+ .hud-grating-vector{width:132%}
+}
+@media(max-width:760px){
+ .workspace-steel-backdrop{opacity:.12}
+ .hud-visual-stage{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);min-height:455px}
+ .hud-steel-model{min-height:250px}
+ .hud-grating-vector{width:118%;max-height:270px}
+ .hud-bom-table{font-size:7px}
+ .hud-bom-table td{padding:6px 3px}
+}
+@media(max-width:480px){
+ .hud-hero-title{font-size:2rem!important}
+ .hud-visual-stage{min-height:400px}
+ .hud-grating-vector{width:132%;max-height:230px}
+}
+@media(prefers-reduced-motion:reduce){.hud-grating-vector{animation:none!important}}
