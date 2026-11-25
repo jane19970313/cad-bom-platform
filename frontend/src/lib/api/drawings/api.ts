@@ -74,3 +74,7 @@ export async function downloadDrawingDxf(
 
   return response.arrayBuffer();
 }
+
+export async function deleteDrawing(drawingId: string): Promise<void> {
+  await apiRequest<void>(`/drawings/drawings/${encodeURIComponent(drawingId)}`, { method: "DELETE" });
+}
