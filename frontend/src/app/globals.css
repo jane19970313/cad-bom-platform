@@ -1227,3 +1227,50 @@ main.workspace-page .workspace-stat-strip{border:1px solid rgba(105,180,210,.2)!
 main.workspace-page .workspace-empty{background:rgba(4,17,30,.42)!important;color:#8ca4bb!important}
 main.workspace-page .drawing-hud-row{border-color:rgba(115,164,191,.16)!important}
 main.workspace-page .drawing-dropzone{color:#dff3fc!important;background:radial-gradient(ellipse at 50% 20%,rgba(25,145,175,.13),transparent 65%),rgba(4,17,30,.7)!important}
+
+
+/* DXF Engineering Inspector — shared CAD2BOM engineering workspace shell */
+.inspector-shell{
+  position:relative;isolation:isolate;overflow:hidden;
+  color:#e5f2fa!important;
+  background:
+    radial-gradient(ellipse at 76% 0%,rgba(16,139,174,.18),transparent 34%),
+    radial-gradient(ellipse at 8% 62%,rgba(39,87,145,.13),transparent 40%),
+    #07111f!important;
+}
+.inspector-shell:before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.2;
+  background-image:linear-gradient(rgba(91,164,205,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(91,164,205,.075) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:linear-gradient(120deg,#000,transparent 88%);
+}
+.inspector-shell>.inspector-header,.inspector-shell>.inspector-metrics,.inspector-shell>.inspector-drawing-state{position:relative;z-index:1}
+.inspector-header{align-items:flex-end!important;padding:14px 5px 20px;border-bottom:1px solid rgba(112,174,204,.19)}
+.inspector-back-link{display:inline-flex;align-items:center;gap:7px;color:#6bd8eb!important;font:750 11px ui-monospace,monospace;letter-spacing:.04em;text-decoration:none!important}
+.inspector-back-link:hover{color:#b7f3ff!important}
+.inspector-title{color:#eff8ff!important;font-size:clamp(30px,3.6vw,46px)!important;line-height:1.05!important;letter-spacing:-.055em!important;font-weight:850!important}
+.inspector-header p{max-width:760px;color:#91a8bf!important;font-size:13px!important;line-height:1.7}
+.inspector-job-id{max-width:min(100%,420px);border-color:rgba(112,174,204,.2)!important;background:linear-gradient(145deg,rgba(11,30,49,.97),rgba(6,19,34,.97))!important;box-shadow:0 12px 30px rgba(0,0,0,.16)}
+.inspector-job-id p:first-child{color:#6d91a9!important;font:800 9px ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase}
+.inspector-job-id p:last-child{margin-top:6px;color:#c9e5f2!important;font-size:10px;overflow-wrap:anywhere}
+.inspector-metrics{position:relative;z-index:1;gap:13px!important}
+.inspector-metric{position:relative;min-height:108px;overflow:hidden;border:1px solid rgba(112,174,204,.19)!important;border-radius:13px!important;background:linear-gradient(145deg,rgba(13,34,54,.97),rgba(7,21,37,.97))!important;box-shadow:0 14px 34px rgba(0,0,0,.16)!important}
+.inspector-metric:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(#49d3e9,rgba(73,211,233,0))}
+.inspector-metric p:first-child{color:#8da9be!important;font:750 10px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
+.inspector-metric p:last-child{margin-top:10px;color:#effaff!important;font:800 28px/1.1 ui-monospace,monospace!important;letter-spacing:-.04em}
+.inspector-drawing-state{border:1px solid rgba(112,174,204,.19)!important;border-radius:15px!important;background:linear-gradient(145deg,rgba(11,30,49,.97),rgba(6,19,34,.97))!important;box-shadow:0 18px 48px rgba(0,0,0,.2)!important}
+.inspector-drawing-state h2{color:#e8f6ff!important}
+.inspector-drawing-state p{color:#91a8bf!important}
+.inspector-state{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.inspector-state>p{color:#91a8bf!important}
+.inspector-state>div{width:min(100%,900px);border:1px solid rgba(112,174,204,.2);border-radius:15px;background:linear-gradient(145deg,rgba(11,30,49,.97),rgba(6,19,34,.97));padding:24px;box-shadow:0 18px 48px rgba(0,0,0,.2)}
+.inspector-state h1{color:#eff8ff!important}
+.inspector-state .text-destructive{color:#ff9cab!important}
+@media(max-width:700px){
+ .inspector-shell{padding:18px 14px!important}
+ .inspector-header{align-items:flex-start!important;flex-direction:column}
+ .inspector-job-id{width:100%;max-width:none}
+ .inspector-metrics{gap:9px!important}
+ .inspector-metric{min-height:92px;padding:13px!important}
+ .inspector-metric p:last-child{font-size:23px!important}
+ .inspector-drawing-state{min-height:420px!important}
+}
