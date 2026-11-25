@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, FolderKanban, Plus, RefreshCw, Trash2, Upload, Layers3, Search, X } from "lucide-react";
+import { ArrowUpRight, FolderKanban, Plus, RefreshCw, Trash2, Layers3, Search } from "lucide-react";
 import { projectsApi } from "@/lib/api";
 import type { Project } from "@/types/project";
 
