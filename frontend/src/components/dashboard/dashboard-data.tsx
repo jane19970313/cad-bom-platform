@@ -188,7 +188,7 @@ function StatusBadge({ status }: { status: string }) {
 
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${styles}`}
+      className={`dashboard-status inline-flex items-center ${["completed", "complete", "success"].includes(normalized) ? "dashboard-status-success" : ["processing", "running", "in_progress"].includes(normalized) ? "dashboard-status-running" : ["failed", "error"].includes(normalized) ? "dashboard-status-danger" : ["queued", "pending"].includes(normalized) ? "dashboard-status-warning" : "dashboard-status-neutral"}`}
     >
       {formatStatus(status)}
     </span>
@@ -207,7 +207,7 @@ function SummaryCard({
   icon: LucideIcon;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
+    <div className="dashboard-metric-card rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-slate-500">{label}</p>
         <div className="rounded-lg bg-slate-100 p-2 text-slate-600">
@@ -707,7 +707,7 @@ export default function DashboardData() {
       </div>
 
       {/* Recent drawings */}
-      <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
+      <div className="dashboard-panel rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-semibold">Recent drawings</h3>
@@ -805,7 +805,7 @@ export default function DashboardData() {
       </div>
 
       {/* Recent processing jobs */}
-      <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
+      <div className="dashboard-panel rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-semibold">Recent processing activity</h3>
@@ -907,7 +907,7 @@ export default function DashboardData() {
       </div>
 
       {/* Live analysis pipeline */}
-      <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
+      <div className="dashboard-panel rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-semibold">Analysis pipeline</h3>
