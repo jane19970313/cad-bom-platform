@@ -22,7 +22,7 @@ export function Step7RelationshipSerialization({
       {relationships.map((relationship: any, index: number) => (
         <details
           key={relationship.id ?? index}
-          className="rounded-md border p-3"
+          className="cad-inspector-record rounded-md border p-3"
         >
           <summary className="cursor-pointer text-sm font-medium">
             {String(relationship.source)}
@@ -34,7 +34,7 @@ export function Step7RelationshipSerialization({
             <button
               type="button"
               onClick={() => onSelectHandle(relationship.source)}
-              className="rounded-md border px-3 py-2 text-xs hover:bg-muted"
+              className="cad-inspector-action rounded-md border px-3 py-2 text-xs hover:bg-muted"
             >
               Select source
             </button>
