@@ -942,3 +942,47 @@ body {
     font-size:8px!important;
   }
 }
+
+
+/* Compact BOM table: reclaim whitespace and give text more usable width. */
+.engineering-dashboard .hud-bom-table{
+  border-spacing:0 2px!important;
+}
+.engineering-dashboard .hud-bom-table th,
+.engineering-dashboard .hud-bom-table td{
+  padding:4px 5px!important;
+}
+.engineering-dashboard .hud-bom-table th:first-child,
+.engineering-dashboard .hud-bom-table td:first-child{
+  width:27%!important;
+}
+.engineering-dashboard .hud-bom-table th:nth-child(2),
+.engineering-dashboard .hud-bom-table td:nth-child(2){
+  width:53%!important;
+}
+.engineering-dashboard .hud-bom-table th:last-child,
+.engineering-dashboard .hud-bom-table td:last-child{
+  width:20%!important;
+}
+.engineering-dashboard .hud-bom-table tbody tr td:first-child{
+  width:27%!important;
+  border-left-width:3px!important;
+}
+.engineering-dashboard .hud-bom-table .bom-mark{
+  display:inline-block!important;
+  padding:2px 4px!important;
+  color:var(--bom-accent)!important;
+  background:var(--bom-tint)!important;
+  border:0!important;
+  border-radius:2px!important;
+  box-shadow:none!important;
+  line-height:1.2!important;
+  font-weight:900!important;
+}
+.engineering-dashboard .hud-bom-table .bom-qty{
+  padding:2px 3px!important;
+  line-height:1.2!important;
+}
+.engineering-dashboard .hud-bom-table tfoot td{
+  padding-top:5px!important;
+}
