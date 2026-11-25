@@ -443,8 +443,8 @@ export default function PipelinePage() {
   const jobStatus = progress?.status ?? "Not connected";
 
   return (
-    <main className="pipeline-workspace min-h-screen">
-      <header className="border-b border-slate-200 bg-white px-5 py-4 md:px-8">
+    <main className="pipeline-workspace pipeline-shell min-h-screen">
+      <header className="pipeline-topbar border-b border-slate-200 bg-white px-5 py-4 md:px-8">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white">
@@ -463,8 +463,8 @@ export default function PipelinePage() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-7xl space-y-6 p-5 md:p-8">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="pipeline-content mx-auto max-w-7xl space-y-6 p-5 md:p-8">
+        <div className="pipeline-heading flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <p className="mb-2 text-xs text-slate-400">
               Engineering / Pipeline Monitor
@@ -501,7 +501,7 @@ export default function PipelinePage() {
         </div>
 
         {/* Job selector */}
-        <section className="rounded-xl border border-slate-200 bg-white p-5">
+        <section className="pipeline-job-selector rounded-xl border border-slate-200 bg-white p-5">
           <div className="mb-4 flex items-center gap-2">
             <FileCode2 size={19} className="text-blue-600" />
 
@@ -616,7 +616,7 @@ export default function PipelinePage() {
         </section>
 
         {/* Summary metrics */}
-        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <section className="pipeline-metrics grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <MetricCard
             icon={Workflow}
             label="Pipeline stages"
@@ -647,8 +647,8 @@ export default function PipelinePage() {
         </section>
 
         {/* Pipeline stages and details */}
-        <section className="grid gap-6 xl:grid-cols-5">
-          <div className="rounded-xl border border-slate-200 bg-white p-5 xl:col-span-3">
+        <section className="pipeline-stage-layout grid gap-6 xl:grid-cols-5">
+          <div className="pipeline-stage-list rounded-xl border border-slate-200 bg-white p-5 xl:col-span-3">
             <div className="mb-5 flex items-center justify-between">
               <div>
                 <h2 className="font-semibold">Processing workflow</h2>
@@ -721,7 +721,7 @@ export default function PipelinePage() {
             </div>
           </div>
 
-          <div className="space-y-5 xl:col-span-2">
+          <div className="pipeline-stage-aside space-y-5 xl:col-span-2">
             <StageDetails
               stage={selected}
               progress={selectedProgress}
@@ -769,7 +769,7 @@ export default function PipelinePage() {
         </section>
 
         {/* Diagnostics */}
-        <section className="rounded-xl border border-slate-200 bg-white p-5">
+        <section className="pipeline-diagnostics rounded-xl border border-slate-200 bg-white p-5">
           <div className="mb-4 flex items-center gap-2">
             <Database size={19} className="text-blue-600" />
             <h2 className="font-semibold">Diagnostics & validation</h2>
@@ -813,7 +813,7 @@ export default function PipelinePage() {
           )}
         </section>
 
-        <footer className="border-t border-slate-200 pt-5 text-xs text-slate-400">
+        <footer className="pipeline-footer border-t border-slate-200 pt-5 text-xs text-slate-400">
           DXF2BOM · Live pipeline monitor · Connected to FastAPI
         </footer>
       </div>
