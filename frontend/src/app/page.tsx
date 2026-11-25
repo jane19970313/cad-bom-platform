@@ -131,7 +131,7 @@ export default function DashboardPage() {
                   <span className="hidden sm:inline text-slate-300">/</span>
                   <span className="font-medium text-slate-600">Workspace</span>
                 </div>
-                <p className="truncate text-sm font-semibold text-slate-800">AI engineering overview</p>
+                <p className="truncate text-sm font-semibold text-slate-100">CAD intelligence</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -151,10 +151,10 @@ export default function DashboardPage() {
                   Engineering intelligence
                 </div>
                 <h1 className="text-2xl font-bold tracking-tight text-slate-50 md:text-[30px]">
-                  Your workspace at a glance
+                  Engineering overview
                 </h1>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-                  AI-assisted drawing understanding, geometry intelligence and structured BOM workflows — monitored in one engineering workspace.
+                  Steel grating geometry · AI classification · Structured BOM
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-2">
@@ -163,20 +163,65 @@ export default function DashboardPage() {
                   className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
                 >
                   <FolderKanban size={16} />
-                  View projects
+                  Projects
                 </Link>
                 <Link
                   href="/drawings"
                   className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_6px_16px_rgba(37,99,235,0.2)] transition hover:bg-blue-700"
                 >
                   <Plus size={17} />
-                  Upload drawing
+                  Import DXF
                   <ArrowUpRight size={14} className="opacity-70" />
                 </Link>
               </div>
             </div>
 
-<section className="ai-intelligence-panel relative overflow-hidden rounded-2xl border border-cyan-400/20 p-5 md:p-6" aria-label="AI CAD intelligence"><div className="ai-scan-line" /><div className="relative z-10 grid gap-5 lg:grid-cols-[1.2fr_.8fr] lg:items-center"><div><div className="mb-3 inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-cyan-200"><Sparkles size={13} className="animate-pulse" /> AI-powered CAD intelligence</div><h2 className="text-xl font-semibold text-white md:text-2xl">From raw geometry to engineering intelligence</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">AI-assisted drawing interpretation works alongside geometric analysis to turn complex DXF structures into traceable engineering data.</p><div className="mt-4 flex flex-wrap gap-2 text-[11px]"><span className="rounded-lg border border-white/10 bg-white/[.04] px-2.5 py-1.5 text-slate-300">Entity recognition</span><span className="rounded-lg border border-white/10 bg-white/[.04] px-2.5 py-1.5 text-slate-300">Geometry intelligence</span><span className="rounded-lg border border-white/10 bg-white/[.04] px-2.5 py-1.5 text-slate-300">BOM structuring</span></div></div><div className="ai-visual relative mx-auto flex min-h-36 w-full max-w-[360px] items-center justify-around"><div className="ai-orbit absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/15" /><div className="ai-orbit ai-orbit-delayed absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-300/10" /><span className="relative z-10 rounded-2xl border border-blue-300/20 bg-blue-400/10 p-4 text-blue-200"><ScanLine size={24}/></span><span className="relative z-10 rounded-2xl border border-cyan-300/30 bg-cyan-300/10 p-5 text-cyan-200 shadow-[0_0_32px_rgba(34,211,238,.16)]"><BrainCircuit size={30} className="ai-brain-pulse"/></span><span className="relative z-10 rounded-2xl border border-violet-300/20 bg-violet-400/10 p-4 text-violet-200"><Boxes size={24}/></span><div className="absolute bottom-0 flex items-center gap-2 text-[10px] text-cyan-100/70"><Cpu size={12}/> AI analysis · Geometry · BOM</div></div></div><div className="relative z-10 mt-5 grid gap-2 border-t border-white/[.08] pt-4 sm:grid-cols-3"><div className="flex items-center gap-2 text-xs text-slate-300"><ShieldCheck size={14} className="text-emerald-300"/> Traceable engineering data</div><div className="flex items-center gap-2 text-xs text-slate-300"><ScanLine size={14} className="text-cyan-300"/> Drawing-aware analysis</div><div className="flex items-center gap-2 text-xs text-slate-300"><Sparkles size={14} className="text-violet-300"/> AI-assisted classification</div></div></section>
+<section className="grating-intelligence-panel relative overflow-hidden rounded-2xl border p-5 md:p-6" aria-label="Steel grating drawing to bill of materials">
+              <div className="grating-panel-glow" />
+              <div className="relative z-10 grid gap-6 xl:grid-cols-[.78fr_1.22fr] xl:items-center">
+                <div>
+                  <div className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.2em] text-cyan-300">
+                    <span className="h-px w-6 bg-cyan-300" /> CAD intelligence
+                  </div>
+                  <h2 className="text-xl font-semibold tracking-tight text-white md:text-2xl">Steel grating · Drawing to BOM</h2>
+                  <p className="mt-2 max-w-md text-sm leading-6 text-slate-400">Geometric recognition, member extraction and structured quantity takeoff.</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <span className="technical-chip"><ScanLine size={12}/> DXF geometry</span>
+                    <span className="technical-chip"><BrainCircuit size={12}/> AI classification</span>
+                    <span className="technical-chip"><Boxes size={12}/> BOM structure</span>
+                  </div>
+                </div>
+                <div className="grating-conversion-visual">
+                  <div className="grating-drawing">
+                    <div className="visual-label"><span>01 / GEOMETRY</span><span>DXF · TOP VIEW</span></div>
+                    <svg viewBox="0 0 520 230" role="img" aria-label="Steel grating panel with bearing bars and cross bars">
+                      <defs>
+                        <linearGradient id="gratingSteel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#8edcf0" stopOpacity=".9"/><stop offset="1" stopColor="#3d86b7" stopOpacity=".42"/></linearGradient>
+                        <pattern id="gratingGrid" width="28" height="22" patternUnits="userSpaceOnUse"><path d="M0 0V22 M0 0H28" stroke="#7dd3fc" strokeOpacity=".13" strokeWidth="1"/></pattern>
+                      </defs>
+                      <rect x="26" y="20" width="468" height="188" rx="5" fill="url(#gratingGrid)" stroke="#6abbd8" strokeOpacity=".42"/>
+                      {Array.from({length:13},(_,i)=><line key={"b"+i} x1={42+i*36} y1="31" x2={42+i*36} y2="197" stroke="url(#gratingSteel)" strokeWidth="5"/>)}
+                      {Array.from({length:8},(_,i)=><line key={"c"+i} x1="34" y1={42+i*22} x2="486" y2={42+i*22} stroke="#8be2ef" strokeOpacity=".58" strokeWidth="2.2"/>)}
+                      <path d="M26 14V7H494V14 M18 20H11V208H18 M502 20H509V208H502" fill="none" stroke="#67e8f9" strokeOpacity=".65"/>
+                      <path d="M42 218H478 M42 214V222 M478 214V222" stroke="#8baecb" strokeOpacity=".65"/>
+                      <text x="260" y="229" fill="#9ab8d1" fontSize="9" textAnchor="middle">BEARING BAR PITCH / CROSS BAR SPACING</text>
+                      <circle cx="186" cy="86" r="17" fill="none" stroke="#fbbf24" strokeWidth="1.5" strokeDasharray="3 3"/>
+                      <path d="M201 75L235 48H280" stroke="#fbbf24" strokeWidth="1" fill="none"/>
+                      <text x="285" y="51" fill="#fcd34d" fontSize="10">BAR INTERSECTION</text>
+                    </svg>
+                  </div>
+                  <div className="conversion-link"><span/><ArrowUpRight size={15}/><span/></div>
+                  <div className="grating-bom">
+                    <div className="visual-label"><span>02 / BOM</span><span>STRUCTURED OUTPUT</span></div>
+                    <div className="bom-mini-head"><span>MEMBER</span><span>SPEC.</span><span>QTY</span></div>
+                    <div className="bom-mini-row"><span><i className="bom-dot cyan"/>Bearing bar</span><span>FB 30×3</span><b>24</b></div>
+                    <div className="bom-mini-row"><span><i className="bom-dot blue"/>Cross bar</span><span>Ø 6</span><b>18</b></div>
+                    <div className="bom-mini-row"><span><i className="bom-dot violet"/>End band</span><span>FB 30×5</span><b>2</b></div>
+                    <div className="bom-mini-foot"><CheckCircle2 size={12}/> Geometry-linked structure</div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
                         <div className="workflow-banner overflow-hidden rounded-2xl border border-[#1c3557] bg-[#14243a] shadow-[0_12px_32px_rgba(15,35,62,0.10)]">
               <div className="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-6">
