@@ -343,8 +343,8 @@ body {
     linear-gradient(90deg,rgba(102,155,211,.065) 1px,transparent 1px),
     radial-gradient(circle at 72% 22%,rgba(34,211,238,.10),transparent 25%),
     radial-gradient(circle at 25% 75%,rgba(59,130,246,.07),transparent 30%),
-    url("https://i.postimg.cc/McDTL12X/steel-h-beam.png"),
-    url("https://i.postimg.cc/PL4x71s1/steel-grating-platform.png");
+    url("/images/steel-grating-panel.svg"),
+    url("/images/steel-grating-panel.svg");
   background-repeat:repeat,repeat,no-repeat,no-repeat,no-repeat,no-repeat;
   background-size:48px 48px,48px 48px,100% 100%,100% 100%,min(42vw,620px) auto,min(36vw,520px) auto;
   background-position:0 0,0 0,0 0,0 0,94% 15%,2% 82%;
@@ -384,7 +384,7 @@ body {
 }
 .hud-background-structure{
   position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.095;
-  background-image:url("https://i.postimg.cc/McDTL12X/steel-h-beam.png"),url("https://i.postimg.cc/PL4x71s1/steel-grating-platform.png");
+  background-image:url("/images/steel-grating-panel.svg"),url("/images/steel-grating-panel.svg");
   background-repeat:no-repeat,no-repeat;
   background-size:min(34vw,480px) auto,min(30vw,420px) auto;
   background-position:100% 4%,0 100%;
