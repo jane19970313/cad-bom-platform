@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   ArrowUpRight,
   Boxes,
-  CheckCircle2,
   FileCode2,
   FolderKanban,
   LayoutDashboard,
