@@ -1525,3 +1525,26 @@ main.workspace-page .drawing-dropzone{color:#dff3fc!important;background:radial-
 .cad-inspector-workspace .cad-dxf-viewer-root svg line,
 .cad-inspector-workspace .cad-dxf-viewer-root svg circle{stroke:currentColor}
 .cad-inspector-workspace .cad-inspector-canvas .bg-white{background:#071827!important}
+
+
+
+/* Inspector primary navigation — visible back-to-pipeline control */
+.inspector-shell .inspector-header .inspector-back-link,
+.inspector-shell.inspector-state .inspector-back-link{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;
+  min-height:38px!important;width:max-content!important;padding:0 14px!important;margin:0 0 13px!important;
+  border:1px solid rgba(80,205,229,.58)!important;border-radius:8px!important;
+  background:linear-gradient(135deg,rgba(17,91,119,.96),rgba(9,48,72,.98))!important;
+  color:#e9fbff!important;opacity:1!important;visibility:visible!important;
+  font:800 11px/1 ui-monospace,SFMono-Regular,monospace!important;letter-spacing:.045em!important;
+  text-decoration:none!important;text-shadow:0 1px 2px rgba(0,0,0,.35)!important;
+  box-shadow:0 4px 14px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.09),0 0 14px rgba(45,181,211,.12)!important;
+  position:relative!important;z-index:5!important;
+}
+.inspector-shell .inspector-header .inspector-back-link:hover,
+.inspector-shell.inspector-state .inspector-back-link:hover{
+  border-color:#8aeaff!important;background:linear-gradient(135deg,#167b9a,#10516f)!important;
+  color:#fff!important;transform:translateY(-1px);
+}
+.inspector-shell .inspector-header .inspector-back-link span:first-child,
+.inspector-shell.inspector-state .inspector-back-link span:first-child{font-size:17px!important;line-height:1!important;color:#8cecff!important}
