@@ -144,7 +144,7 @@ export default function InspectorClient({ jobId }: InspectorClientProps) {
 
   if (loading) {
     return (
-      <main className="mx-auto max-w-[1600px] p-6">
+      <main className="inspector-shell inspector-state min-h-screen p-6">
         <p className="text-sm text-muted-foreground">
           Loading job and analysis data…
         </p>
@@ -154,10 +154,10 @@ export default function InspectorClient({ jobId }: InspectorClientProps) {
 
   if (error) {
     return (
-      <main className="mx-auto max-w-[1600px] space-y-4 p-6">
+      <main className="inspector-shell inspector-state min-h-screen space-y-4 p-6">
         <Link
           href="/pipeline"
-          className="text-sm text-primary hover:underline"
+          className="inspector-back-link text-sm text-primary hover:underline"
         >
           ← Back to pipeline
         </Link>
@@ -180,10 +180,10 @@ export default function InspectorClient({ jobId }: InspectorClientProps) {
   const summary = result.summary ?? {};
 
   return (
-    <main className="w-full space-y-5 p-3 md:p-5">
+    <main className="inspector-shell min-h-screen w-full space-y-5 p-3 md:p-5">
 
       {/* Page header */}
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="inspector-header flex flex-wrap items-start justify-between gap-4">
         <div>
           <Link
             href="/pipeline"
@@ -192,7 +192,7 @@ export default function InspectorClient({ jobId }: InspectorClientProps) {
             ← Back to pipeline
           </Link>
 
-          <h1 className="mt-3 text-2xl font-semibold tracking-tight">
+          <h1 className="inspector-title mt-3 text-2xl font-semibold tracking-tight">
             DXF Engineering Inspector
           </h1>
 
@@ -202,7 +202,7 @@ export default function InspectorClient({ jobId }: InspectorClientProps) {
           </p>
         </div>
 
-        <div className="rounded-lg border px-3 py-2">
+        <div className="inspector-job-id rounded-lg border px-3 py-2">
           <p className="text-xs text-muted-foreground">
             Processing job
           </p>
@@ -214,7 +214,7 @@ export default function InspectorClient({ jobId }: InspectorClientProps) {
       </div>
 
       {/* Analysis summary */}
-      <section className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <section className="inspector-metrics grid grid-cols-2 gap-3 md:grid-cols-4">
         <Metric
           label="Raw entities"
           value={summary.raw_entity_count}
@@ -249,7 +249,7 @@ export default function InspectorClient({ jobId }: InspectorClientProps) {
           analysis={result}
         />
       ) : (
-        <section className="flex min-h-[650px] items-center justify-center rounded-xl border bg-background p-6">
+        <section className="inspector-drawing-state flex min-h-[650px] items-center justify-center rounded-xl border bg-background p-6">
           <div className="max-w-md text-center">
 
             {dxfLoading ? (
@@ -293,7 +293,7 @@ function Metric({
   value: unknown;
 }) {
   return (
-    <div className="rounded-xl border bg-background p-4">
+    <div className="inspector-metric rounded-xl border bg-background p-4">
       <p className="text-xs text-muted-foreground">
         {label}
       </p>
