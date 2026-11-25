@@ -141,3 +141,53 @@ body {
 * {
   box-sizing: border-box;
 }
+/* CAD2BOM engineering dashboard: cohesive dark workspace surfaces */
+.engineering-dashboard {
+  background:
+    radial-gradient(ellipse at 78% 0%, rgba(37, 99, 235, 0.13), transparent 34%),
+    radial-gradient(ellipse at 38% 55%, rgba(14, 116, 144, 0.055), transparent 42%),
+    #0b1220;
+  color: #e7eefb;
+}
+.engineering-dashboard header {
+  background-color: rgba(13, 23, 39, 0.92) !important;
+  border-color: rgba(148, 163, 184, 0.13) !important;
+}
+.engineering-dashboard .bg-white { background-color: #121e30 !important; }
+.engineering-dashboard .bg-slate-50 { background-color: #0f1a2b !important; }
+.engineering-dashboard .bg-slate-100 { background-color: #1a2940 !important; }
+.engineering-dashboard .border-slate-200,
+.engineering-dashboard .border-slate-200\\/80,
+.engineering-dashboard .border-slate-100,
+.engineering-dashboard .border-slate-50 {
+  border-color: rgba(148, 163, 184, 0.16) !important;
+}
+.engineering-dashboard .text-slate-950,
+.engineering-dashboard .text-slate-900,
+.engineering-dashboard .text-slate-800 { color: #edf4ff !important; }
+.engineering-dashboard .text-slate-700,
+.engineering-dashboard .text-slate-600 { color: #c1cde0 !important; }
+.engineering-dashboard .text-slate-500 { color: #91a2bb !important; }
+.engineering-dashboard .text-slate-400 { color: #778aa6 !important; }
+.engineering-dashboard .shadow-sm {
+  --tw-shadow-color: rgba(0, 0, 0, 0.24) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16) !important;
+}
+.engineering-dashboard .grid > div.rounded-2xl {
+  background: linear-gradient(145deg, #17263c 0%, #111d2f 100%) !important;
+  border-color: rgba(125, 155, 196, 0.2) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16) !important;
+}
+.engineering-dashboard .grid > div.rounded-2xl:nth-child(1) { border-top: 2px solid #6388ff !important; }
+.engineering-dashboard .grid > div.rounded-2xl:nth-child(2) { border-top: 2px solid #35b9d4 !important; }
+.engineering-dashboard .grid > div.rounded-2xl:nth-child(3) { border-top: 2px solid #8b7bff !important; }
+.engineering-dashboard .grid > div.rounded-2xl:nth-child(4) { border-top: 2px solid #71839d !important; }
+.engineering-dashboard .space-y-6 > div.rounded-2xl {
+  border-color: rgba(125, 155, 196, 0.18) !important;
+  background: linear-gradient(145deg, rgba(20, 33, 53, 0.98), rgba(16, 28, 46, 0.98)) !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.15) !important;
+}
+.engineering-dashboard table thead tr { border-color: rgba(148, 163, 184, 0.2) !important; }
+.engineering-dashboard table tbody tr { border-color: rgba(148, 163, 184, 0.1) !important; }
+.engineering-dashboard .border-dashed { border-color: rgba(148, 163, 184, 0.24) !important; }
+@media (max-width: 1023px) { .engineering-dashboard { background: #0b1220; } }
