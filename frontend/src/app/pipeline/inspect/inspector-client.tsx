@@ -187,9 +187,10 @@ export default function InspectorClient({ jobId }: InspectorClientProps) {
         <div>
           <Link
             href="/pipeline"
-            className="text-sm text-primary hover:underline"
+            className="inspector-back-link"
           >
-            ← Back to pipeline
+            <span aria-hidden="true">←</span>
+            <span>Back to pipeline</span>
           </Link>
 
           <h1 className="inspector-title mt-3 text-2xl font-semibold tracking-tight">
