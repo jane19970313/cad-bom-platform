@@ -719,6 +719,36 @@ export default function DashboardData() {
         ))}
       </section>
 
+      {/* Project execution overview */}
+      <section className="dashboard-panel p-5 md:p-6">
+        <div className="mb-5 flex items-end justify-between gap-3"><div><p className="mb-1 text-[10px] font-bold uppercase tracking-[.16em] text-cyan-300">Project operations</p><h3 className="font-semibold text-slate-100">Project progress</h3><p className="mt-1 text-xs text-slate-400">Calculated from completed processing jobs reported for each project.</p></div><Link href="/projects" className="text-xs font-semibold text-cyan-300">All projects ↗</Link></div>
+        <div className="grid gap-3 xl:grid-cols-2">
+          {data.projects.map((project) => {
+            const projectJobs = data.jobs.filter((job) => job.project_id === project.id);
+            const done = projectJobs.filter((job) => ["completed", "complete", "success"].includes(normalizeStatus(job.status))).length;
+            const activeJobs = projectJobs.filter((job) => isActiveJob(job.status)).length;
+            const failedJobs = projectJobs.filter((job) => ["failed", "error"].includes(normalizeStatus(job.status))).length;
+            const percent = projectJobs.length ? Math.round(done / projectJobs.length * 100) : 0;
+            const drawingCount = data.allDrawings.filter((drawing) => drawing.project_id === project.id).length;
+            return <Link key={project.id} href={'/drawings?projectId=' + encodeURIComponent(project.id)} className="dashboard-project-card group rounded-xl border border-white/[.08] bg-[#0d192a]/70 p-4 transition hover:border-cyan-300/30 hover:bg-[#12233a]">
+              <div className="flex items-start justify-between"><div><p className="text-sm font-semibold text-slate-100 group-hover:text-cyan-200">{project.name}</p><p className="mt-1 text-[11px] text-slate-500">{drawingCount} drawings · {projectJobs.length} jobs</p></div><FolderKanban size={17} className="text-cyan-200"/></div>
+              <div className="mt-4 flex justify-between text-[11px]"><span className="text-slate-400">{projectJobs.length ? done + ' of ' + projectJobs.length + ' jobs completed' : 'Awaiting first processing run'}</span><span className="font-mono text-slate-200">{projectJobs.length ? percent + '%' : '—'}</span></div>
+              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[.07]"><div className="h-full rounded-full bg-gradient-to-r from-blue-400 to-cyan-300" style={{width: percent + '%'}}/></div>
+              <div className="mt-3 flex gap-3 text-[10px]"><span className="text-emerald-300">{done} completed</span><span className="text-blue-300">{activeJobs} active</span><span className={failedJobs ? 'text-rose-300' : 'text-slate-500'}>{failedJobs} failed</span></div>
+            </Link>;
+          })}
+        </div>
+      </section>
+
+      {/* Failed job monitoring */}
+      <section className="dashboard-panel p-5 md:p-6">
+        <div className="mb-4 flex items-center justify-between"><div><p className="mb-1 text-[10px] font-bold uppercase tracking-[.16em] text-rose-300">Attention required</p><h3 className="font-semibold text-slate-100">Failed job monitoring</h3><p className="mt-1 text-xs text-slate-400">Recent failed processing attempts requiring review.</p></div><Link href="/pipeline" className="text-xs font-semibold text-cyan-300">Open job monitor ↗</Link></div>
+        {data.jobs.filter((job) => ['failed', 'error'].includes(normalizeStatus(job.status))).length ? <div className="space-y-2">{data.jobs.filter((job) => ['failed', 'error'].includes(normalizeStatus(job.status))).slice(0,4).map((job) => <Link key={job.id} href={'/pipeline?jobId=' + encodeURIComponent(job.id)} className="flex flex-col gap-1 rounded-xl border border-rose-400/15 bg-rose-400/[.045] p-3 transition hover:border-rose-300/35 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-sm font-medium text-slate-100">{job.drawing_name}</p><p className="mt-1 text-[11px] text-slate-400">{job.project_name} · {formatDate(job.created_at)}</p><p className="mt-1 text-xs text-rose-200/80">{job.error_message || 'Processing failed. Open the job monitor for diagnostics.'}</p></div><span className="text-xs font-semibold text-rose-300">Inspect job ↗</span></Link>)}</div> : <div className="flex items-center gap-3 rounded-xl border border-emerald-400/15 bg-emerald-400/[.045] p-4"><CheckCircle2 size={19} className="text-emerald-300"/><div><p className="text-sm font-medium text-emerald-200">No failed jobs reported</p><p className="mt-1 text-xs text-slate-400">No failed processing attempts in the loaded history.</p></div></div>}
+      </section>
+
+      {/* BOM generation visibility */}
+      <section className="dashboard-panel flex flex-col gap-3 p-5 md:flex-row md:items-center md:justify-between"><div><p className="mb-1 text-[10px] font-bold uppercase tracking-[.16em] text-violet-300">BOM intelligence</p><h3 className="font-semibold text-slate-100">BOM generation overview</h3><p className="mt-1 text-xs text-slate-400">Aggregate BOM item counts are not exposed by the current dashboard API. Continue through a project to inspect its drawing workflow.</p></div><Link href="/projects" className="text-xs font-semibold text-violet-200">Explore projects ↗</Link></section>
+
       {/* Recent drawings */}
       <div className="dashboard-panel rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/40">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
