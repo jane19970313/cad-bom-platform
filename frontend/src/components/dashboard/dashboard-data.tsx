@@ -209,6 +209,7 @@ export default function DashboardData() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [requiresSignIn, setRequiresSignIn] = useState(false);
+  const [authRevision, setAuthRevision] = useState(0);
 
   const [drawingsRefreshing, setDrawingsRefreshing] = useState(false);
   const [jobsRefreshing, setJobsRefreshing] = useState(false);
@@ -228,7 +229,17 @@ export default function DashboardData() {
   const [pipelineRetryKey, setPipelineRetryKey] = useState(0);
 
   useEffect(() => {
+    const handleAuthChanged = () => setAuthRevision((revision) => revision + 1);
+    window.addEventListener("dxf2bom:auth-changed", handleAuthChanged);
+    return () => window.removeEventListener("dxf2bom:auth-changed", handleAuthChanged);
+  }, []);
+
+  useEffect(() => {
     let active = true;
+    setLoading(true);
+    setData(null);
+    setError(null);
+    setRequiresSignIn(false);
 
     async function loadDashboardData() {
       try {
@@ -353,7 +364,7 @@ export default function DashboardData() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [authRevision]);
 
   async function refreshDrawings() {
     if (!data || drawingsRefreshing) return;
