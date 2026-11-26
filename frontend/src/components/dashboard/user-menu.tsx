@@ -42,6 +42,7 @@ export default function UserMenu() {
   useEffect(() => {
     let active = true;
     async function initialize() {
+      setLoading(true);
       try {
         const currentUser = await authApi.getCurrentUser<UserResponse>();
         if (active) {
@@ -59,7 +60,11 @@ export default function UserMenu() {
       }
     }
     initialize();
-    return () => { active = false; };
+    window.addEventListener("dxf2bom:auth-changed", initialize);
+    return () => {
+      active = false;
+      window.removeEventListener("dxf2bom:auth-changed", initialize);
+    };
   }, []);
 
   async function handleLogout() {
