@@ -40,9 +40,11 @@ export default function RegisterPage() {
         password,
       });
 
-      setSuccess("Account created successfully! Redirecting to login...");
-
-      router.push("/login");
+      setSuccess("Account created. Signing you in...");
+      await authApi.login(email.trim().toLowerCase(), password);
+      await authApi.getCurrentUser<unknown>();
+      router.replace("/");
+      router.refresh();
     } catch (err) {
       if (err instanceof ApiError) {
         setError(err.message);
