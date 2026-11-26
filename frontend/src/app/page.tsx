@@ -64,7 +64,7 @@ function SidebarLink({
 
 export default function DashboardPage() {
   return (
-    <main className="engineering-dashboard min-h-screen bg-[#0b1220] text-slate-100">
+    <main className="engineering-dashboard overview-page min-h-screen bg-[#0b1220] text-slate-100">
       <div className="flex min-h-screen">
         <aside className="hidden w-[264px] shrink-0 flex-col border-r border-white/[0.06] bg-[#080f1d] px-4 py-6 text-white lg:flex">
           <Link href="/" className="mb-10 flex items-center gap-3 px-2">
