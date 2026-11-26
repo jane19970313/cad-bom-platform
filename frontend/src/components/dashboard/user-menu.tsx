@@ -9,7 +9,6 @@ import {
   LogIn,
   LogOut,
   UserPlus,
-  UserRound,
 } from "lucide-react";
 
 import { authApi } from "@/lib/api";
