@@ -13,9 +13,9 @@ import {
   Clock3,
   LoaderCircle,
   Sparkles,
+  UserRound,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import Link from "next/link";
 import { ApiError } from "@/lib/api/client";
 
 import {
