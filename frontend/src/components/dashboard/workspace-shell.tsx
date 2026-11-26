@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -22,7 +23,7 @@ function isWorkspacePath(pathname: string) {
   );
 }
 
-export default function WorkspaceShell({ children }: { children: React.ReactNode }) {
+export default function WorkspaceShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
