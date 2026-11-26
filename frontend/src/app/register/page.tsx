@@ -57,16 +57,16 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12">
-      <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+    <main className="flex min-h-screen items-center justify-center bg-[#080f1d] px-4 py-12 text-slate-100">
+      <div className="w-full max-w-md rounded-xl border border-cyan-300/15 bg-[#0d192a] p-8 shadow-[0_24px_80px_rgba(0,0,0,.38)]">
 
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-50">
             DXF to BOM Platform
           </h1>
 
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="mt-2 text-sm text-slate-400">
             Create an account to access your engineering workspace.
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function RegisterPage() {
           <div>
             <label
               htmlFor="email"
-              className="mb-2 block text-sm font-medium text-slate-700"
+              className="mb-2 block text-sm font-medium text-slate-300"
             >
               Email address
             </label>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="you@example.com"
-              className="w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className="w-full rounded-md border border-white/10 bg-[#081321] px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-600 outline-none focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/10"
             />
           </div>
 
@@ -99,7 +99,7 @@ export default function RegisterPage() {
           <div>
             <label
               htmlFor="password"
-              className="mb-2 block text-sm font-medium text-slate-700"
+              className="mb-2 block text-sm font-medium text-slate-300"
             >
               Password
             </label>
@@ -114,7 +114,7 @@ export default function RegisterPage() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="Create a password"
-              className="w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className="w-full rounded-md border border-white/10 bg-[#081321] px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-600 outline-none focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/10"
             />
 
             <p className="mt-1 text-xs text-slate-400">
@@ -126,7 +126,7 @@ export default function RegisterPage() {
           <div>
             <label
               htmlFor="confirmPassword"
-              className="mb-2 block text-sm font-medium text-slate-700"
+              className="mb-2 block text-sm font-medium text-slate-300"
             >
               Confirm password
             </label>
@@ -139,7 +139,7 @@ export default function RegisterPage() {
               value={confirmPassword}
               onChange={(event) => setConfirmPassword(event.target.value)}
               placeholder="Confirm your password"
-              className="w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className="w-full rounded-md border border-white/10 bg-[#081321] px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-600 outline-none focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/10"
             />
           </div>
 
@@ -147,7 +147,7 @@ export default function RegisterPage() {
           {error && (
             <div
               role="alert"
-              className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+              className="rounded-md border border-rose-300/20 bg-rose-300/10 p-3 text-sm text-rose-200"
             >
               {error}
             </div>
@@ -157,7 +157,7 @@ export default function RegisterPage() {
           {success && (
             <div
               role="status"
-              className="rounded-md border border-green-200 bg-green-50 p-3 text-sm text-green-700"
+              className="rounded-md border border-emerald-300/20 bg-emerald-300/10 p-3 text-sm text-emerald-200"
             >
               {success}
             </div>
@@ -167,18 +167,18 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-md bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-md bg-gradient-to-r from-blue-500 to-cyan-400 px-4 py-2.5 text-sm font-semibold text-[#06111f] transition hover:from-blue-400 hover:to-cyan-300 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? "Creating account..." : "Create account"}
           </button>
         </form>
 
         {/* Login Link */}
-        <p className="mt-6 text-center text-sm text-slate-500">
+        <p className="mt-6 text-center text-sm text-slate-400">
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-semibold text-slate-900 hover:text-slate-600"
+            className="font-semibold text-slate-50 hover:text-slate-600"
           >
             Sign in
           </Link>
