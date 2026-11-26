@@ -4,6 +4,7 @@ import "./globals.css";
 import SessionExpiryHandler from "@/components/auth/session-expiry-handler";
 import { LocaleProvider } from "@/components/i18n/locale-provider";
 import LanguageSwitcher from "@/components/i18n/language-switcher";
+import WorkspaceShell from "@/components/dashboard/workspace-shell";
 
 export const metadata: Metadata = {
   title: {
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="fixed right-4 top-20 z-[100]" data-i18n-ignore="true">
             <LanguageSwitcher />
           </div>
-          {children}
+          <WorkspaceShell>{children}</WorkspaceShell>
         </LocaleProvider>
       </body>
     </html>
