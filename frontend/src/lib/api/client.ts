@@ -6,7 +6,7 @@ import {
 
 function resolveApiBaseUrl(): string {
   const configured = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
-  if (configured) return configured.replace(/\\/+$/, "");
+  if (configured) return configured.replace(/\/+$/, "");
 
   // For LAN development, use the hostname through which the visitor opened
   // the frontend. "localhost" would incorrectly point at the visitor's PC.
