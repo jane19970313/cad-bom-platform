@@ -87,6 +87,9 @@ export async function login(
   }
 
   setAccessToken(token.access_token);
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event("dxf2bom:auth-changed"));
+  }
 
   return token;
 }
@@ -103,6 +106,9 @@ export async function logout(): Promise<void> {
     });
   } finally {
     clearAccessToken();
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("dxf2bom:auth-changed"));
+    }
   }
 }
 
