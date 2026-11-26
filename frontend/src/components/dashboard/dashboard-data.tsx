@@ -15,6 +15,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { ApiError } from "@/lib/api/client";
 
 import {
   projectsApi,
@@ -206,6 +208,7 @@ export default function DashboardData() {
   const [data, setData] = useState<DashboardDataState | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [requiresSignIn, setRequiresSignIn] = useState(false);
 
   const [drawingsRefreshing, setDrawingsRefreshing] = useState(false);
   const [jobsRefreshing, setJobsRefreshing] = useState(false);
@@ -327,11 +330,16 @@ export default function DashboardData() {
         }
       } catch (err) {
         if (active) {
-          setError(
-            err instanceof Error
-              ? err.message
-              : "Unable to load dashboard data."
-          );
+          if (err instanceof ApiError && err.status === 401) {
+            setRequiresSignIn(true);
+            setError(null);
+          } else {
+            setError(
+              err instanceof Error
+                ? err.message
+                : "Unable to load dashboard data."
+            );
+          }
         }
       } finally {
         if (active) {
@@ -591,6 +599,25 @@ export default function DashboardData() {
         </div>
         <div className="h-64 animate-pulse rounded-xl border bg-white" />
       </div>
+    );
+  }
+
+  if (requiresSignIn) {
+    return (
+      <section className="rounded-2xl border border-cyan-300/20 bg-[#0d1b2d]/90 p-7 shadow-[0_18px_60px_rgba(0,0,0,.22)] md:p-10">
+        <div className="mx-auto max-w-xl text-center">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-cyan-200">
+            <UserRound size={25} />
+          </div>
+          <p className="text-[10px] font-bold uppercase tracking-[.22em] text-cyan-300">CAD2BOM WORKSPACE</p>
+          <h2 className="mt-3 text-2xl font-bold text-white">Welcome to your engineering workspace</h2>
+          <p className="mt-3 text-sm leading-6 text-slate-400">Sign in to open your projects and drawings, or create a free account to start converting CAD drawings into structured BOM data.</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link href="/login" className="rounded-lg border border-white/15 bg-white/[.06] px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/10">Sign in</Link>
+            <Link href="/register" className="rounded-lg border border-cyan-300/30 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-300/20">Create account</Link>
+          </div>
+        </div>
+      </section>
     );
   }
 
