@@ -4,10 +4,20 @@ import {
   setAccessToken,
 } from "../auth";
 
-export const API_BASE_URL = (
-  process.env.NEXT_PUBLIC_API_BASE_URL ??
-  "http://localhost:8000/api/v1"
-).replace(/\/+$/, "");
+function resolveApiBaseUrl(): string {
+  const configured = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
+  if (configured) return configured.replace(/\\/+$/, "");
+
+  // For LAN development, use the hostname through which the visitor opened
+  // the frontend. "localhost" would incorrectly point at the visitor's PC.
+  if (typeof window !== "undefined") {
+    return `${window.location.protocol}//${window.location.hostname}:8000/api/v1`;
+  }
+
+  return "http://localhost:8000/api/v1";
+}
+
+export const API_BASE_URL = resolveApiBaseUrl();
 
 export class ApiError extends Error {
   status: number;
@@ -168,7 +178,7 @@ export async function apiRequest<T>(
     const refreshResult = await refreshAccessToken();
 
     if (refreshResult === "expired") {
-      notifySessionExpired();
+      if (token) notifySessionExpired();
 
       throw new ApiError(
         "Your session has expired. Please sign in again.",
