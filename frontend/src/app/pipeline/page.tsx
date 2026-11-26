@@ -444,24 +444,7 @@ export default function PipelinePage() {
 
   return (
     <main className="pipeline-workspace pipeline-shell min-h-screen">
-      <header className="pipeline-topbar border-b border-slate-200 bg-white px-5 py-4 md:px-8">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white">
-              <Workflow size={21} />
-            </div>
 
-            <div>
-              <p className="text-sm font-bold">DXF2BOM</p>
-              <p className="text-xs text-slate-500">
-                Live Pipeline Monitor
-              </p>
-            </div>
-          </div>
-
-          <Link href="/" className="pipeline-back-link">Back to dashboard <ArrowRight size={14}/></Link>
-        </div>
-      </header>
 
       <div className="pipeline-content mx-auto max-w-7xl space-y-6 p-5 md:p-8">
         <div className="pipeline-heading flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
@@ -813,9 +796,7 @@ export default function PipelinePage() {
           )}
         </section>
 
-        <footer className="pipeline-footer border-t border-slate-200 pt-5 text-xs text-slate-400">
-          DXF2BOM · Live pipeline monitor · Connected to FastAPI
-        </footer>
+
       </div>
     </main>
   );
