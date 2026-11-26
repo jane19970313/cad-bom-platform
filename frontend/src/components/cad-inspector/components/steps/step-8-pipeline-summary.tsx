@@ -2,7 +2,7 @@
 
 import type { StageProps } from "../../types/cad-viewer.types";
 import { JsonInspector } from "../shared/json-inspector";
-import * as XLSX from "xlsx";
+import {export2Xlsx} from "../../utils/export-xlsx";
 import { Download } from "lucide-react";
 
 export function Step8PipelineSummary({
@@ -11,23 +11,7 @@ export function Step8PipelineSummary({
   const bomElements = analysis.bom_elements ?? [];
 
   const handleExportExcel = () => {
-    if (bomElements.length === 0) return;
-
-    const worksheet = XLSX.utils.json_to_sheet(
-      bomElements.map((element) => ({
-        ...element,
-      }))
-    );
-
-    const workbook = XLSX.utils.book_new();
-
-    XLSX.utils.book_append_sheet(
-      workbook,
-      worksheet,
-      "Bill of Materials"
-    );
-
-    XLSX.writeFile(workbook, "bill-of-materials.xlsx");
+    export2Xlsx(bomElements);
   };
 
   return (

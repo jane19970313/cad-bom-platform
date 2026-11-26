@@ -20,7 +20,7 @@ from app.services.dxf_engine.models.geometry import (
 
 EPSILON = 1e-6
 CLOSURE_TOLERANCE = 1e-3
-EDGE_ANGLE_TOLERANCE = 300.0
+EDGE_TOLERANCE = 400.0
 
 _HYPOT = math.hypot
 _SQRT = math.sqrt
@@ -173,7 +173,7 @@ def calculate_line_measurements(
     coordinates = geometry.coords
 
     get_length = get_measured_edge_length
-    edge_tolerance = EDGE_ANGLE_TOLERANCE
+    edge_tolerance = EDGE_TOLERANCE
 
     total_length = 0.0
 
@@ -213,7 +213,7 @@ def calculate_polygon_measurements(
 
     get_edge_length = get_measured_edge_length
     get_point_distance = get_distance
-    edge_tolerance = EDGE_ANGLE_TOLERANCE
+    edge_tolerance = EDGE_TOLERANCE
 
     use_scale = scale > EPSILON
 

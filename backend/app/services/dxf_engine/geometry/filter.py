@@ -61,7 +61,7 @@ def entity_to_geometry(entity, flattening_distance=1.0):
 
 def filter_entities(
     entities,
-    eps: float = 500,
+    eps: float = 1000,
     min_samples: int = 3,
     min_cluster_size: int = 50,
     flattening_distance: float = 1.0,
