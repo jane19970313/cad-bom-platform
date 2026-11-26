@@ -133,7 +133,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, "Microsoft YaHei", "Noto Sans SC", sans-serif;
   background: var(--background);
   color: var(--foreground);
 }
@@ -454,7 +454,7 @@ body {
 .hud-ai-ring-outer{inset:-13px;border-style:dashed;animation:hud-ring-spin 18s linear infinite}
 .hud-ai-ring-inner{inset:10px;border-color:rgba(118,237,255,.42);animation:hud-ring-spin 11s linear infinite reverse}
 .hud-ai-core-center{position:absolute;inset:22px;display:grid;place-items:center;border:1px solid rgba(124,241,255,.7);border-radius:50%;color:#b8f8ff;background:radial-gradient(circle,rgba(0,192,230,.3),rgba(6,32,52,.95) 70%);box-shadow:0 0 32px rgba(0,205,235,.32),inset 0 0 20px rgba(0,205,235,.2);animation:hud-core-beat 2.6s ease-in-out infinite}
-.hud-ai-core-caption{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%);color:#8ceeff;font:700 8px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-shadow:0 0 10px rgba(0,210,245,.8);white-space:nowrap}
+.hud-ai-core-caption{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%);color:#8ceeff;font:700 28px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-shadow:0 0 36px rgba(0,210,245,.8);white-space:nowrap}
 .hud-steel-model{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-width:0;min-height:220px;transform-style:preserve-3d;perspective:900px;animation:hud-steel-float 6.8s ease-in-out infinite}
 .hud-grating-image{display:block;width:115%;max-width:none;max-height:275px;object-fit:contain;filter:drop-shadow(0 24px 17px rgba(0,0,0,.55)) drop-shadow(0 0 22px rgba(50,200,230,.17));transform:rotateX(5deg) rotateY(-7deg);animation:hud-steel-tilt 9s ease-in-out infinite alternate}
 .hud-hbeam-image{position:absolute;right:-7%;bottom:2%;width:40%;max-height:95px;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.55)) drop-shadow(0 0 12px rgba(73,192,220,.18));transform:rotate(-8deg);animation:hud-beam-hover 5.4s ease-in-out infinite alternate}
@@ -913,10 +913,10 @@ body {
   font-size:clamp(8px,.68vw,10px)!important;
 }
 .engineering-dashboard .hud-bom-table th{
-  font-size:clamp(7px,.58vw,8px)!important;
+  font-size:clamp(6px,.50vw,7px)!important;
 }
 .engineering-dashboard .hud-bom-table td{
-  font-size:clamp(8px,.68vw,10px)!important;
+  font-size:clamp(6px,.50vw,7px)!important;
 }
 .engineering-dashboard .hud-bom-table .bom-mark,
 .engineering-dashboard .hud-bom-table .bom-qty{
@@ -939,7 +939,7 @@ body {
 @media(max-width:760px){
   .engineering-dashboard .hud-bom-table,
   .engineering-dashboard .hud-bom-table td{
-    font-size:8px!important;
+    font-size:7px!important;
   }
 }
 
@@ -958,11 +958,11 @@ body {
 }
 .engineering-dashboard .hud-bom-table th:nth-child(2),
 .engineering-dashboard .hud-bom-table td:nth-child(2){
-  width:53%!important;
+  width:45%!important;
 }
 .engineering-dashboard .hud-bom-table th:last-child,
 .engineering-dashboard .hud-bom-table td:last-child{
-  width:20%!important;
+  width:28%!important;
 }
 .engineering-dashboard .hud-bom-table tbody tr td:first-child{
   width:27%!important;
@@ -1548,3 +1548,105 @@ main.workspace-page .drawing-dropzone{color:#dff3fc!important;background:radial-
 }
 .inspector-shell .inspector-header .inspector-back-link span:first-child,
 .inspector-shell.inspector-state .inspector-back-link span:first-child{font-size:17px!important;line-height:1!important;color:#8cecff!important}
+
+/* Multilingual interface support: Arabic uses native RTL direction. */
+/* Global RTL */
+html[dir="rtl"] body {direction: rtl;text-align: right;}
+html[dir="rtl"] .engineering-dashboard {direction: rtl;}
+/* Form controls */
+html[dir="rtl"] input,html[dir="rtl"] textarea,html[dir="rtl"] select {text-align: right;}
+/* Technical input fields */
+html[dir="rtl"] input[type="email"],html[dir="rtl"] input[type="url"],html[dir="rtl"] input[type="number"],html[dir="rtl"] input[type="password"] {
+  direction: ltr;  text-align: left;}
+/* Tables */
+html[dir="rtl"] table {direction: rtl;}
+/* Technical content */
+html[dir="rtl"] code,html[dir="rtl"] pre,html[dir="rtl"] .font-mono,html[dir="rtl"] [data-technical="true"] {
+  direction: ltr;  unicode-bidi: plaintext;  text-align: left;}
+/* CAD viewer protection */
+html[dir="rtl"] [data-i18n-ignore="true"] {direction: ltr;  text-align: left;}
+
+/* Typography refinement: make secondary and small UI text easier to read.
+   Keep headings, large metrics, icons, and layout dimensions unchanged. */
+.engineering-dashboard {
+  font-size: 15px;
+}
+
+/* Tailwind's extra-small labels and helper copy were too tiny at 12px. */
+.engineering-dashboard .text-xs,
+.engineering-dashboard small,
+.engineering-dashboard label,
+.engineering-dashboard [class*="text-[9px]"],
+.engineering-dashboard [class*="text-[10px]"],
+.engineering-dashboard [class*="text-[11px]"] {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+/* Bring the dashboard's compact technical labels and status text up slightly. */
+.engineering-dashboard .dashboard-status,
+.engineering-dashboard .technical-chip,
+.engineering-dashboard .hud-status-chip,
+.engineering-dashboard .hud-feature-chip,
+.engineering-dashboard .visual-label,
+.engineering-dashboard .scene-caption,
+.engineering-dashboard .hud-stage-label,
+.engineering-dashboard .hud-panel-topline,
+.engineering-dashboard .hud-panel-foot,
+.engineering-dashboard .hud-model-tag,
+.engineering-dashboard .hud-stage-bottomline {
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+
+/* Improve compact data tables without changing their overall visual hierarchy. */
+.engineering-dashboard .hud-bom-table {
+  font-size: 11px !important;
+}
+.engineering-dashboard .hud-bom-table th,
+.engineering-dashboard .hud-bom-table tfoot td:first-child {
+  font-size: 10px !important;
+}
+.engineering-dashboard .bom-mini-row,
+.engineering-dashboard .bom-mini-row > span:nth-child(2),
+.engineering-dashboard .bom-mini-foot {
+  font-size: 11px !important;
+}
+.engineering-dashboard .bom-mini-head {
+  font-size: 10px !important;
+}
+
+/* CAD inspector: raise small labels, descriptions, and code-panel text modestly. */
+.cad-inspector-workspace {
+  font-size: 14px;
+}
+.cad-inspector-workspace small,
+.cad-inspector-workspace label,
+.cad-inspector-workspace .text-xs,
+.cad-inspector-workspace [class*="text-[9px]"],
+.cad-inspector-workspace [class*="text-[10px]"],
+.cad-inspector-workspace [class*="text-[11px]"] {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+.cad-inspector-workspace .cad-json-inspector,
+.cad-inspector-workspace .cad-inspector-stage-content pre:not(.cad-json-inspector) {
+  font-size: 12px !important;
+  line-height: 1.65 !important;
+}
+.cad-inspector-workspace .cad-step-tab span:last-child {
+  font-size: 11px !important;
+}
+@media (max-width: 640px) {
+  .engineering-dashboard .text-xs,
+  .engineering-dashboard small,
+  .engineering-dashboard label,
+  .cad-inspector-workspace .text-xs,
+  .cad-inspector-workspace small,
+  .cad-inspector-workspace label {
+    font-size: 12px !important;
+  }
+  .engineering-dashboard .hud-bom-table {
+    font-size: 10px !important;
+  }
+}
