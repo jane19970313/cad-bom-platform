@@ -57,13 +57,13 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12">
-      <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+    <main className="flex min-h-screen items-center justify-center bg-[#080f1d] px-4 py-12 text-slate-100">
+      <div className="w-full max-w-md rounded-xl border border-cyan-300/15 bg-[#0d192a] p-8 shadow-[0_24px_80px_rgba(0,0,0,.38)]">
         <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-50">
             DXF to BOM Platform
           </h1>
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="mt-2 text-sm text-slate-400">
             Sign in to access your engineering workspace.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function LoginPage() {
           <div>
             <label
               htmlFor="email"
-              className="mb-2 block text-sm font-medium text-slate-700"
+              className="mb-2 block text-sm font-medium text-slate-300"
             >
               Email address
             </label>
@@ -84,14 +84,14 @@ export default function LoginPage() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="you@example.com"
-              className="w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className="w-full rounded-md border border-white/10 bg-[#081321] px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-600 outline-none focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/10"
             />
           </div>
 
           <div>
             <label
               htmlFor="password"
-              className="mb-2 block text-sm font-medium text-slate-700"
+              className="mb-2 block text-sm font-medium text-slate-300"
             >
               Password
             </label>
@@ -103,14 +103,14 @@ export default function LoginPage() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="Enter your password"
-              className="w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className="w-full rounded-md border border-white/10 bg-[#081321] px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-600 outline-none focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/10"
             />
           </div>
 
           {sessionExpired && (
             <div
               role="status"
-              className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"
+              className="rounded-md border border-amber-300/20 bg-amber-300/10 p-3 text-sm text-amber-100"
             >
               <p className="font-semibold">Your session has expired</p>
               <p className="mt-1">
@@ -123,7 +123,7 @@ export default function LoginPage() {
           {error && (
             <div
               role="alert"
-              className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+              className="rounded-md border border-rose-300/20 bg-rose-300/10 p-3 text-sm text-rose-200"
             >
               {error}
             </div>
@@ -132,13 +132,13 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-md bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-md bg-gradient-to-r from-blue-500 to-cyan-400 px-4 py-2.5 text-sm font-semibold text-[#06111f] transition hover:from-blue-400 hover:to-cyan-300 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? "Signing in..." : "Sign in"}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-500">
+        <p className="mt-6 text-center text-sm text-slate-400">
           New to CAD2BOM?{" "}
           <a href="/register" className="font-semibold text-cyan-700 hover:text-cyan-500">
             Create an account
